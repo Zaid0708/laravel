@@ -14,4 +14,8 @@ class Hotel extends Model
         'description',
         'rating',
     ];
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
 }

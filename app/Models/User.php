@@ -42,4 +42,33 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+    /**
+     * Get the reviews written by the user.
+     */
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    /**
+     * Get the hotels managed by the user (if the user is a hotel owner or admin).
+     */
+    public function hotels()
+    {
+        return $this->hasMany(Hotel::class);
+    }
+
+    /**
+     * Get the role of the user.
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }

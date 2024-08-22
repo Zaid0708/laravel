@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class payment extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'resrvation_id',
+        'amount',
+        'amount',
+        'payment_date',
+        'payment_method',
+        'payment_status',
+    ];
+    public function reservation()
+    {
+        return $this->belongsTo(Reservation::class);
+    }
 }
