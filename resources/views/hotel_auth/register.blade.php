@@ -29,7 +29,7 @@
                 <div class="col-xl-6 col-lg-6 offset-xl-3 offset-lg-3">
                     <div class="booking-form">
                         <h3>Create a new account</h3>
-                        <form method="POST" action="{{ route('register') }}" class="contact-form">
+                        <form method="POST" action="{{ route('renterregister') }}" class="contact-form">
                             @csrf <!-- Include CSRF token for security -->
     
                             <!-- Display validation errors -->
