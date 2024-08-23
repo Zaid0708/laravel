@@ -2,19 +2,35 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('index', function () {
+    return view('userPage.index');
+});
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('rooms', function () {
+    return view('userPage.Rooms');
+});
+
+
+
+Route::get('about-us', function () {
+    return view('userPage.about-us');
+});
+
+
+Route::get('about-us', function () {
+    return view('userPage.about-us');
+});
+
+
+
+
+Route::get('room-details', function () {
+    return view('userPage.room-details');
+});
+
+Route::get('blog-details', function () {
+    return view('userPage.blog-details');
 });
 
 Route::middleware([
