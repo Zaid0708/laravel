@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     // Show the registration form
-    public function showRegister()
+    public function rentershowRegister()
     {
         return view('auth2.register'); // Adjust this path if your view is in a different location
     }
 
     // Handle the registration
-    public function register(Request $request)
+    public function renterregister(Request $request)
     {
         // Validate the incoming request data
         $validated = $request->validate([
@@ -43,6 +43,38 @@ class UserController extends Controller
         // Redirect to a different page or return a success response
         return redirect()->route('dashboard')->with('success', 'Registration successful!');
     }
+    public function ownershowRegister()
+    {
+        return view('auth2.register'); // Adjust this path if your view is in a different location
+    }
+
+    // Handle the registration
+    public function ownerregister(Request $request)
+    {
+        // Validate the incoming request data
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|confirmed|min:8',
+            'phone_number' => 'required|string|max:20',
+        ]);
+
+        // Create the new user
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'phone_number' => $validated['phone_number'],
+            'role_id' => 2, // Default role_id set to 3
+        ]);
+
+        // Log the user in
+        Auth::login($user);
+
+        // Redirect to a different page or return a success response
+        return redirect()->route('dashboard')->with('success', 'Registration successful!');
+    }
+
 
     // Show the login form
     public function showLogin()

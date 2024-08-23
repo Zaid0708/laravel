@@ -44,8 +44,10 @@ Route::middleware([
 });
 use App\Http\Controllers\UserController;
 
-Route::get('/register2', [UserController::class, 'showRegister'])->name('register.form');
-Route::post('/register2', [UserController::class, 'register'])->name('register');
+Route::get('/renterreg', [UserController::class, 'rentershowRegister'])->name('register.form');
+Route::post('/renterreg', [UserController::class, 'renterregister'])->name('register');
+Route::get('/ownerreg', [UserController::class, 'ownershowRegister'])->name('register.form');
+Route::post('/ownerreg', [UserController::class, 'ownerregister'])->name('register');
 Route::get('/login2', [UserController::class, 'showLogin'])->name('login.form');
 Route::post('/login2', [UserController::class, 'login'])->name('login');
 Route::post('/logout2', [UserController::class, 'logout'])->name('logout');
