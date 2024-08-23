@@ -7,8 +7,8 @@ Route::get('index', function () {
 });
 
 
-Route::get('rooms', function () {
-    return view('userPage.Rooms');
+Route::get('hotels', function () {
+    return view('userPage.hotels');
 });
 
 
@@ -21,14 +21,17 @@ Route::get('about-us', function () {
 Route::get('about-us', function () {
     return view('userPage.about-us');
 });
-
-
 
 
 Route::get('room-details', function () {
     return view('userPage.room-details');
 });
 
+
 Route::get('blog-details', function () {
     return view('userPage.blog-details');
+});
+
+Route::get('contact', function () {
+    return view('userPage.contact');
 });

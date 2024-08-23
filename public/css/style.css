@@ -31,12 +31,45 @@
 
 /* Template default CSS
 /*----------------------------------------*/
+.ap-title h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
+.ap-title p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.ap-services-wrapper {
+    margin-top: 40px;
+}
+
+.ap-services li {
+    font-size: 16px;
+    line-height: 2;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.ap-services li i {
+    color: #f39c12; /* Change icon color to match the theme */
+    margin-right: 10px;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 15px;
+}
+html {
+    scroll-behavior: smooth;
+}
 html, body {
 	height: 100%;
 	font-family: "Cabin", sans-serif;
 	-webkit-font-smoothing: antialiased;
-	font-smoothing: antialiased;
 }
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
@@ -719,7 +752,7 @@ ul, ol {
 	transition: all 0.3s;
 }
 /*------------------------
-  Home Page Room Section 
+  Home Page Room Section
 -------------------------*/
 
 .hp-room-items {

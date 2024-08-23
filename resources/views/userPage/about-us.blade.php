@@ -27,102 +27,7 @@
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
-    <!-- Offcanvas Menu Section Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="canvas-open">
-        <i class="icon_menu"></i>
-    </div>
-    <div class="offcanvas-menu-wrapper">
-        <div class="canvas-close">
-            <i class="icon_close"></i>
-        </div>
-        <div class="search-icon search-switch">
-            <i class="icon_search"></i>
-        </div>
-        <div class="header-configure-area">
-            <div class="language-option">
-                <img src="img/flag.jpg" alt="">
-                <span>EN <i class="fa fa-angle-down"></i></span>
-                <div class="flag-dropdown">
-                    <ul>
-                        <li><a href="#">Zi</a></li>
-                        <li><a href="#">Fr</a></li>
-                    </ul>
-                </div>
-            </div>
-            <a href="#" class="bk-btn">Booking Now</a>
-        </div>
-        <nav class="mainmenu mobile-menu">
-            <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./rooms.html">Rooms</a></li>
-                <li><a href="./about-us.html">About Us</a></li>
-                <li><a href="./pages.html">Pages</a>
-                    <ul class="dropdown">
-                        <li><a href="./room-details.html">Room Details</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                        <li><a href="#">Family Room</a></li>
-                        <li><a href="#">Premium Room</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">News</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        <div id="mobile-menu-wrap"></div>
-        <div class="top-social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-tripadvisor"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
-        </div>
-        <ul class="top-widget">
-            <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-            <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
-        </ul>
-    </div>
-    <!-- Offcanvas Menu Section End -->
-
-    <!-- Header Section Begin -->
     <header class="header-section header-normal">
-        <div class="top-nav">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <ul class="tn-left">
-                            <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-                            <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="tn-right">
-                            <div class="top-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-tripadvisor"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                            </div>
-                            <a href="#" class="bk-btn">Booking Now</a>
-                            <div class="language-option">
-                                <img src="img/flag.jpg" alt="">
-                                <span>EN <i class="fa fa-angle-down"></i></span>
-                                <div class="flag-dropdown">
-                                    <ul>
-                                        <li><a href="#">Zi</a></li>
-                                        <li><a href="#">Fr</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="menu-item">
             <div class="container">
                 <div class="row">
@@ -137,24 +42,20 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li><a href="./index.html">Home</a></li>
-                                    <li><a href="./rooms.html">Rooms</a></li>
-                                    <li class="active"><a href="./about-us.html">About Us</a></li>
-                                    <li><a href="./pages.html">Pages</a>
+                                    <li><a href="./index">Home</a></li>
+                                    <li class="active"><a href="./about-us">About Us</a></li>
+                                    <li><a href="./hotels">Hotels</a></li>
+                                    <li><a href="./pages">Pages</a>
                                         <ul class="dropdown">
-                                            <li><a href="./room-details.html">Room Details</a></li>
-                                            <li><a href="./blog-details.html">Blog Details</a></li>
+                                            <li><a href="./room-details">Room Details</a></li>
+                                            <li><a href="./blog-details">Blog Details</a></li>
                                             <li><a href="#">Family Room</a></li>
                                             <li><a href="#">Premium Room</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="./blog.html">News</a></li>
-                                    <li><a href="./contact.html">Contact</a></li>
+                                    <li><a href="./contact">Contact</a></li>
                                 </ul>
                             </nav>
-                            <div class="nav-right search-switch">
-                                <i class="icon_search"></i>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -163,8 +64,10 @@
     </header>
     <!-- Header End -->
 
+
+
     <!-- Breadcrumb Section Begin -->
-    <div class="breadcrumb-section">
+    <div class="breadcrumb-section" style="background-color :#f6f6f6">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -181,51 +84,28 @@
     </div>
     <!-- Breadcrumb Section End -->
 
+
+
     <!-- About Us Page Section Begin -->
-    <section class="aboutus-page-section spad">
+    <section class="aboutus-page-section spad" style="background-color :#f6f6f6">
         <div class="container">
             <div class="about-page-text">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="ap-title">
-                            <h2>Welcome To Sona.</h2>
-                            <p>Built in 1910 during the Belle Epoque period, this hotel is located in the center of
-                                Paris, with easy access to the city’s tourist attractions. It offers tastefully
-                                decorated rooms.</p>
+                            <h2>Welcome to Sona</h2>
+                            <p>Sona is your premier online platform for booking stays at a diverse range of hotels worldwide. Whether you're searching for a luxurious resort, a charming boutique hotel, or a convenient city-center accommodation, Sona offers a curated selection to suit every traveler's needs. Our user-friendly website ensures a seamless booking experience, allowing you to find and reserve your perfect stay with ease.</p>
                         </div>
                     </div>
                     <div class="col-lg-5 offset-lg-1">
-                        <ul class="ap-services">
-                            <li><i class="icon_check"></i> 20% Off On Accommodation.</li>
-                            <li><i class="icon_check"></i> Complimentary Daily Breakfast</li>
-                            <li><i class="icon_check"></i> 3 Pcs Laundry Per Day</li>
-                            <li><i class="icon_check"></i> Free Wifi.</li>
-                            <li><i class="icon_check"></i> Discount 20% On F&B</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="about-page-services">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="ap-service-item set-bg" data-setbg="img/about/about-p1.jpg">
-                            <div class="api-text">
-                                <h3>Restaurants Services</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="ap-service-item set-bg" data-setbg="img/about/about-p2.jpg">
-                            <div class="api-text">
-                                <h3>Travel & Camping</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="ap-service-item set-bg" data-setbg="img/about/about-p3.jpg">
-                            <div class="api-text">
-                                <h3>Event & Party</h3>
-                            </div>
+                        <div class="ap-services-wrapper">
+                            <ul class="ap-services">
+                                <li><i class="icon_check"></i> Exclusive 20% Off on Select Stays</li>
+                                <li><i class="icon_check"></i> Complimentary Gourmet Breakfast </li>
+                                <li><i class="icon_check"></i> Daily Laundry Service for Bookings Over 3 Nights</li>
+                                <li><i class="icon_check"></i> High-Speed Free Wi-Fi at All Partner Hotels</li>
+                                <li><i class="icon_check"></i> 20% Discount on Food & Beverages</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -234,22 +114,26 @@
     </section>
     <!-- About Us Page Section End -->
 
+
+
     <!-- Video Section Begin -->
-    <section class="video-section set-bg" data-setbg="img/video-bg.jpg">
+    <section class="video-section set-bg" data-setbg="img/blog/3.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="video-text">
-                        <h2>Discover Our Hotel & Services.</h2>
-                        <p>It S Hurricane Season But We Are Visiting Hilton Head Island</p>
-                        <a href="https://www.youtube.com/watch?v=EzKkl64rRbM" class="play-btn video-popup"><img
-                                src="img/play.png" alt=""></a>
+                        <h2>Discover the Best Hotels with Sona.</h2>
+                    <p>Explore a wide range of hotels available on Sona, your go-to platform for booking stays across the globe</p>
+                        <a href="https://www.youtube.com/watch?v=ypgYM8gJ7gg" class="play-btn video-popup">
+                            <img src="img/play.png" alt=""></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Video Section End -->
+
+
 
     <!-- Gallery Section Begin -->
     <section class="gallery-section spad">
@@ -258,38 +142,38 @@
                 <div class="col-lg-12">
                     <div class="section-title">
                         <span>Our Gallery</span>
-                        <h2>Discover Our Work</h2>
+                        <h2>Discover Our Rooms</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="gallery-item set-bg" data-setbg="img/gallery/gallery-1.jpg">
+                    <div class="gallery-item set-bg" data-setbg="img/gallery/1.jpg">
                         <div class="gi-text">
-                            <h3>Room Luxury</h3>
+                            <h3>Junior Suite</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="gallery-item set-bg" data-setbg="img/gallery/gallery-3.jpg">
+                            <div class="gallery-item set-bg" data-setbg="img/gallery/2.jpg">
                                 <div class="gi-text">
-                                    <h3>Room Luxury</h3>
+                                    <h3>Executive Suite</h3>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="gallery-item set-bg" data-setbg="img/gallery/gallery-4.jpg">
+                            <div class="gallery-item set-bg" data-setbg="img/gallery/3.jpg">
                                 <div class="gi-text">
-                                    <h3>Room Luxury</h3>
+                                    <h3>Super Deluxe</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="gallery-item large-item set-bg" data-setbg="img/gallery/gallery-2.jpg">
+                    <div class="gallery-item large-item set-bg" data-setbg="img/gallery/4.jpg">
                         <div class="gi-text">
-                            <h3>Room Luxury</h3>
+                            <h3>family room</h3>
                         </div>
                     </div>
                 </div>
@@ -307,16 +191,17 @@
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="img/footer-logo.png" alt="">
+                                    <img src="img/footer-logo.png" alt="Sona Logo"> <!-- Ensure logo is relevant -->
                                 </a>
                             </div>
-                            <p>We inspire and reach millions of travelers<br /> across 90 local websites</p>
+                            <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries, we bring the world to your doorstep.</p>
                             <div class="fa-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-tripadvisor"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                                 <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                <!-- Update links to actual social media pages -->
                             </div>
                         </div>
                     </div>
@@ -324,18 +209,18 @@
                         <div class="ft-contact">
                             <h6>Contact Us</h6>
                             <ul>
-                                <li>(12) 345 67890</li>
-                                <li>info.colorlib@gmail.com</li>
-                                <li>856 Cordia Extension Apt. 356, Lake, United State</li>
+                                <li>(+962) 780000000</li>
+                                <li>info@sonahotel.com</li> <!-- Updated email -->
+                                <li>123 Luxury St, Suite 789, Amman, Jordan</li> <!-- Updated address -->
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 offset-lg-1">
                         <div class="ft-newslatter">
-                            <h6>New latest</h6>
-                            <p>Get the latest updates and offers.</p>
+                            <h6>Stay Updated</h6> <!-- Updated title -->
+                            <p>Sign up to receive exclusive offers and the latest news on our properties.</p> <!-- Updated description -->
                             <form action="#" class="fn-form">
-                                <input type="text" placeholder="Email">
+                                <input type="email" placeholder="Your Email"> <!-- Updated placeholder and input type -->
                                 <button type="submit"><i class="fa fa-send"></i></button>
                             </form>
                         </div>
@@ -343,38 +228,11 @@
                 </div>
             </div>
         </div>
-        <div class="copyright-option">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <ul>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Terms of use</a></li>
-                            <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Environmental Policy</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="co-text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </footer>
     <!-- Footer Section End -->
 
-    <!-- Search model Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch"><i class="icon_close"></i></div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-    <!-- Search model end -->
+
+
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
