@@ -22,7 +22,7 @@
 
 </head>
 <body>
-    <section class="hero-section">
+    <section style="height: 100%" class="hero-section">
         <div class="container">
             <div class="row">
                 <!-- Column for the form -->
@@ -53,9 +53,7 @@
                                 <div class="col-lg-12">
                                     <button class="subb" type="submit">Login Now</button>
                                 </div>
-                                <div class="col-lg-12">
-                                    <a href="{{ route('password.request') }}">Forgot Password?</a>
-                                </div>
+                               
                             </div>
                         </form>
                     </div>

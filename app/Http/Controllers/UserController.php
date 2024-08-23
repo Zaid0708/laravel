@@ -14,7 +14,7 @@ class UserController extends Controller
     // Show the registration form
     public function rentershowRegister()
     {
-        return view('auth2.register'); // Adjust this path if your view is in a different location
+        return view('hotel_auth.register'); // Adjust this path if your view is in a different location
     }
 
     // Handle the registration
@@ -45,7 +45,7 @@ class UserController extends Controller
     }
     public function ownershowRegister()
     {
-        return view('auth2.register'); // Adjust this path if your view is in a different location
+        return view('hotel_auth.register'); // Adjust this path if your view is in a different location
     }
 
     // Handle the registration
@@ -79,7 +79,7 @@ class UserController extends Controller
     // Show the login form
     public function showLogin()
     {
-        return view('auth2.login'); // Adjust this path if your view is in a different location
+        return view('hotel_auth.login'); // Adjust this path if your view is in a different location
     }
 
     // Handle the login
