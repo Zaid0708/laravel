@@ -22,16 +22,16 @@
 
 </head>
 <body>
-    <section class="hero-section">
-        <div class="container">
-            <div class="row">
+    <section style="height: 100%" class="hero-section">
+        <div  class="container">
+            <div  class="row">
                 <!-- Column for the form -->
-                <div class="col-xl-6 col-lg-6 offset-xl-3 offset-lg-3">
+                <div class="col-lg-6 col-lg-6 offset-xl-3 offset-lg-3">
                     <div class="booking-form">
                         <h3>Create a new account</h3>
-                        <form method="POST" action="{{ route('renterregister') }}" class="contact-form">
+                        <form method="POST" action="{{ route('register') }}" class="contact-form">
                             @csrf <!-- Include CSRF token for security -->
-    
+
                             <!-- Display validation errors -->
                             @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -42,7 +42,7 @@
                                     </ul>
                                 </div>
                             @endif
-    
+
                             <div class="row">
                                 <div class="col-lg-12">
                                     <input type="text" name="name" placeholder="Your Name" value="{{ old('name') }}">
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>
-    
+
         <!-- Slider section -->
         <div class="hero-slider owl-carousel">
             <div class="hs-item set-bg" data-setbg="{{ asset('img/hero/hero-1.jpg') }}"></div>
@@ -76,7 +76,7 @@
             <div class="hs-item set-bg" data-setbg="{{ asset('img/hero/hero-3.jpg') }}"></div>
         </div>
     </section>
-    
+
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
@@ -85,7 +85,7 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-    
-    
+
+
 </body>
 </html>

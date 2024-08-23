@@ -41,11 +41,11 @@ class UserController extends Controller
         Auth::login($user);
 
         // Redirect to a different page or return a success response
-        return redirect()->route('dashboard')->with('success', 'Registration successful!');
+        return redirect()->route('hotel_auth.login')->with('success', 'Registration successful!');
     }
     public function ownershowRegister()
     {
-        return view('hotel_auth.register'); // Adjust this path if your view is in a different location
+        return view('auth.register'); // Adjust this path if your view is in a different location
     }
 
     // Handle the registration

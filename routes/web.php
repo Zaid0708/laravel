@@ -46,8 +46,8 @@ use App\Http\Controllers\UserController;
 
 Route::get('/renterreg', [UserController::class, 'rentershowRegister'])->name('register.form');
 Route::post('/renterreg', [UserController::class, 'renterregister'])->name('register');
-Route::get('/ownerreg', [UserController::class, 'ownershowRegister'])->name('register.form');
-Route::post('/ownerreg', [UserController::class, 'ownerregister'])->name('register');
+Route::get('/ownerreg', [UserController::class, 'ownershowRegister']);
+Route::post('/ownerreg', [UserController::class, 'ownerregister'])->name('oregister');
 Route::get('/login2', [UserController::class, 'showLogin'])->name('login.form');
 Route::post('/login2', [UserController::class, 'login'])->name('login');
 Route::post('/logout2', [UserController::class, 'logout'])->name('logout');
