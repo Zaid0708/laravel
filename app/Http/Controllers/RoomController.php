@@ -16,10 +16,12 @@ class RoomController extends Controller
     {
         $rooms = Room::with('images')->where('hotel_id', $hotelId)->get();
        // Fetch the hotel for further use in the view
-    
+
         return view('owner_page.room', compact('rooms', 'hotelId')); // Pass the hotel object to the view
+
+
     }
-    
+
     /**
      * Show the form for creating a new resource.
      */
@@ -42,7 +44,7 @@ class RoomController extends Controller
             'features' => 'nullable|string',
             'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validation rule for image
         ]);
-    
+
         // Create the room
         $room = Room::create([
             'hotel_id' => $hotelId,
@@ -53,20 +55,20 @@ class RoomController extends Controller
             'availability_status' => $request->availability_status,
             'features' => $request->features,
         ]);
-    
+
         // Handle the file upload and save to the images table
         $imageName = null;
 
         if ($request->hasFile('picture')) {
             $file = $request->file('picture');
-            
+
             // Generate a unique image name using the current timestamp and the original filename
             $imageName = time() . '_' . $file->getClientOriginalName();
-            
+
             // Store the file in the 'public/room_images' directory with the unique image name
             $file->storeAs('public/room_images', $imageName);
         }
-    
+
         // Save the image details in the images table
         if ($imageName) {
             Image::create([
@@ -75,10 +77,10 @@ class RoomController extends Controller
                 'image_path' => $imageName, // Save the image name
             ]);
         }
-    
+
         return redirect()->route('rooms.index', $hotelId)->with('success', 'Room created successfully.');
     }
-    
+
     /**
      * Display the specified resource.
      */

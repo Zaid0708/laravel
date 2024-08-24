@@ -2,6 +2,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\Room2Controller;
 use Illuminate\Support\Facades\Route;
 
 
@@ -39,3 +40,30 @@ Route::group(['middleware' => ['auth', 'check.role:2']], function () {
     Route::post('/hotels/{hotelId}/rooms', [RoomController::class, 'store'])->name('rooms.store');
 });
 
+
+Route::get('room-details', function () {
+    return view('userPage.room-details');
+});
+
+
+Route::get('index', function () {
+    return view('userPage.index');
+});
+
+Route::get('hotels', function () {
+    return view('userPage.hotels');
+});
+
+
+
+Route::get('/rooms', [Room2Controller::class, 'index'])->name('rooms.index');
+
+
+
+Route::get('blog-details', function () {
+    return view('userPage.blog-details');
+});
+
+Route::get('contact', function () {
+    return view('userPage.contact');
+});
