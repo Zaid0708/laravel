@@ -24,6 +24,30 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        .btn-outline-primary {
+            color: #f7931e;
+            border-color: #dfa974;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #dfa974;
+            color: #fff;
+            border-color: #dfa974;
+
+        }
+
+    .btn-primary {
+            background-color: #dfa974;
+            border-color: #dfa974;
+            color: #fff;
+        }
+
+  .btn-primary:hover {
+            background-color: #d7934f;
+            border-color: #dfa974;
+        }
+    </style>
 </head>
 
 <body>
@@ -54,6 +78,8 @@
                                         </ul>
                                     </li>
                                     <li class="active"><a href="./contact">Contact</a></li>
+                                    <a href="#" class="btn btn-outline-primary">Login</a>
+                                    <a href="#" class="btn btn-primary">Sign Up</a>
                                 </ul>
                             </nav>
                         </div>

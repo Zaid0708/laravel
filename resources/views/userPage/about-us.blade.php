@@ -12,6 +12,7 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -24,6 +25,31 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+<style>
+    .btn-outline-primary {
+        color: #f7931e;
+        border-color: #dfa974;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #dfa974;
+        color: #fff;
+        border-color: #dfa974;
+
+    }
+
+.btn-primary {
+        background-color: #dfa974;
+        border-color: #dfa974;
+        color: #fff;
+    }
+
+.btn-primary:hover {
+        background-color: #d7934f;
+        border-color: #dfa974;
+    }
+</style>
 </head>
 
 <body>
@@ -54,6 +80,8 @@
                                         </ul>
                                     </li>
                                     <li><a href="./contact">Contact</a></li>
+                                    <a href="#" class="btn btn-outline-primary">Login</a>
+                                    <a href="#" class="btn btn-primary">Sign Up</a>
                                 </ul>
                             </nav>
                         </div>
@@ -103,11 +131,11 @@
                     <div class="col-lg-5 offset-lg-1">
                         <div class="ap-services-wrapper">
                             <ul class="ap-services">
-                                <li><i class="icon_check"></i> Exclusive 20% Off on Select Stays</li>
-                                <li><i class="icon_check"></i> Complimentary Gourmet Breakfast </li>
-                                <li><i class="icon_check"></i> Daily Laundry Service for Bookings Over 3 Nights</li>
-                                <li><i class="icon_check"></i> High-Speed Free Wi-Fi at All Partner Hotels</li>
-                                <li><i class="icon_check"></i> 20% Discount on Food & Beverages</li>
+                                <li><i class="fa fa-star"></i> Exclusive 20% Off on Select Stays</li>
+                           <li><i class="fa fa-coffee"></i> Complimentary Gourmet Breakfast</li>
+                           <li><i class="fas fa-tshirt"></i> Daily Laundry Service for Bookings Over 3 Nights</li>
+                           <li><i class="fa fa-wifi"></i> High-Speed Free Wi-Fi at All Partner Hotels</li>
+                                <li><i class="fa fa-coffee"></i> 20% Discount on Food & Beverages</li>
                             </ul>
                         </div>
                     </div>
@@ -127,7 +155,7 @@
                     <div class="video-text">
                         <h2>Discover the Best Hotels with Sona.</h2>
                     <p>Explore a wide range of hotels available on Sona, your go-to platform for booking stays across the globe</p>
-                        <a href="https://www.youtube.com/watch?v=ypgYM8gJ7gg" class="play-btn video-popup">
+                        <a href="https://www.youtube.com/watch?v=NSQLwZy1_Vc" class="play-btn video-popup">
                             <img src="img/play.png" alt=""></a>
                     </div>
                 </div>

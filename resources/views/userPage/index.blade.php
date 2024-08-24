@@ -12,6 +12,8 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="path/to/flaticon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
@@ -24,6 +26,38 @@
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+    <style>
+        .service-item i {
+            color: #D5A373;
+            transition: color 0.3s ease;
+        }
+
+        .service-item:hover i {
+            color: #ffffff;
+        }
+        .btn-outline-primary {
+            color: #f7931e;
+            border-color: #dfa974;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #dfa974;
+            color: #fff;
+            border-color: #dfa974;
+
+        }
+
+    .btn-primary {
+            background-color: #dfa974;
+            border-color: #dfa974;
+            color: #fff;
+        }
+
+  .btn-primary:hover {
+            background-color: #d7934f;
+            border-color: #dfa974;
+        }
+    </style>
 </head>
 
 <body>
@@ -54,6 +88,8 @@
                                         </ul>
                                     </li>
                                     <li><a href="./contact">Contact</a></li>
+                                    <a href="#" class="btn btn-outline-primary">Login</a>
+                                    <a href="#" class="btn btn-primary">Sign Up</a>
                                 </ul>
                             </nav>
 
@@ -200,10 +236,10 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <div class="service-item">
-                        <i class="flaticon-012-cocktail"></i>
-                        <h4>Exclusive Bar & Drinks</h4>
-                        <p>Relax and unwind with our exclusive selection of premium drinks at our hotel bar.</p>
+                    <div class="service-item" >
+                        <i class="fas fa-dumbbell" style="font-size: 48px; margin-top : 10px"></i>
+                        <h4 style = " margin-top : 25px">Gym</h4>
+                        <p>Stay fit during your stay with our fully equipped, state-of-the-art gym facilities.</p>
                     </div>
                 </div>
             </div>

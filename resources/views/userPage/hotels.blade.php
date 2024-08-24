@@ -24,6 +24,110 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            border-radius: 15px 15px 0 0;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .rating {
+            margin-bottom: 10px;
+        }
+
+        .rating .fa {
+            color: #f7931e;
+        }
+
+        .card-text {
+            color: #555;
+        }
+
+        .price-badge-footer {
+            padding: 10px 0;
+            text-align: center;
+            background-color: #f8f8f8;
+            border-top: 1px solid #ddd;
+            border-bottom: none;
+        }
+
+        .price-badge {
+            background-color: #f7931e;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .card-footer {
+            text-align: center;
+            padding: 10px 15px;
+            background-color: #f8f8f8;
+            border-top: none;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .card-footer .btn {
+            width: 100%;
+            background-color: #f7931e;
+            border: none;
+            padding: 10px 0;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card-footer .btn:hover {
+            background-color: #e67e22;
+        }
+
+        .btn-outline-primary {
+            color: #f7931e;
+            border-color: #dfa974;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #dfa974;
+            color: #fff;
+            border-color: #dfa974;
+
+        }
+
+    .btn-primary {
+            background-color: #dfa974;
+            border-color: #dfa974;
+            color: #fff;
+        }
+
+  .btn-primary:hover {
+            background-color: #d7934f;
+            border-color: #dfa974;
+        }
+    </style>
 </head>
 
 <body>
@@ -54,6 +158,8 @@
                                         </ul>
                                     </li>
                                     <li><a href="./contact">Contact</a></li>
+                                    <a href="#" class="btn btn-outline-primary">Login</a>
+                                    <a href="#" class="btn btn-primary">Sign Up</a>
                                 </ul>
                             </nav>
                         </div>
@@ -84,28 +190,40 @@
     </div>
     <!-- Breadcrumb Section End -->
 
-<section class="hotels-section spad" style="background-color :#f6f6f6">
-    <div class="container" >
-        <div class="row">
-            @forelse($hotels as $hotel)
+    <section class="hotels-section spad" style="background-color: #f6f6f6">
+        <div class="container">
+            <div class="row">
+                @forelse($hotels as $hotel)
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
                         <img class="card-img-top" src="{{ asset('storage/hotel_images/' . $hotel->hotel_image) }}" alt="{{ $hotel->name }}">
                         <div class="card-body">
                             <h4 class="card-title">{{ $hotel->name }}</h4>
+                            <div class="rating">
+                                @for ($i = 0; $i < 5; $i++)
+                                    @if ($i < floor($hotel->rating))
+                                        <i class="fa fa-star"></i>
+                                    @elseif ($i < ceil($hotel->rating))
+                                        <i class="fa fa-star-half-alt"></i>
+                                    @else
+                                        <i class="fa fa-star-o"></i>
+                                    @endif
+                                @endfor
+                            </div>
                             <p class="card-text">{{ $hotel->description }}</p>
                         </div>
+
                         <div class="card-footer">
-                            <a href="{{ route('rooms.index') }}" class="btn btn-primary">View Details</a>
+                            <a href="{{ route('rooms.index', $hotel->id) }}" class="btn btn-primary">View Details</a>
                         </div>
                     </div>
                 </div>
-            @empty
-                <p>No hotels available.</p>
-            @endforelse
+                @empty
+                    <p>No hotels available.</p>
+                @endforelse
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
    <!-- Footer Section Begin -->
