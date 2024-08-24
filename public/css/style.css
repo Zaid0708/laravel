@@ -31,7 +31,20 @@
 
 /* Template default CSS
 /*----------------------------------------*/
-
+.ch{
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 700;
+	padding: 16px 28px 15px;
+	background: #dfa974;
+	color: #ffffff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+.ri{
+	display: flex;
+	
+}
 html, body {
 	height: 100%;
 	font-family: "Cabin", sans-serif;
@@ -983,7 +996,7 @@ ul, ol {
 
 .breadcrumb-section {
 	padding-top: 70px;
-	padding-bottom: 80px;
+	/* padding-bottom: 80px; */
 }
 .breadcrumb-text {
 	text-align: center;
@@ -1164,6 +1177,7 @@ ul, ol {
 }
 .room-item img {
 	min-width: 100%;
+	margin-bottom: 7%;
 }
 .room-item .ri-text {
 	border: 1px solid #ebebeb;
@@ -1194,7 +1208,7 @@ ul, ol {
 	line-height: 36px;
 }
 .room-item .ri-text table tbody tr td.r-o {
-	width: 125px;
+	width: 175px;
 }
 .room-item .ri-text .primary-btn {
 	color: #19191a;
@@ -1470,6 +1484,11 @@ ul, ol {
 }
 .room-booking form .select-option {
 	margin-bottom: 15px;
+}
+.subb:hover{
+	background-color: #dfa974;
+	color: white;
+
 }
 .room-booking form .select-option label {
 	font-size: 14px;

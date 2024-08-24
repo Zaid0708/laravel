@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use App\Models\Room;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 class HotelController extends Controller
 {
     /**
@@ -13,7 +15,13 @@ class HotelController extends Controller
      */
     public function index()
     {
-        //
+        $userId = Auth::id();
+
+        // Fetch hotels associated with the authenticated user ID
+        $hotels = Hotel::where('owner_id', $userId)->get();
+        // $roomprice=Room::where('hotel_id',$hotelId);
+    
+        return view('owner_page.index', compact('hotels',));
     }
 
     /**
@@ -21,7 +29,7 @@ class HotelController extends Controller
      */
     public function create()
     {
-        //
+        return view('owner_page.createhotel');
     }
 
     /**
@@ -29,9 +37,38 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string',
+            'rating' => 'required|integer|min:1|max:5',
+            'contact_info' => 'required|string|max:255',
+            'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        // Handle the file upload
+        $filename = null;
+        if ($request->hasFile('picture')) {
+            $file = $request->file('picture');
+            $filename = time() . '_' . $file->getClientOriginalName(); // Create a unique filename
+            $filePath = $file->storeAs('public/hotel_images', $filename); // Store the file in 'storage/app/public/hotel_images'
+        }
+    
+        // Save the hotel data along with the file path to the database
+        // Assuming you have a Hotel model and 'hotels' table with an 'owner_id' column
+        $hotel = new Hotel();
+        $hotel->name = $request->name;
+        $hotel->location = $request->location;
+        $hotel->description = $request->description;
+        $hotel->rating = $request->rating;
+        $hotel->contact_info = $request->contact_info;
+        $hotel->hotel_image = $filename; // Save the filename in the database
+        $hotel->owner_id = Auth::id(); // Set the owner_id to the ID of the currently authenticated user
+        $hotel->save();
+    
+        return redirect()->route('owner.index')->with('success', 'Hotel created successfully.');
     }
-
     /**
      * Display the specified resource.
      */
@@ -59,8 +96,12 @@ class HotelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Hotel $hotel)
+    public function destroy($id)
     {
-        //
+        // Find the hotel by ID and delete it
+        $hotel = Hotel::findOrFail($id);
+        $hotel->delete();
+    
+        return redirect()->route('owner.index')->with('success', 'Hotel deleted successfully.');
     }
 }

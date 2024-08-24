@@ -41,7 +41,7 @@ class UserController extends Controller
         Auth::login($user);
 
         // Redirect to a different page or return a success response
-        return redirect()->route('dashboard')->with('success', 'Registration successful!');
+        return redirect()->route('hotel_auth.login')->with('success', 'Registration successful!');
     }
     public function ownershowRegister()
     {
@@ -72,7 +72,7 @@ class UserController extends Controller
         Auth::login($user);
 
         // Redirect to a different page or return a success response
-        return redirect()->route('dashboard')->with('success', 'Registration successful!');
+        return redirect()->route('login')->with('success', 'Registration successful!');
     }
 
 
@@ -90,13 +90,29 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required|string|min:8',
         ]);
-
+    
         // Attempt to log the user in
         if (Auth::attempt($credentials)) {
-            // Authentication passed, redirect to intended or default page
-            return redirect()->intended('dashboard')->with('success', 'You are logged in!');
+            // Authentication passed, check the user's role
+            $user = Auth::user();
+    
+            // Redirect based on role
+            switch ($user->role_id) {
+                case 1:
+                    // Admin role, redirect to admin dashboard
+                    return redirect()->route('admin.dashboard')->with('success', 'You are logged in as an Admin!');
+                case 2:
+                    // Owner role, redirect to owner dashboard or page
+                    return redirect()->route('owner.index')->with('success', 'You are logged in as an Owner!');
+                case 3:
+                    // Renter role, redirect to renter dashboard or page
+                    return redirect()->route('renter.dashboard')->with('success', 'You are logged in as a Renter!');
+                default:
+                    // Default case if no specific role is found
+                    return redirect()->route('home')->with('success', 'You are logged in!');
+            }
         }
-
+    
         // Authentication failed, redirect back with input and error message
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',

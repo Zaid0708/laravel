@@ -12,7 +12,7 @@ class image extends Model
         'hotel_id',
         'room_id',
         'image_path',
-        'description',
+        
     ];
     public function hotel()
     {

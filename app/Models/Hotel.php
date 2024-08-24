@@ -13,6 +13,8 @@ class Hotel extends Model
         'location',
         'description',
         'rating',
+        'owner_id',
+        'hotel_image',
     ];
     public function images()
     {

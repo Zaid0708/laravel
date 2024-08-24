@@ -22,14 +22,14 @@
 
 </head>
 <body>
-    <section class="hero-section">
-        <div class="container">
-            <div class="row">
+    <section style="height: 100%" class="hero-section">
+        <div  class="container">
+            <div  class="row">
                 <!-- Column for the form -->
-                <div class="col-xl-6 col-lg-6 offset-xl-3 offset-lg-3">
+                <div class="col-lg-6 col-lg-6 offset-xl-3 offset-lg-3">
                     <div class="booking-form">
                         <h3>Create a new account</h3>
-                        <form method="POST" action="{{ route('renterregister') }}" class="contact-form">
+                        <form method="POST" action="{{ route('register') }}" class="contact-form">
                             @csrf <!-- Include CSRF token for security -->
     
                             <!-- Display validation errors -->
