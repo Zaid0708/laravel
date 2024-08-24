@@ -11,7 +11,7 @@
 
         <x-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('oregister') }}">
+        <form method="POST" action="{{ route('oregister.form') }}">
             @csrf
 
             <div>
