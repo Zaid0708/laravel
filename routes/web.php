@@ -67,3 +67,6 @@ Route::get('blog-details', function () {
 Route::get('contact', function () {
     return view('userPage.contact');
 });
+Route::get('about-us', function () {
+    return view('userPage.about-us');
+});
