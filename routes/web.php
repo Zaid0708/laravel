@@ -3,6 +3,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\Room2Controller;
+use App\Http\Controllers\Hotel2Controller;
 use Illuminate\Support\Facades\Route;
 
 
@@ -58,6 +59,7 @@ Route::get('hotels', function () {
 
 Route::get('/rooms', [Room2Controller::class, 'index'])->name('rooms.index');
 
+Route::get('/hotels', [Hotel2Controller::class, 'index'])->name('hotels.index');
 
 
 Route::get('blog-details', function () {
