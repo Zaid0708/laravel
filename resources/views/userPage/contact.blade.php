@@ -27,102 +27,7 @@
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
-    <!-- Offcanvas Menu Section Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="canvas-open">
-        <i class="icon_menu"></i>
-    </div>
-    <div class="offcanvas-menu-wrapper">
-        <div class="canvas-close">
-            <i class="icon_close"></i>
-        </div>
-        <div class="search-icon search-switch">
-            <i class="icon_search"></i>
-        </div>
-        <div class="header-configure-area">
-            <div class="language-option">
-                <img src="img/flag.jpg" alt="">
-                <span>EN <i class="fa fa-angle-down"></i></span>
-                <div class="flag-dropdown">
-                    <ul>
-                        <li><a href="#">Zi</a></li>
-                        <li><a href="#">Fr</a></li>
-                    </ul>
-                </div>
-            </div>
-            <a href="#" class="bk-btn">Booking Now</a>
-        </div>
-        <nav class="mainmenu mobile-menu">
-            <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./rooms.html">Rooms</a></li>
-                <li><a href="./about-us.html">About Us</a></li>
-                <li><a href="./pages.html">Pages</a>
-                    <ul class="dropdown">
-                        <li><a href="./room-details.html">Room Details</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                        <li><a href="#">Family Room</a></li>
-                        <li><a href="#">Premium Room</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">News</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        <div id="mobile-menu-wrap"></div>
-        <div class="top-social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-tripadvisor"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
-        </div>
-        <ul class="top-widget">
-            <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-            <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
-        </ul>
-    </div>
-    <!-- Offcanvas Menu Section End -->
-
-    <!-- Header Section Begin -->
     <header class="header-section header-normal">
-        <div class="top-nav">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <ul class="tn-left">
-                            <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-                            <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="tn-right">
-                            <div class="top-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-tripadvisor"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                            </div>
-                            <a href="#" class="bk-btn">Booking Now</a>
-                            <div class="language-option">
-                                <img src="img/flag.jpg" alt="">
-                                <span>EN <i class="fa fa-angle-down"></i></span>
-                                <div class="flag-dropdown">
-                                    <ul>
-                                        <li><a href="#">Zi</a></li>
-                                        <li><a href="#">Fr</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="menu-item">
             <div class="container">
                 <div class="row">
@@ -137,24 +42,20 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li><a href="./index.html">Home</a></li>
-                                    <li><a href="./rooms.html">Rooms</a></li>
-                                    <li><a href="./about-us.html">About Us</a></li>
-                                    <li><a href="./pages.html">Pages</a>
+                                    <li><a href="./index">Home</a></li>
+                                    <li><a href="./about-us">About Us</a></li>
+                                    <li><a href="./hotels">Hotels</a></li>
+                                    <li><a href="./pages">Pages</a>
                                         <ul class="dropdown">
-                                            <li><a href="./room-details.html">Room Details</a></li>
-                                            <li><a href="./blog-details.html">Blog Details</a></li>
+                                            <li><a href="./room-details">Room Details</a></li>
+                                            <li><a href="./blog-details">Blog Details</a></li>
                                             <li><a href="#">Family Room</a></li>
                                             <li><a href="#">Premium Room</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="./blog.html">News</a></li>
-                                    <li class="active"><a href="./contact.html">Contact</a></li>
+                                    <li class="active"><a href="./contact">Contact</a></li>
                                 </ul>
                             </nav>
-                            <div class="nav-right search-switch">
-                                <i class="icon_search"></i>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -164,61 +65,61 @@
     <!-- Header End -->
 
     <!-- Contact Section Begin -->
-    <section class="contact-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="contact-text">
-                        <h2>Contact Info</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.</p>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td class="c-o">Address:</td>
-                                    <td>856 Cordia Extension Apt. 356, Lake, US</td>
-                                </tr>
-                                <tr>
-                                    <td class="c-o">Phone:</td>
-                                    <td>(12) 345 67890</td>
-                                </tr>
-                                <tr>
-                                    <td class="c-o">Email:</td>
-                                    <td>info.colorlib@gmail.com</td>
-                                </tr>
-                                <tr>
-                                    <td class="c-o">Fax:</td>
-                                    <td>+(12) 345 67890</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-lg-7 offset-lg-1">
-                    <form action="#" class="contact-form">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <input type="text" placeholder="Your Name">
-                            </div>
-                            <div class="col-lg-6">
-                                <input type="text" placeholder="Your Email">
-                            </div>
-                            <div class="col-lg-12">
-                                <textarea placeholder="Your Message"></textarea>
-                                <button type="submit">Submit Now</button>
-                            </div>
-                        </div>
-                    </form>
+<section class="contact-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="contact-text">
+                    <h2>Get in Touch</h2>
+                    <p>Have questions about booking your stay with Sona? Our team is here to assist you with any inquiries regarding our wide selection of hotels across the globe. Contact us to learn more about our offerings and how we can help make your travel planning seamless.</p>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="c-o">Address:</td>
+                                <td>123 Abdallah Ghosheh St, Amman, Jordan</td>
+                            </tr>
+                            <tr>
+                                <td class="c-o">Phone:</td>
+                                <td>(+962) 780000000</td>
+                            </tr>
+                            <tr>
+                                <td class="c-o">Email:</td>
+                                <td>info@sonahotel.com</td> <!-- Updated email to reflect Sona branding -->
+                            </tr>
+                            <tr>
+                                <td class="c-o">Fax:</td>
+                                <td>+(12) 345 67890</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class="map">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.0606825994123!2d-72.8735845851828!3d40.760690042573295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e85b24c9274c91%3A0xf310d41b791bcb71!2sWilliam%20Floyd%20Pkwy%2C%20Mastic%20Beach%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1578582744646!5m2!1sen!2sbd"
-                    height="470" style="border:0;" allowfullscreen=""></iframe>
+            <div class="col-lg-7 offset-lg-1">
+                <form action="#" class="contact-form">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input type="text" placeholder="Your Name">
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" placeholder="Your Email">
+                        </div>
+                        <div class="col-lg-12">
+                            <textarea placeholder="Your Message"></textarea>
+                            <button type="submit">Submit Now</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
-    <!-- Contact Section End -->
+        <div class="map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3381.247647421554!2d35.86059391481807!3d31.96959638123032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca084c3a3b7d5%3A0xc4c8b1a7a4e80b1d!2sAbdallah%20Ghosheh%20St%2C%20Amman%2C%20Jordan!5e0!3m2!1sen!2sjo!4v1691831764553!5m2!1sen!2sjo"
+                height="470" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+</section>
+<!-- Contact Section End -->
+
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
@@ -229,16 +130,17 @@
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="img/footer-logo.png" alt="">
+                                    <img src="img/footer-logo.png" alt="Sona Logo"> <!-- Ensure logo is relevant -->
                                 </a>
                             </div>
-                            <p>We inspire and reach millions of travelers<br /> across 90 local websites</p>
+                            <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries, we bring the world to your doorstep.</p>
                             <div class="fa-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-tripadvisor"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                                 <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                <!-- Update links to actual social media pages -->
                             </div>
                         </div>
                     </div>
@@ -246,18 +148,18 @@
                         <div class="ft-contact">
                             <h6>Contact Us</h6>
                             <ul>
-                                <li>(12) 345 67890</li>
-                                <li>info.colorlib@gmail.com</li>
-                                <li>856 Cordia Extension Apt. 356, Lake, United State</li>
+                                <li>(+962) 780000000</li>
+                                <li>info@sonahotel.com</li> <!-- Updated email -->
+                                <li>123 Luxury St, Suite 789, Amman, Jordan</li> <!-- Updated address -->
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 offset-lg-1">
                         <div class="ft-newslatter">
-                            <h6>New latest</h6>
-                            <p>Get the latest updates and offers.</p>
+                            <h6>Stay Updated</h6> <!-- Updated title -->
+                            <p>Sign up to receive exclusive offers and the latest news on our properties.</p> <!-- Updated description -->
                             <form action="#" class="fn-form">
-                                <input type="text" placeholder="Email">
+                                <input type="email" placeholder="Your Email"> <!-- Updated placeholder and input type -->
                                 <button type="submit"><i class="fa fa-send"></i></button>
                             </form>
                         </div>
@@ -265,39 +167,8 @@
                 </div>
             </div>
         </div>
-        <div class="copyright-option">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <ul>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Terms of use</a></li>
-                            <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Environmental Policy</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="co-text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </footer>
     <!-- Footer Section End -->
-
-    <!-- Search model Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch"><i class="icon_close"></i></div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-    <!-- Search model end -->
-
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

@@ -49,7 +49,6 @@ html, body {
 	height: 100%;
 	font-family: "Cabin", sans-serif;
 	-webkit-font-smoothing: antialiased;
-	font-smoothing: antialiased;
 }
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
@@ -732,7 +731,7 @@ ul, ol {
 	transition: all 0.3s;
 }
 /*------------------------
-  Home Page Room Section 
+  Home Page Room Section
 -------------------------*/
 
 .hp-room-items {

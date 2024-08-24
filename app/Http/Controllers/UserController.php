@@ -45,7 +45,7 @@ class UserController extends Controller
     }
     public function ownershowRegister()
     {
-        return view('hotel_auth.register'); // Adjust this path if your view is in a different location
+        return view('auth.register'); // Adjust this path if your view is in a different location
     }
 
     // Handle the registration
