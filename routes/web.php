@@ -49,9 +49,6 @@ Route::get('room-details', function () {
 });
 Route::post('/index', [Hotel2Controller::class, 'search'])->name('hotels.search');
 
-Route::get('index', function () {
-    return view('userPage.index');
-})->name('UserPage.index');
 
 
 Route::get('hotels', function () {
@@ -64,7 +61,7 @@ Route::get('/hotels/{hotelId}/rooms3', [Room2Controller::class, 'index'])->name(
 
 Route::get('/hotels', [Hotel2Controller::class, 'index'])->name('hotels.index');
 
-Route::get('/index', [IndexController::class, 'index'])->name('userpage.index');
+Route::get('/index', [IndexController::class, 'index'])->name('userPage.index');
 
 
 Route::get('blog-details', function () {
@@ -77,6 +74,10 @@ Route::get('contact', function () {
 Route::get('about-us', function () {
     return view('userPage.about-us');
 });
+Route::get('payment', function () {
+    return view('userPage.payment');
+});
+
 
 
 
