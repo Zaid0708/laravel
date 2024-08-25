@@ -4,17 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
+use App\Models\Hotel;
 
 class Room2Controller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($hotelId)
     {
+        // Fetch the rooms along with their images for the specified hotel
+        $rooms = Room::with('images')->where('hotel_id', $hotelId)->get();
 
-    $rooms = Room::with('images')->get();
-    return view('userPage.room', compact('rooms'));
+        // Fetch the hotel details based on the hotel ID
+        $hotel = Hotel::findOrFail($hotelId);
+
+        // Pass both rooms and hotel to the view
+        return view('userPage.room', compact('rooms', 'hotel'));
     }
 
     /**

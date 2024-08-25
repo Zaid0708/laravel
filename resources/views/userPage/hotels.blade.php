@@ -48,22 +48,37 @@
         }
 
         .card-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: #333;
         }
 
         .rating {
-            margin-bottom: 10px;
+            display: flex;
         }
 
-        .rating .fa {
-            color: #f7931e;
+
+        .d-flex {
+            display: flex;
         }
 
-        .card-text {
-            color: #555;
+        .justify-content-between {
+            justify-content: space-between;
         }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .mb-0 {
+            margin-bottom: 0;
+        }
+
+        .label-with-value {
+            display: flex;
+            align-items: center;
+        }
+
 
         .price-badge-footer {
             padding: 10px 0;
@@ -88,6 +103,48 @@
             background-color: #f8f8f8;
             border-top: none;
             border-radius: 0 0 15px 15px;
+        }
+
+
+        .hotel-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #333;
+            margin-right: 5px;
+            text-align: left;
+            flex: 1;
+        }
+
+        .value {
+            text-align: right;
+            flex: 1;
+        }
+
+
+
+        .card-text {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #f7931e;
+        }
+
+        .rating .fa {
+            color: #f7931e;
         }
 
         .card-footer .btn {
@@ -198,23 +255,37 @@
                     <div class="card h-100">
                         <img class="card-img-top" src="{{ asset('storage/hotel_images/' . $hotel->hotel_image) }}" alt="{{ $hotel->name }}">
                         <div class="card-body">
-                            <h4 class="card-title">{{ $hotel->name }}</h4>
-                            <div class="rating">
-                                @for ($i = 0; $i < 5; $i++)
-                                    @if ($i < floor($hotel->rating))
-                                        <i class="fa fa-star"></i>
-                                    @elseif ($i < ceil($hotel->rating))
-                                        <i class="fa fa-star-half-alt"></i>
-                                    @else
-                                        <i class="fa fa-star-o"></i>
-                                    @endif
-                                @endfor
+                            <div class="hotel-info">
+                                <div class="info-item">
+                                    <span class="label">Name:</span>
+                                    <span class="value">{{ $hotel->name }}</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="label">Location:</span>
+                                    <span class="value">{{ $hotel->location }}</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="label">Min-Price:</span>
+                                    <span class="value price">{{ '$' . number_format($hotel->min_price, 2) . '/Night' }}</span>
+                                </div>
                             </div>
-                            <p class="card-text">{{ $hotel->description }}</p>
+                            <div class="rating mt-3">
+                                <span class="label">Rate:</span>
+                                <div class="value">
+                                    @for ($i = 0; $i < 5; $i++)
+                                        @if ($i < floor($hotel->rating))
+                                            <i class="fa fa-star"></i>
+                                        @elseif ($i < ceil($hotel->rating))
+                                            <i class="fa fa-star-half-alt"></i>
+                                        @else
+                                            <i class="fa fa-star-o"></i>
+                                        @endif
+                                    @endfor
+                                </div>
+                            </div>
                         </div>
-
                         <div class="card-footer">
-                            <a href="{{ route('rooms.index', $hotel->id) }}" class="btn btn-primary">View Details</a>
+                            <a href="{{ route('rooms3.index', $hotel->id) }}" class="btn btn-primary">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -224,6 +295,8 @@
             </div>
         </div>
     </section>
+
+
 
 
    <!-- Footer Section Begin -->

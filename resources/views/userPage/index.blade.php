@@ -228,6 +228,7 @@
                     <p>Our laundry services are available 24/7, ensuring your clothes are always fresh and clean.</p>
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-sm-6">
                     <div class="service-item">
                         <i class="flaticon-044-clock-1"></i>
@@ -235,6 +236,7 @@
                         <p>Travel in style and comfort with our private chauffeur services, available on-demand.</p>
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-sm-6">
                     <div class="service-item" >
                         <i class="fas fa-dumbbell" style="font-size: 48px; margin-top : 10px"></i>
@@ -242,8 +244,10 @@
                         <p>Stay fit during your stay with our fully equipped, state-of-the-art gym facilities.</p>
                     </div>
                 </div>
+
             </div>
         </div>
+
     </section>
     <!-- Services Section End -->
 

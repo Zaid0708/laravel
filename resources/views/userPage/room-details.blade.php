@@ -24,6 +24,30 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        .btn-outline-primary {
+            color: #f7931e;
+            border-color: #dfa974;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #dfa974;
+            color: #fff;
+            border-color: #dfa974;
+
+        }
+
+    .btn-primary {
+            background-color: #dfa974;
+            border-color: #dfa974;
+            color: #fff;
+        }
+
+  .btn-primary:hover {
+            background-color: #d7934f;
+            border-color: #dfa974;
+        }
+    </style>
 </head>
 
 <body>
@@ -33,7 +57,7 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="./index.html">
+                            <a href="./index">
                                 <img src="img/logo.png" alt="">
                             </a>
                         </div>
@@ -42,8 +66,8 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li><a href="./index">Home</a></li>
-                                    <li class="active"><a href="./about-us">About Us</a></li>
+                                    <li class="active"><a href="./index">Home</a></li>
+                                    <li><a href="./about-us">About Us</a></li>
                                     <li><a href="./hotels">Hotels</a></li>
                                     <li><a href="./pages">Pages</a>
                                         <ul class="dropdown">
@@ -54,8 +78,11 @@
                                         </ul>
                                     </li>
                                     <li><a href="./contact">Contact</a></li>
+                                    <a href="#" class="btn btn-outline-primary">Login</a>
+                                    <a href="#" class="btn btn-primary">Sign Up</a>
                                 </ul>
                             </nav>
+
                         </div>
                     </div>
                 </div>
@@ -84,6 +111,9 @@
 
     <!-- Room Details Section Begin -->
     <section class="room-details-section spad">
+        <br>
+        <br>
+        <br>
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -251,16 +281,17 @@
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="img/footer-logo.png" alt="">
+                                    <img src="img/footer-logo.png" alt="Sona Logo"> <!-- Ensure logo is relevant -->
                                 </a>
                             </div>
-                            <p>We inspire and reach millions of travelers<br /> across 90 local websites</p>
+                            <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries, we bring the world to your doorstep.</p>
                             <div class="fa-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-tripadvisor"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                                 <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                <!-- Update links to actual social media pages -->
                             </div>
                         </div>
                     </div>
@@ -268,18 +299,18 @@
                         <div class="ft-contact">
                             <h6>Contact Us</h6>
                             <ul>
-                                <li>(12) 345 67890</li>
-                                <li>info.colorlib@gmail.com</li>
-                                <li>856 Cordia Extension Apt. 356, Lake, United State</li>
+                                <li>(+962) 780000000</li>
+                                <li>info@sonahotel.com</li> <!-- Updated email -->
+                                <li>123 Luxury St, Suite 789, Amman, Jordan</li> <!-- Updated address -->
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 offset-lg-1">
                         <div class="ft-newslatter">
-                            <h6>New latest</h6>
-                            <p>Get the latest updates and offers.</p>
+                            <h6>Stay Updated</h6> <!-- Updated title -->
+                            <p>Sign up to receive exclusive offers and the latest news on our properties.</p> <!-- Updated description -->
                             <form action="#" class="fn-form">
-                                <input type="text" placeholder="Email">
+                                <input type="email" placeholder="Your Email"> <!-- Updated placeholder and input type -->
                                 <button type="submit"><i class="fa fa-send"></i></button>
                             </form>
                         </div>
@@ -287,38 +318,10 @@
                 </div>
             </div>
         </div>
-        <div class="copyright-option">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <ul>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Terms of use</a></li>
-                            <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Environmental Policy</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="co-text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </footer>
     <!-- Footer Section End -->
 
-    <!-- Search model Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch"><i class="icon_close"></i></div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-    <!-- Search model end -->
+
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>

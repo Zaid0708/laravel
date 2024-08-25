@@ -21,6 +21,34 @@
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+
+    <style>
+
+
+.ps-2 {
+    padding-left: .5rem !important;
+}
+.pe-3 {
+    padding-right: 1rem !important;
+}
+.me-3 {
+    margin-right: 1rem !important;
+}
+.me-2{
+    margin-right: 1rem ;
+}
+
+.border-end {
+    border-right: 1px solid #dee2e6 !important;
+}
+small, .small {
+    font-size: .875em;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+    </style>
 </head>
 <body>
 
@@ -49,7 +77,7 @@
                                             <li><a href="#">InterContinental Jordan</a></li>
                                             <li><a href="#">The St.Regis Amman</a></li>
                                             <li><a href="#">Four Seasons Hotel Amman</a></li>
-                                            <li><a href="#">Mövenpick Hotel Amman</a></li>
+                                            <li><a href="#">MÃ¶venpick Hotel Amman</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="./pages">Pages</a>
@@ -79,7 +107,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <h2>Fairmont Amman</h2>
+                        <h2>{{ $hotel->name }}</h2>
                         <div class="bt-option">
                             <a href="./home.html">Room</a>
                             <span>Hotels</span>
@@ -94,55 +122,48 @@
 
 
     <!-- Rooms Section Begin -->
-    <section class="rooms-section spad" style="background-color :#f6f6f6">
+    <section class="hotels-section spad" style="background-color: #f6f6f6">
         <div class="container">
-            <div class="row">
-                @foreach($rooms as $room)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="room-item">
-                            <img src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}" alt="Room Image">
-                            <div class="ri-text">
-                                <h4>{{ $room->name }}</h4>
-                                <div style="display: flex;">
-                                    <h3>{{ $room->price_per_night }}$<span>/Pernight</span></h3>
-                                    <div class="rating" style="margin-left: 20%; margin-top:3%;">
-                                        @for ($i = 0; $i < floor($room->rating); $i++)
-                                            <i class="icon_star"></i>
-                                        @endfor
-                                        @if ($room->rating - floor($room->rating) > 0)
-                                            <i class="icon_star-half_alt"></i>
-                                        @endif
-                                    </div>
+            <div class="row g-4">
+                @foreach ($rooms as $room)
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <div class="room-item shadow rounded overflow-hidden">
+                        <div class="position-relative">
+                            @if($room->images->isNotEmpty())
+                                <img src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}" alt="Room Image">
+                            @else
+                                <img src="{{ asset('images/default-room.jpg') }}" alt="Default Room Image">
+                            @endif
+                            <p class="position-absolute start-0 top-100 ">${{ $room->price_per_night }}/Night</p>
+                        </div>
+                        <div class="p-4 mt-2">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">{{ $room->room_type }}</h5>
+                                <div class="ps-2">
+                                    @for ($i = 0; $i < 5; $i++)
+                                        <small style="color: #dfa974" class="fa fa-star "></small>
+                                    @endfor
                                 </div>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td class="r-o">Size:</td>
-                                            <td>{{ $room->size }} ft</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="r-o">Capacity:</td>
-                                            <td>Max person {{ $room->capacity }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="r-o">Bed:</td>
-                                            <td>{{ $room->bed }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="r-o">Services:</td>
-                                            <td>{{ $room->services }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <a href="#" class="aa">Book Room</a>
-                                <a href="#" class="ab">View Room</a>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <small class="border-end me-3 pe-3"><i style="color: #dfa974" class="fa fa-bed  me-2"></i>{{ $room->bed }} Bed</small>
+                                <small class="border-end me-3 pe-3"><i style="color: #dfa974" class="fa fa-bath me-2"></i>{{ $room->bathroom }} Bath</small>
+                                <small><i style="color: #dfa974" class="fa fa-wifi  me-2"></i>Wifi</small>
+                            </div>
+                            <p class="text-body mb-3">{{ Str::limit($room->description, 100) }}</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="#"  class="btn aa">Veiw Detales</a>
+                                <a href="#"  class="btn ab">Book Now</a>
                             </div>
                         </div>
                     </div>
+                </div>
                 @endforeach
             </div>
         </div>
     </section>
+
+
     <!-- Rooms Section End -->
 
 
