@@ -134,10 +134,11 @@
                                 </select>
                             </div>
                             <div class="select-option">
-                                <label for="room">location:</label>
-                                <select id="room">
-                                    <option value="">amman</option>
-                                    <option value="">aqaba</option>
+                                <label for="location">Location:</label>
+                                <select id="location">
+                                    @foreach($locations as $location)
+                                        <option value="{{ $location->location }}">{{ $location->location }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <button type="submit">Check Availability</button>
