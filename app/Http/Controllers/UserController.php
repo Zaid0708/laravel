@@ -106,7 +106,7 @@ class UserController extends Controller
                     return redirect()->route('owner.index')->with('success', 'You are logged in as an Owner!');
                 case 3:
                     // Renter role, redirect to renter dashboard or page
-                    return redirect()->route('renter.dashboard')->with('success', 'You are logged in as a Renter!');
+                    return redirect()->route('UserPage.index')->with('success', 'You are logged in as a Renter!');
                 default:
                     // Default case if no specific role is found
                     return redirect()->route('home')->with('success', 'You are logged in!');

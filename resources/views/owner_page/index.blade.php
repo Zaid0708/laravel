@@ -73,6 +73,9 @@
 
             <div class="row">
                 @forelse($hotels as $hotel)
+               
+                    
+               
                     <div class="col-lg-4 col-md-6">
                         <div class="room-item">
                             <!-- Display the hotel image -->

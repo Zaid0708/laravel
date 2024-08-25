@@ -115,33 +115,39 @@
                 <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
                     <div class="booking-form">
                         <h3>Booking Your Hotel</h3>
-                        <form action="#">
+                        <form action="{{ route('hotels.search') }}" method="POST">
+                            @csrf <!-- This is important for Laravel forms -->
                             <div class="check-date">
                                 <label for="date-in">Check In:</label>
-                                <input type="text" class="date-input" id="date-in">
+                                <input type="text" name="check_in" class="date-input" id="date-in">
                                 <i class="icon_calendar"></i>
                             </div>
                             <div class="check-date">
                                 <label for="date-out">Check Out:</label>
-                                <input type="text" class="date-input" id="date-out">
+                                <input type="text" name="check_out" class="date-input" id="date-out">
                                 <i class="icon_calendar"></i>
                             </div>
                             <div class="select-option">
                                 <label for="guest">Guests:</label>
-                                <select id="guest">
-                                    <option value="">2 Adults</option>
-                                    <option value="">3 Adults</option>
+                                <select id="guest" name="guests">
+                                    <option value="2">2 Adults</option>
+                                    <option value="3">3 Adults</option>
+                                    <option value="4">4 Adults</option>
+                                    <option value="5">5 Adults</option>
+                                    <!-- Add more options as needed -->
                                 </select>
                             </div>
                             <div class="select-option">
-                                <label for="room">location:</label>
-                                <select id="room">
-                                    <option value="">amman</option>
-                                    <option value="">aqaba</option>
+                                <label for="location">Location:</label>
+                                <select id="location" name="location">
+                                    <option value="amman">Amman</option>
+                                    <option value="aqaba">Aqaba</option>
+                                    <!-- Add more locations as needed -->
                                 </select>
                             </div>
                             <button type="submit">Check Availability</button>
                         </form>
+                        
                     </div>
                 </div>
             </div>

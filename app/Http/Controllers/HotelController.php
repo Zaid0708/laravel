@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 class HotelController extends Controller
 {
+   
     /**
      * Display a listing of the resource.
      */
@@ -19,9 +20,12 @@ class HotelController extends Controller
 
         // Fetch hotels associated with the authenticated user ID
         $hotels = Hotel::where('owner_id', $userId)->get();
-        // $roomprice=Room::where('hotel_id',$hotelId);
+        
+        foreach($hotels as $hotel){
+            $hotel->min_price_per_night=Room::where('hotel_id',$hotel->id)->min('price_per_night');
+        }
     
-        return view('owner_page.index', compact('hotels',));
+        return view('owner_page.index', compact('hotels'));
     }
 
     /**

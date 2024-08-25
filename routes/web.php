@@ -46,11 +46,12 @@ Route::group(['middleware' => ['auth', 'check.role:2']], function () {
 Route::get('room-details', function () {
     return view('userPage.room-details');
 });
-
+Route::post('/index', [Hotel2Controller::class, 'search'])->name('hotels.search');
 
 Route::get('index', function () {
     return view('userPage.index');
-});
+})->name('UserPage.index');
+
 
 Route::get('hotels', function () {
     return view('userPage.hotels');
