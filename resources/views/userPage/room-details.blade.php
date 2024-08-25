@@ -9,22 +9,68 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sona | Template</title>
 
-    <!-- Google Font -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="path/to/flaticon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/elegant-icons.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
     <style>
+        .service-item i {
+            color: #D5A373;
+            transition: color 0.3s ease;
+        }
+
+        .service-item:hover i {
+            color: #ffffff;
+        }
+
+        .ps-2 {
+            padding-left: .5rem !important;
+        }
+
+        .pe-3 {
+            padding-right: 1rem !important;
+        }
+
+        .me-3 {
+            margin-right: 1rem !important;
+        }
+
+        .me-2 {
+            margin-right: 1rem;
+        }
+
+        .border-end {
+            border-right: 1px solid #dee2e6 !important;
+        }
+
+        small, .small {
+            font-size: .875em;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        .price-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #dfa974;
+            margin-bottom: 15px; /* Add some spacing below the price */
+        }
+
         .btn-outline-primary {
             color: #f7931e;
             border-color: #dfa974;
@@ -34,18 +80,51 @@
             background-color: #dfa974;
             color: #fff;
             border-color: #dfa974;
-
         }
 
-    .btn-primary {
+        .btn-primary {
             background-color: #dfa974;
             border-color: #dfa974;
             color: #fff;
         }
 
-  .btn-primary:hover {
+        .btn-primary:hover {
             background-color: #d7934f;
             border-color: #dfa974;
+        }
+
+        .aa:hover {
+            background-color: #d7934f;
+            border-color: #dfa974;
+            color: #fff;
+        }
+
+        .select-option select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            text-transform: uppercase; /* Capitalize the text */
+        }
+
+        /* Style the submit button */
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #dfa974;
+            border: none;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Style the calendar icon */
+        .icon_calendar {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #dfa974;
         }
     </style>
 </head>
@@ -57,8 +136,8 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="./index">
-                                <img src="img/logo.png" alt="">
+                            <a href="{{asset('./index')}}">
+                                <img src="{{asset('img/logo.png')}}" alt="">
                             </a>
                         </div>
                     </div>
@@ -66,23 +145,19 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li class="active"><a href="./index">Home</a></li>
-                                    <li><a href="./about-us">About Us</a></li>
-                                    <li><a href="./hotels">Hotels</a></li>
-                                    <li><a href="./pages">Pages</a>
+                                    <li><a href="{{asset('./index')}}">Home</a></li>
+                                    <li><a href="{{asset('./about-us')}}">About Us</a></li>
+                                    <li><a href="{{asset('./hotels')}}">Hotels</a></li>
+                                    <li><a href="{{asset('./index')}}">Rooms</a>
                                         <ul class="dropdown">
-                                            <li><a href="./room-details">Room Details</a></li>
-                                            <li><a href="./blog-details">Blog Details</a></li>
-                                            <li><a href="#">Family Room</a></li>
-                                            <li><a href="#">Premium Room</a></li>
+                                            <li><a href="{{asset('./room-details')}}">Room Details</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="./contact">Contact</a></li>
+                                    <li><a href="{{asset('./contact')}}">Contact</a></li>
                                     <a href="#" class="btn btn-outline-primary">Login</a>
                                     <a href="#" class="btn btn-primary">Sign Up</a>
                                 </ul>
                             </nav>
-
                         </div>
                     </div>
                 </div>
@@ -109,137 +184,103 @@
     </div>
     <!-- Breadcrumb Section End -->
 
-    <!-- Room Details Section Begin -->
     <section class="room-details-section spad">
-        <br>
-        <br>
-        <br>
         <div class="container">
+            <!-- Add some top margin -->
+            <br><br>
             <div class="row">
+                <!-- Left Column: Room Details -->
                 <div class="col-lg-8">
                     <div class="room-details-item">
-                        <img src="img/room/room-details.jpg" alt="">
+                        <img style="height: 350px; width: 100%;" src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}" alt="Room Image">
                         <div class="rd-text">
-                            <div class="rd-title">
-                                <h3>Premium King Room</h3>
+                            <div class="rd-title d-flex justify-content-between align-items-center">
+                                <h3>{{ $room->room_type }}</h3>
                                 <div class="rdt-right">
                                     <div class="rating">
-                                        <i class="icon_star"></i>
-                                        <i class="icon_star"></i>
-                                        <i class="icon_star"></i>
-                                        <i class="icon_star"></i>
-                                        <i class="icon_star-half_alt"></i>
+                                        @for ($i = 0; $i < 5; $i++)
+                                            @if ($i < floor($room->rating))
+                                                <i class="icon_star"></i>
+                                            @elseif ($i < ceil($room->rating))
+                                                <i class="icon_star-half_alt"></i>
+                                            @else
+                                                <i class="icon_star-o"></i>
+                                            @endif
+                                        @endfor
                                     </div>
-                                    <a href="#">Booking Now</a>
+                                    <a href="#" class="btn btn-primary">Book Now</a>
                                 </div>
                             </div>
-                            <h2>159$<span>/Pernight</span></h2>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td class="r-o">Size:</td>
-                                        <td>30 ft</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="r-o">Capacity:</td>
-                                        <td>Max persion 5</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="r-o">Bed:</td>
-                                        <td>King Beds</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="r-o">Services:</td>
-                                        <td>Wifi, Television, Bathroom,...</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p class="f-para">Motorhome or Trailer that is the question for you. Here are some of the
-                                advantages and disadvantages of both, so you will be confident when purchasing an RV.
-                                When comparing Rvs, a motorhome or a travel trailer, should you buy a motorhome or fifth
-                                wheeler? The advantages and disadvantages of both are studied so that you can make your
-                                choice wisely when purchasing an RV. Possessing a motorhome or fifth wheel is an
-                                achievement of a lifetime. It can be similar to sojourning with your residence as you
-                                search the various sites of our great land, America.</p>
-                            <p>The two commonly known recreational vehicle classes are the motorized and towable.
-                                Towable rvs are the travel trailers and the fifth wheel. The rv travel trailer or fifth
-                                wheel has the attraction of getting towed by a pickup or a car, thus giving the
-                                adaptability of possessing transportation for you when you are parked at your campsite.
-                            </p>
+                            <h2>${{ $room->price_per_night }}<span>/Per Night</span></h2>
+                            <div>
+                                <p><strong>Size:</strong> {{ $room->size }}</p>
+                                <p><strong>Capacity:</strong> Max {{ $room->capacity }} Persons</p>
+                                <p><strong>Bed:</strong> {{ $room->bed }}</p>
+                                <p><strong>Services:</strong> {{ $room->services }}</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="rd-reviews">
+
+                    <!-- Reviews Section -->
+                    <div class="rd-reviews mt-5">
                         <h4>Reviews</h4>
-                        <div class="review-item">
-                            <div class="ri-pic">
-                                <img src="img/room/avatar/avatar-1.jpg" alt="">
-                            </div>
-                            <div class="ri-text">
-                                <span>27 Aug 2019</span>
-                                <div class="rating">
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star-half_alt"></i>
+                        @foreach($reviews as $review)
+                            <div class="review-item">
+                                <div class="ri-pic">
+                                    <img src="{{ asset('img/room/avatar/avatar-1.jpg') }}" alt="">
                                 </div>
-                                <h5>Brandon Kelley</h5>
-                                <p>Neque porro qui squam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                    adipisci velit, sed quia non numquam eius modi tempora. incidunt ut labore et dolore
-                                    magnam.</p>
-                            </div>
-                        </div>
-                        <div class="review-item">
-                            <div class="ri-pic">
-                                <img src="img/room/avatar/avatar-2.jpg" alt="">
-                            </div>
-                            <div class="ri-text">
-                                <span>27 Aug 2019</span>
-                                <div class="rating">
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star"></i>
-                                    <i class="icon_star-half_alt"></i>
+                                <div class="ri-text">
+                                    <span>{{ $review->created_at->format('d M Y') }}</span>
+                                    <div class="rating">
+                                        @for ($i = 0; $i < 5; $i++)
+                                            @if ($i < $review->rating)
+                                                <i class="icon_star"></i>
+                                            @else
+                                                <i class="icon_star-o"></i>
+                                            @endif
+                                        @endfor
+                                    </div>
+                                    <h5>{{ $review->user->name }}</h5>
+                                    <p>{{ $review->comment }}</p>
                                 </div>
-                                <h5>Brandon Kelley</h5>
-                                <p>Neque porro qui squam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                    adipisci velit, sed quia non numquam eius modi tempora. incidunt ut labore et dolore
-                                    magnam.</p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="review-add">
-                        <h4>Add Review</h4>
-                        <form action="#" class="ra-form">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <input type="text" placeholder="Name*">
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="text" placeholder="Email*">
-                                </div>
-                                <div class="col-lg-12">
-                                    <div>
-                                        <h5>You Rating:</h5>
-                                        <div class="rating">
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star-half_alt"></i>
+                        @endforeach
+<hr>
+                        <!-- Add Review Section -->
+                        <div class="review-add mt-5">
+                            <h4>Add Review</h4>
+                            @auth
+                                <form action="{{ route('reviews.store', ['room' => $room->id]) }}" method="POST" class="ra-form">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <input type="text" name="name" placeholder="Name*" required>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="email" name="email" placeholder="Email*" required>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div>
+                                                <input type="number" name="rating" min="1" max="5" placeholder="Your rating out of 5" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <textarea name="comment" placeholder="Your Review" required></textarea>
+                                            <button type="submit" class="btn btn-primary">Submit Now</button>
                                         </div>
                                     </div>
-                                    <textarea placeholder="Your Review"></textarea>
-                                    <button type="submit">Submit Now</button>
-                                </div>
-                            </div>
-                        </form>
+                                </form>
+                            @else
+                                <p>You must be <a href="{{ route('login') }}">logged in</a> to submit a review.</p>
+                            @endauth
+                        </div>
                     </div>
                 </div>
+
+                <!-- Right Column: Booking Form -->
                 <div class="col-lg-4">
                     <div class="room-booking">
-                        <h3>Your Reservation</h3>
+                        <h3>Your Reservation</h3> <!-- Update the header text -->
                         <form action="#">
                             <div class="check-date">
                                 <label for="date-in">Check In:</label>
@@ -253,17 +294,12 @@
                             </div>
                             <div class="select-option">
                                 <label for="guest">Guests:</label>
-                                <select id="guest">
+                                <select id="guest" style="text-transform: uppercase;">
+                                    <option value="">2 Adults</option>
                                     <option value="">3 Adults</option>
                                 </select>
                             </div>
-                            <div class="select-option">
-                                <label for="room">Room:</label>
-                                <select id="room">
-                                    <option value="">1 Room</option>
-                                </select>
-                            </div>
-                            <button type="submit">Check Availability</button>
+                            <button type="submit" style="background-color: #dfa974; border-color: #dfa974; color: white;">Check Availability</button>
                         </form>
                     </div>
                 </div>
@@ -281,7 +317,7 @@
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="img/footer-logo.png" alt="Sona Logo"> <!-- Ensure logo is relevant -->
+                                    <img src="{{asset('img/footer-logo.png')}}" alt="Sona Logo"> <!-- Ensure logo is relevant -->
                                 </a>
                             </div>
                             <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries, we bring the world to your doorstep.</p>
@@ -311,7 +347,7 @@
                             <p>Sign up to receive exclusive offers and the latest news on our properties.</p> <!-- Updated description -->
                             <form action="#" class="fn-form">
                                 <input type="email" placeholder="Your Email"> <!-- Updated placeholder and input type -->
-                                <button type="submit"><i class="fa fa-send"></i></button>
+                                <button type="submit" style="width: 20%"><i class="fa fa-send"></i></button>
                             </form>
                         </div>
                     </div>
@@ -321,17 +357,15 @@
     </footer>
     <!-- Footer Section End -->
 
-
-
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>
