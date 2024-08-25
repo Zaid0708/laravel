@@ -84,7 +84,14 @@ Route::get('payment', function () {
 Route::get('room-details', function () {
     return view('userPage.room-details');
 });
-Route::get('/room-details', [Room3Controller::class, 'index'])->name('room.details');
+Route::get('/room-details/{roomId}', [Room3Controller::class, 'index'])->name('room.details');
+
+
+Route::post('/rooms/{room}/reviews', [Room3Controller::class, 'storeReview'])->name('reviews.store');
+
+
+
+
 Route::get('book-now', function () {
     return view('userPage.book-now');
 });

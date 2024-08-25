@@ -206,14 +206,6 @@
                                     <li><a href="./index">Home</a></li>
                                     <li><a href="./about-us">About Us</a></li>
                                     <li class="active"><a href="./hotels">Hotels</a></li>
-                                    <li><a href="./pages">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="./room-details">Room Details</a></li>
-                                            <li><a href="./blog-details">Blog Details</a></li>
-                                            <li><a href="#">Family Room</a></li>
-                                            <li><a href="#">Premium Room</a></li>
-                                        </ul>
-                                    </li>
                                     <li><a href="./contact">Contact</a></li>
                                     <a href="#" class="btn btn-outline-primary">Login</a>
                                     <a href="#" class="btn btn-primary">Sign Up</a>
@@ -249,6 +241,24 @@
 
     <section class="hotels-section spad" style="background-color: #f6f6f6">
         <div class="container">
+            <!-- Search and Filter Form -->
+            <form action="{{ route('hotels.index') }}" method="GET" class="mb-4">
+                <div class="row align-items-center">
+                    <div class="col-lg-4">
+                        <input type="text" name="search" class="form-control" placeholder="Search by hotel name" value="{{ request('search') }}" style="font-size: 14px;">
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="number" name="rating" class="form-control" placeholder="Rating (max 5)" min="1" max="5" value="{{ request('rating') }}" style="font-size: 14px;">
+                    </div>
+                    <div class="col-lg-2">
+                        <button type="submit" class="btn btn-primary btn-block" style="font-size: 14px;">Search</button>
+                    </div>
+                    <div class="col-lg-2">
+                        <button type="reset" class="btn btn-primary btn-block" onclick="window.location.href='{{ route('hotels.index') }}'" style="font-size: 14px;">Reset</button>
+                    </div>
+                </div>
+            </form>
+
             <div class="row">
                 @forelse($hotels as $hotel)
                 <div class="col-lg-4 col-md-6 mb-4">
