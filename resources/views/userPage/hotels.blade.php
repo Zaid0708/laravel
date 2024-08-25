@@ -92,7 +92,7 @@
 
         .card-footer .btn {
             width: 100%;
-            background-color: #f7931e;
+            background-color: #dfa974;
             border: none;
             padding: 10px 0;
             color: #fff;
@@ -102,7 +102,7 @@
         }
 
         .card-footer .btn:hover {
-            background-color: #e67e22;
+            background-color: #dfa974;
         }
 
         .btn-outline-primary {
