@@ -83,3 +83,10 @@ Route::get('room-details', function () {
     return view('userPage.room-details');
 });
 Route::get('/room-details', [Room3Controller::class, 'index'])->name('room.details');
+Route::get('book-now', function () {
+    return view('userPage.book-now');
+});
+
+Route::get('checkout', function () {
+    return view('userPage.checkout');
+});
