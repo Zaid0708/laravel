@@ -22,44 +22,9 @@
     <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
 
-    <style>
-        .ps-2 {
-            padding-left: .5rem !important;
-        }
-        .pe-3 {
-            padding-right: 1rem !important;
-        }
-        .me-3 {
-            margin-right: 1rem !important;
-        }
-        .me-2 {
-            margin-right: 1rem;
-        }
-        .border-end {
-            border-right: 1px solid #dee2e6 !important;
-        }
-        small, .small {
-            font-size: .875em;
-        }
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-        /* Add the style for the price text */
-        .price-text {
-            font-size: 20px;
-    font-weight: bold;
-    color: #dfa974;
-    margin-top: 10px; /* Adjust this value to control the distance */
-    margin-bottom: 15px; /
+    
 
-        }
-        .room-item .position-relative {
-            padding: 20px;
-        }
-        .btn .aa {
 
-        }
-    </style>
 </head>
 <body>
 
@@ -110,13 +75,14 @@
     </header>
     <!-- Header End -->
 
+
     <!-- Breadcrumb Section Begin -->
-    <div class="breadcrumb-section" style="background-color: #f6f6f6">
+    <div class="breadcrumb-section" style="background-color :#f6f6f6">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <h2>{{ $hotel->name }}</h2>
+                        <h2>booking </h2>
                         <div class="bt-option">
                             <a href="./home.html">Room</a>
                             <span>Hotels</span>
@@ -128,53 +94,82 @@
     </div>
     <!-- Breadcrumb Section End -->
 
-    <!-- Rooms Section Begin -->
-    <section class="hotels-section spad" style="background-color: #f6f6f6">
-        <div class="container">
-            <div class="row g-4">
-                @foreach ($rooms as $room)
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                    <div class="room-item shadow rounded overflow-hidden">
-                        <div class="position-relative">
-                            @if($room->images->isNotEmpty())
-                                <img style="height: 250px" src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}" alt="Room Image">
-                            @else
-                                <img src="{{ asset('images/default-room.jpg') }}" alt="Default Room Image">
-                            @endif
-                        </div>
-                        <div class="p-4">
-                            <p class="price-text">${{ $room->price_per_night }}/Night</p>
-                            <div class="d-flex justify-content-between mb-3">
-                                <h5 class="mb-0">{{ $room->room_type }}</h5>
-                                <div class="ps-2">
-                                    @for ($i = 0; $i < 5; $i++)
-                                        <small style="color: #dfa974" class="fa fa-star"></small>
-                                    @endfor
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <small class="border-end me-3 pe-3"><i style="color: #dfa974" class="fa fa-bed me-2"></i>{{ $room->bed }} Bed</small>
-                                <small class="border-end me-3 pe-3"><i style="color: #dfa974" class="fa fa-bath me-2"></i>{{ $room->bathroom }} Bath</small>
-                                <small><i style="color: #dfa974" class="fa fa-wifi me-2"></i>Wifi</small>
-                            </div>
-                            <p class="text-body mb-3">{{ Str::limit($room->description, 100) }}</p>
-                            <div class="d-flex justify-content-between">
-                                <a href="#" class="btn aa">View Details</a>
-                                <a href="#" class="btn ab">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Start Section -->
+<div style="display: flex">
+    <div class="booking" style="padding: 80px 200px; max-width: 100%;">
+        <form action="#" class="contact-form">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <input type="text" placeholder="Your Name">
                 </div>
-                @endforeach
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <input type="text" placeholder="Your Email">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <input type="text" placeholder="Phone Number">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <input type="text" placeholder="Name Hotel">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <input type="text" placeholder="Type Room">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <input type="text" placeholder="Price">
+                </div>
+                <div class="col-lg-12">
+                    <button type="submit">Book Now</button>
+                </div>
             </div>
+        </form>
+    </div>
+
+    <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
+        <div class="booking-form">
+            <h3>Booking Your Hotel</h3>
+            <form action="#">
+                <div class="check-date">
+                    <label for="date-in">Check In:</label>
+                    <input type="text" class="date-input" id="date-in">
+                    <i class="icon_calendar"></i>
+                </div>
+                <div class="check-date">
+                    <label for="date-out">Check Out:</label>
+                    <input type="text" class="date-input" id="date-out">
+                    <i class="icon_calendar"></i>
+                </div>
+                <div class="select-option">
+                    <label for="guest">Guests:</label>
+                    <select id="guest">
+                        <option value="">2 Adults</option>
+                        <option value="">3 Adults</option>
+                    </select>
+                </div>
+                <div class="select-option">
+                    <label for="room">location:</label>
+                    <select id="room">
+                        <option value="">amman</option>
+                        <option value="">aqaba</option>
+                    </select>
+                </div>
+                <button type="submit">Check Availability</button>
+            </form>
         </div>
-    </section>
+    </div>
+</div>
 
 
-    <!-- Rooms Section End -->
 
-    <!-- Footer Section Begin -->
-    <footer class="footer-section">
+
+
+    <!-- Section End -->
+
+
+
+
+
+     <!-- Footer Section Begin -->
+     <footer class="footer-section">
         <div class="container">
             <div class="footer-text">
                 <div class="row">
@@ -182,7 +177,7 @@
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="img/footer-logo.png" alt="Sona Logo">
+                                    <img src="img/footer-logo.png" alt="Sona Logo"> <!-- Ensure logo is relevant -->
                                 </a>
                             </div>
                             <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries, we bring the world to your doorstep.</p>
@@ -192,6 +187,7 @@
                                 <a href="#"><i class="fa fa-tripadvisor"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                                 <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                <!-- Update links to actual social media pages -->
                             </div>
                         </div>
                     </div>
@@ -200,17 +196,17 @@
                             <h6>Contact Us</h6>
                             <ul>
                                 <li>(+962) 780000000</li>
-                                <li>info@sonahotel.com</li>
-                                <li>123 Luxury St, Suite 789, Amman, Jordan</li>
+                                <li>info@sonahotel.com</li> <!-- Updated email -->
+                                <li>123 Luxury St, Suite 789, Amman, Jordan</li> <!-- Updated address -->
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 offset-lg-1">
                         <div class="ft-newslatter">
-                            <h6>Stay Updated</h6>
-                            <p>Sign up to receive exclusive offers and the latest news on our properties.</p>
+                            <h6>Stay Updated</h6> <!-- Updated title -->
+                            <p>Sign up to receive exclusive offers and the latest news on our properties.</p> <!-- Updated description -->
                             <form action="#" class="fn-form">
-                                <input type="email" placeholder="Your Email">
+                                <input type="email" placeholder="Your Email"> <!-- Updated placeholder and input type -->
                                 <button type="submit"><i class="fa fa-send"></i></button>
                             </form>
                         </div>
@@ -221,6 +217,7 @@
     </footer>
     <!-- Footer Section End -->
 
+
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -230,5 +227,6 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
 </body>
 </html>

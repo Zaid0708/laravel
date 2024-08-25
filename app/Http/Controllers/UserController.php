@@ -90,12 +90,12 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required|string|min:8',
         ]);
-    
+
         // Attempt to log the user in
         if (Auth::attempt($credentials)) {
             // Authentication passed, check the user's role
             $user = Auth::user();
-    
+
             // Redirect based on role
             switch ($user->role_id) {
                 case 1:
@@ -112,7 +112,7 @@ class UserController extends Controller
                     return redirect()->route('home')->with('success', 'You are logged in!');
             }
         }
-    
+
         // Authentication failed, redirect back with input and error message
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
@@ -129,5 +129,14 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/')->with('success', 'You have been logged out!');
+    }
+
+    public function index()
+    {
+        // Retrieve all users with their name, email, and phone number
+        $users = User::select('name', 'email', 'phone')->get();
+
+        // Pass the data to a view
+        return view('userPage.book-now', compact('users'));
     }
 }

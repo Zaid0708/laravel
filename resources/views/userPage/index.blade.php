@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="path/to/flaticon.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+                  rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
@@ -139,10 +141,10 @@
                             </div>
                             <div class="select-option">
                                 <label for="location">Location:</label>
-                                <select id="location" name="location">
-                                    <option value="amman">Amman</option>
-                                    <option value="aqaba">Aqaba</option>
-                                    <!-- Add more locations as needed -->
+                                <select id="location">
+                                    @foreach($locations as $location)
+                                        <option value="{{ $location->location }}">{{ $location->location }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <button type="submit">Check Availability</button>
@@ -245,7 +247,9 @@
 
                 <div class="col-lg-4 col-sm-6">
                     <div class="service-item" >
-                        <i class="fas fa-dumbbell" style="font-size: 48px; margin-top : 10px"></i>
+                        <i class="fa-light fa-dumbbell " style="color: #dfa974; font-size: 48px; margin-top : 10px"></i>
+                        {{-- <i class="fas fa-dumbbell" class="fa-light fa-dumbbell" style="font-size: 48px; margin-top : 10px"></i> --}}
+
                         <h4 style = " margin-top : 25px">Gym</h4>
                         <p>Stay fit during your stay with our fully equipped, state-of-the-art gym facilities.</p>
                     </div>

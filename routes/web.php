@@ -5,6 +5,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\Room2Controller;
 use App\Http\Controllers\Hotel2Controller;
 use App\Http\Controllers\Room3Controller;
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -63,6 +64,8 @@ Route::get('/hotels/{hotelId}/rooms3', [Room2Controller::class, 'index'])->name(
 
 Route::get('/hotels', [Hotel2Controller::class, 'index'])->name('hotels.index');
 
+Route::get('/index', [IndexController::class, 'index'])->name('userpage.index');
+
 
 Route::get('blog-details', function () {
     return view('userPage.blog-details');
@@ -81,3 +84,10 @@ Route::get('room-details', function () {
     return view('userPage.room-details');
 });
 Route::get('/room-details', [Room3Controller::class, 'index'])->name('room.details');
+Route::get('book-now', function () {
+    return view('userPage.book-now');
+});
+
+Route::get('checkout', function () {
+    return view('userPage.checkout');
+});
