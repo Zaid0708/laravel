@@ -120,11 +120,6 @@
                                     <li><a href="{{asset('./index')}}">Home</a></li>
                                     <li ><a href="{{asset('./about-us')}}">About Us</a></li>
                                     <li><a href="{{asset('./hotels')}}">Hotels</a></li>
-                                    <li><a href="{{asset('./index')}}">rooms</a>
-                                        <ul class="dropdown">
-                                            <li><a href="{{asset('./room-details')}}">Room Details</a></li>
-                                        </ul>
-                                    </li>
                                     <li><a href="{{asset('./contact')}}">Contact</a></li>
                                     <a href="#" class="btn btn-outline-primary">Login</a>
                                     <a href="#" class="btn btn-primary">Sign Up</a>
