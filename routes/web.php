@@ -60,7 +60,11 @@ Route::get('hotels', function () {
 
 
 
+<<<<<<< Updated upstream
 Route::get('/hotels/{hotelId}/rooms3', [Room2Controller::class, 'index'])->name('rooms3.index');
+=======
+Route::get('/rooms3', [Room2Controller::class, 'index'])->name('rooms3.index');
+>>>>>>> Stashed changes
 
 Route::get('/hotels', [Hotel2Controller::class, 'index'])->name('hotels.index');
 
@@ -76,6 +80,7 @@ Route::get('contact', function () {
 });
 Route::get('about-us', function () {
     return view('userPage.about-us');
+<<<<<<< Updated upstream
 });
 
 
@@ -98,3 +103,6 @@ Route::get('book-now', function () {
 Route::get('checkout', function () {
     return view('userPage.checkout');
 });
+=======
+});
+>>>>>>> Stashed changes
