@@ -26,26 +26,36 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <style>
         .btn-outline-primary {
-            color: #f7931e;
-            border-color: #dfa974;
+            color: #df9a53 !important;
+            border-color: #df9a53 !important;
+            background-color: transparent !important;
+            padding: 10px 20px !important;
+            border-radius: 25px !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
+            margin-right: 5px !important;
+            text-decoration: none !important;
         }
 
         .btn-outline-primary:hover {
-            background-color: #dfa974;
-            color: #fff;
-            border-color: #dfa974;
-
+            background-color: #df9a53 !important;
+            color: white !important;
+            text-decoration: none !important;
         }
 
-    .btn-primary {
-            background-color: #dfa974;
-            border-color: #dfa974;
-            color: #fff;
+        .btn-primary {
+            background-color: #df9a53 !important;
+            border-color: #df9a53 !important;
+            color: white !important;
+            padding: 10px 20px !important;
+            border-radius: 25px !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
         }
 
-  .btn-primary:hover {
-            background-color: #d7934f;
-            border-color: #dfa974;
+        .btn-primary:hover {
+            background-color: #c97b41 !important;
+            border-color: #c97b41 !important;
         }
     </style>
 </head>
@@ -66,12 +76,29 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li><a href="./index">Home</a></li>
-                                    <li><a href="./about-us">About Us</a></li>
-                                    <li><a href="./hotels">Hotels</a></li>
-                                    <li class="active"><a href="./contact">Contact</a></li>
-                                    <a href="#" class="btn btn-outline-primary">Login</a>
-                                    <a href="#" class="btn btn-primary">Sign Up</a>
+                                    <li><a href="{{ url('./index') }}">Home</a></li>
+                                    <li><a href="{{ url('/about-us') }}">About Us</a></li>
+                                    <li><a href="{{ url('/hotels') }}">Hotels</a></li>
+                                    <li><a href="{{ url('/contact') }}">Contact</a></li>
+                                    @guest
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('login.form') }}" class="btn btn-outline-primary">Login</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('register.form') }}" class="btn btn-primary">Sign Up</a>
+                                        </div>
+                                    </li>
+                                    @else
+                                        <li>
+                                            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary">Logout</button>
+                                            </form>
+                                        </li>
+                                    @endguest
                                 </ul>
                             </nav>
                         </div>
@@ -82,8 +109,27 @@
     </header>
     <!-- Header End -->
 
+    <!-- Breadcrumb Section Begin -->
+    <div class="breadcrumb-section" style="background-color :#f6f6f6">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <h2>Contact</h2>
+                        <div class="bt-option">
+                            <a href="./index.html">Home</a>
+                            <span>Contact</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section End -->
+
+
     <!-- Contact Section Begin -->
-<section class="contact-section spad">
+<section class="contact-section spad"  style="background-color :#f6f6f6">
     <div class="container">
         <div class="row">
             <div class="col-lg-4">

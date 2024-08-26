@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 class HotelController extends Controller
 {
-   
+
     /**
      * Display a listing of the resource.
      */
@@ -20,11 +20,11 @@ class HotelController extends Controller
 
         // Fetch hotels associated with the authenticated user ID
         $hotels = Hotel::where('owner_id', $userId)->get();
-        
+
         foreach($hotels as $hotel){
             $hotel->min_price_per_night=Room::where('hotel_id',$hotel->id)->min('price_per_night');
         }
-    
+
         return view('owner_page.index', compact('hotels'));
     }
 
@@ -50,7 +50,7 @@ class HotelController extends Controller
             'contact_info' => 'required|string|max:255',
             'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-    
+
         // Handle the file upload
         $filename = null;
         if ($request->hasFile('picture')) {
@@ -58,7 +58,7 @@ class HotelController extends Controller
             $filename = time() . '_' . $file->getClientOriginalName(); // Create a unique filename
             $filePath = $file->storeAs('public/hotel_images', $filename); // Store the file in 'storage/app/public/hotel_images'
         }
-    
+
         // Save the hotel data along with the file path to the database
         // Assuming you have a Hotel model and 'hotels' table with an 'owner_id' column
         $hotel = new Hotel();
@@ -70,7 +70,7 @@ class HotelController extends Controller
         $hotel->hotel_image = $filename; // Save the filename in the database
         $hotel->owner_id = Auth::id(); // Set the owner_id to the ID of the currently authenticated user
         $hotel->save();
-    
+
         return redirect()->route('owner.index')->with('success', 'Hotel created successfully.');
     }
     /**
@@ -102,10 +102,43 @@ class HotelController extends Controller
      */
     public function destroy($id)
     {
-        // Find the hotel by ID and delete it
+        // Find the hotel by ID
         $hotel = Hotel::findOrFail($id);
+
+        // Get all rooms associated with this hotel
+        $rooms = Room::where('hotel_id', $hotel->id)->get();
+
+        // Iterate through each room to delete its related images and reviews first
+        foreach ($rooms as $room) {
+            // Delete related images
+            if ($room->images) {
+                foreach ($room->images as $image) {
+                    // Delete the image file from storage
+                    Storage::delete('public/room_images/' . $image->image_path);
+                    // Delete the image record from the database
+                    $image->delete();
+                }
+            }
+            // Delete related reviews
+            if ($room->reviews) {
+                foreach ($room->reviews as $review) {
+                    $review->delete();
+                }
+            }
+            // Delete the room after deleting its images and reviews
+            $room->delete();
+        }
+
+        // Delete related hotel reviews
+        if ($hotel->reviews) {
+            foreach ($hotel->reviews as $review) {
+                $review->delete();
+            }
+        }
+
+        // Now delete the hotel
         $hotel->delete();
-    
-        return redirect()->route('owner.index')->with('success', 'Hotel deleted successfully.');
+
+        return redirect()->route('owner.index')->with('success', 'Hotel, associated rooms, images, and reviews deleted successfully.');
     }
 }

@@ -128,8 +128,8 @@ class UserController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('success', 'You have been logged out!');
+        return redirect()->route('login.form')->with('success', 'You have been logged out!');
     }
 
-  
+
 }

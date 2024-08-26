@@ -38,26 +38,36 @@
             color: #ffffff;
         }
         .btn-outline-primary {
-            color: #f7931e;
-            border-color: #dfa974;
+            color: #df9a53 !important;
+            border-color: #df9a53 !important;
+            background-color: transparent !important;
+            padding: 10px 20px !important;
+            border-radius: 25px !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
+            margin-right: 5px !important;
+            text-decoration: none !important;
         }
 
         .btn-outline-primary:hover {
-            background-color: #dfa974;
-            color: #fff;
-            border-color: #dfa974;
-
+            background-color: #df9a53 !important;
+            color: white !important;
+            text-decoration: none !important;
         }
 
-    .btn-primary {
-            background-color: #dfa974;
-            border-color: #dfa974;
-            color: #fff;
+        .btn-primary {
+            background-color: #df9a53 !important;
+            border-color: #df9a53 !important;
+            color: white !important;
+            padding: 10px 20px !important;
+            border-radius: 25px !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
         }
 
-  .btn-primary:hover {
-            background-color: #d7934f;
-            border-color: #dfa974;
+        .btn-primary:hover {
+            background-color: #c97b41 !important;
+            border-color: #c97b41 !important;
         }
     </style>
 </head>
@@ -78,20 +88,29 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li class="active"><a href="./index">Home</a></li>
-                                    <li><a href="./about-us">About Us</a></li>
-                                    <li><a href="./hotels">Hotels</a></li>
-                                    <li><a href="./pages">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="./room-details">Room Details</a></li>
-                                            <li><a href="./blog-details">Blog Details</a></li>
-                                            <li><a href="#">Family Room</a></li>
-                                            <li><a href="#">Premium Room</a></li>
-                                        </ul>
+                                    <li><a href="{{ url('./index') }}">Home</a></li>
+                                    <li><a href="{{ url('/about-us') }}">About Us</a></li>
+                                    <li><a href="{{ url('/hotels') }}">Hotels</a></li>
+                                    <li><a href="{{ url('/contact') }}">Contact</a></li>
+                                    @guest
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('login.form') }}" class="btn btn-outline-primary">Login</a>
+                                        </div>
                                     </li>
-                                    <li><a href="./contact">Contact</a></li>
-                                    <a href="#" class="btn btn-outline-primary">Login</a>
-                                    <a href="#" class="btn btn-primary">Sign Up</a>
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('register.form') }}" class="btn btn-primary">Sign Up</a>
+                                        </div>
+                                    </li>
+                                    @else
+                                        <li>
+                                            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary">Logout</button>
+                                            </form>
+                                        </li>
+                                    @endguest
                                 </ul>
                             </nav>
 
@@ -247,8 +266,7 @@
 
                 <div class="col-lg-4 col-sm-6">
                     <div class="service-item" >
-                        <i class="fa-light fa-dumbbell " style="color: #dfa974; font-size: 48px; margin-top : 10px"></i>
-                        {{-- <i class="fas fa-dumbbell" class="fa-light fa-dumbbell" style="font-size: 48px; margin-top : 10px"></i> --}}
+                  <i class="fas fa-dumbbell" class="fa-light fa-dumbbell" style="font-size: 48px; margin-top : 10px"></i>
 
                         <h4 style = " margin-top : 25px">Gym</h4>
                         <p>Stay fit during your stay with our fully equipped, state-of-the-art gym facilities.</p>
@@ -447,3 +465,24 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

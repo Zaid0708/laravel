@@ -6,6 +6,7 @@ use App\Http\Controllers\Room2Controller;
 use App\Http\Controllers\Hotel2Controller;
 use App\Http\Controllers\Room3Controller;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -28,7 +29,7 @@ Route::get('/ownerreg', [UserController::class, 'ownershowRegister'])->name('ore
 Route::post('/ownerreg', [UserController::class, 'ownerregister'])->name('oregister');
 Route::get('/login2', [UserController::class, 'showLogin'])->name('login.form');
 Route::post('/login2', [UserController::class, 'login'])->name('login');
-Route::post('/logout2', [UserController::class, 'logout'])->name('logout');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('hotel',function(){
     return view('hotel');
 
@@ -81,6 +82,7 @@ Route::get('payment', function () {
 
 
 
+
 Route::get('room-details', function () {
     return view('userPage.room-details');
 });
@@ -99,3 +101,6 @@ Route::get('book-now', function () {
 Route::get('checkout', function () {
     return view('userPage.checkout');
 });
+
+
+Route::post('/reviews/store', [ReviewController::class, 'store'])->name('reviews.store');
