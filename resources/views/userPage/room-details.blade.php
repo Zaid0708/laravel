@@ -214,14 +214,14 @@
             <div class="row">
                 <!-- Room Image -->
                 <div class="col-lg-6">
-                    <div class="room-details-item">
+                    <div class="room-details-item" style="width: 120%">
                         <img style="height: 350px; width: 100%;" src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}" alt="Room Image">
                     </div>
                 </div>
 
                 <!-- Room Details -->
                 <div class="col-lg-6">
-                    <div class="rd-text" style="margin-left : 35px">
+                    <div class="rd-text" style="margin-left : 140px">
                         <br>
                         <div class="rd-title d-flex justify-content-between align-items-center" >
                             <p style="font-size : 30px"> room type : {{ $room->room_type }}</p>
