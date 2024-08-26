@@ -303,8 +303,10 @@
                                 </div>
                                 <div class="info-item">
                                     <span class="label">Min-Price:</span>
-                                    <span class="value price">{{ '$' . number_format($hotel->min_price, 2) . '/Night' }}</span>
-                                </div>
+<span class="value price">
+    {{ '$' . number_format($hotel->min_price, 2) }}
+    <span style="color:#212529;">/Night</span>
+</span>                                </div>
                             </div>
                             <div class="rating mt-3">
                                 <span class="label">Rate:</span>

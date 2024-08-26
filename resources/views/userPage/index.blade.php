@@ -168,7 +168,7 @@
                             </div>
                             <button type="submit">Check Availability</button>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>
@@ -343,66 +343,30 @@
 
 
 
-    <!-- Blog Section Begin -->
-    <section class="blog-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <span>Hotels</span>
-                        <h2>Our hotels</h2>
-                    </div>
+<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>Hotels</span>
+                    <h2>Our hotels</h2>
                 </div>
             </div>
-            <div class="row">
-                <a href = "./hotels"  class="col-lg-4">
-                    <div class="blog-item set-bg" data-setbg="img/blog/1.jpg">
-                        <div class="bi-text">
-                            <span class="b-tag">Fairmont Amman</span>
-                        </div>
-                    </div>
-                </a>
-
-                <a  href = "./hotels"   class="col-lg-4">
-                    <div class="blog-item set-bg" data-setbg="img/blog/2.jpg">
-                        <div class="bi-text">
-                            <span class="b-tag">Amman Rotana</span>
-                        </div>
-                    </div>
-                </a>
-                <a  href = "./hotels"   class="col-lg-4">
-                    <div class="blog-item set-bg" data-setbg="img/blog/3.jpg">
-                        <div class="bi-text">
-                            <span class="b-tag">InterContinental Jordan</span>
-                        </div>
-                    </div>
-                </a>
-                 <a  href = "./hotels"   class="col-lg-4">
-                    <div class="blog-item small-size set-bg" data-setbg="img/blog/4.jpg">
-                        <div class="bi-text">
-                            <span class="b-tag">The St.Regis Amman</span>
-                        </div>
-                    </div>
-                </a>
-                 <a  href = "./hotels"   class="col-lg-4">
-                    <div class="blog-item small-size set-bg" data-setbg="img/blog/5.jpg">
-                        <div class="bi-text">
-                            <span class="b-tag">Four Seasons Hotel Amman</span>
-                        </div>
-                    </div>
-                </a>
-                <a  href = "./hotels"   class="col-lg-4">
-                    <div class="blog-item small-size set-bg" data-setbg="img/blog/6.jpg">
-                        <div class="bi-text">
-                            <span class="b-tag">Mövenpick Hotel Amman</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
         </div>
-    </section>
-    <!-- Blog Section End -->
-
+        <div class="row">
+            @foreach ($hotels->slice(0, 6) as $hotel)
+            <a href="{{ route('rooms3.index', $hotel->id) }}" class="col-lg-4">
+                <div class="blog-item">
+                    <img src="{{ asset('img/blog/' . $hotel->hotel_image) }}" alt="{{ $hotel->name }}" style="width: 100%; height: 100%;">
+                    <div class="bi-text">
+                        <span class="b-tag">{{ $hotel->name }}</span>
+                    </div>
+                </div>
+            </a>
+            @endforeach
+        </div>
+    </div>
+</section>
     <!-- Footer Section Begin -->
     <footer class="footer-section">
         <div class="container">

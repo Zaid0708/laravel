@@ -39,9 +39,20 @@ Route::group(['middleware' => ['auth', 'check.role:2']], function () {
     Route::post('/hotels/{hotelId}/rooms', [RoomController::class, 'store'])->name('rooms.store');
 });
 
-// General Routes
-Route::get('/hotel', function() {
-    return view('hotel');
+
+Route::get('room-details', function () {
+    return view('userPage.room-details');
+});
+Route::post('/index', [Hotel2Controller::class, 'search'])->name('hotels.search');
+
+
+Route::get('/hotel/{hotelId}/rooms', [HotelController::class, 'showRooms'])->name('hotel.rooms');
+Route::get('/hotel/{hotelId}/rooms', [HotelController::class, 'showRooms'])->name('rooms3.index');
+
+
+
+Route::get('hotels', function () {
+    return view('userPage.hotels');
 });
 
 Route::get('hotels', [Hotel2Controller::class, 'index'])->name('hotels.index');
@@ -65,5 +76,19 @@ Route::get('/user-info-payment', [BookingController::class, 'showUserInfoPayment
 
 // Review Routes
 Route::post('/rooms/{room}/reviews', [Room3Controller::class, 'storeReview'])->name('reviews.store');
+
 Route::post('/reviews/store', [ReviewController::class, 'store'])->name('reviews.store');
 Route::post('/finalize-booking', [BookingController::class, 'finalizeBooking'])->name('finalize.booking');
+
+
+
+
+
+Route::get('book-now', function () {
+    return view('userPage.book-now');
+});
+
+Route::get('checkout', function () {
+    return view('userPage.checkout');
+});
+
