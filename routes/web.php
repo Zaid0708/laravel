@@ -105,6 +105,9 @@ Route::get('book-now', function () {
 Route::get('checkout', function () {
     return view('userPage.checkout');
 });
+<<<<<<< Updated upstream
 
 
 Route::post('/reviews/store', [ReviewController::class, 'store'])->name('reviews.store');
+=======
+>>>>>>> Stashed changes
