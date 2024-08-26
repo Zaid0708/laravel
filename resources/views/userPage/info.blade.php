@@ -76,16 +76,13 @@
             </div>
         </div>
     </header>
-    <!-- Header End -->
-
-
-    <!-- Breadcrumb Section Begin -->
-    <div class="breadcrumb-section" style="background-color :#f6f6f6">
+      <!-- Breadcrumb Section Begin -->
+      <div class="breadcrumb-section" style="background-color :#f6f6f6">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <h2>{{$hotel->name}} </h2>
+                        <h2>Checkout </h2>
                         <div class="bt-option">
                             <a href="./home.html">Room</a>
                             <span>Hotels</span>
@@ -97,75 +94,70 @@
     </div>
     <!-- Breadcrumb Section End -->
 
-    <!-- Start Section -->
-    <div style="display: flex; background-color: #f6f6f6; padding-bottom: 20px;">
-        <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1" style="padding-top: 20px;">
-            <div class="booking-form" style="padding-bottom: 18px; padding-top: 18px;">
-                <h3>Pick your stay duration</h3>
-                <form action="{{ route('process.booking') }}" method="POST">
-                    @csrf <!-- Laravel CSRF token for form security -->
-                    <input type="hidden" name="room_id" value="{{ $room->id }}"> 
-                    <div class="check-date">
-                        <label for="date-in">Check In:</label>
-                        <input type="text" class="date-input" name="check_in" id="date-in" required>
-                        <i class="icon_calendar"></i>
-                    </div>
-                    <div class="check-date">
-                        <label for="date-out">Check Out:</label>
-                        <input type="text" class="date-input" name="check_out" id="date-out" required>
-                        <i class="icon_calendar"></i>
-                    </div>
-                    
-                    <button type="submit" class="ab">Booking</button>
-                </form>
-            </div>
-        </div>
-    
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp; padding-top: 20px;">
-            <div class="room-item shadow rounded overflow-hidden">
-                <div class="position-relative">
-                    <!-- Dynamically display room image -->
-                    @if($room->images->isNotEmpty())
-                        <img style="height: 250px" src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}" alt="Room Image">
-                    @else
-                        <img src="{{ asset('images/default-room.jpg') }}" alt="Default Room Image">
-                    @endif
-                </div>
-                <div class="p-4">
-                    <p class="price-text">${{ $room->price_per_night }}/Night</p>
-                    <div class="d-flex justify-content-between mb-3">
-                        <h5 class="mb-0">{{ $room->room_type }}</h5>
-                        <div class="ps-2">
-                            @for ($i = 0; $i < 5; $i++)
-                                <small style="color: #dfa974" class="fa fa-star"></small>
-                            @endfor
+
+        <!-- Display check-in and check-out dates -->
+       
+       
+        <div class="container">
+           
+                <div class="">
+                    <div class="booking-form" style="display: flex; justify-content: space-between; padding-bottom: 18px; padding-top: 18px;">
+                        <!-- Information Section -->
+                        <div class="a" style="flex: 1; padding-right: 20px;">
+                            <h3>Total stay duration:</h3>
+                            <p>Check In: {{ $checkIn }}</p>
+                            <p>Check Out: {{ $checkOut }}</p>
+        
+                            <!-- Display room information and total price -->
+                            <p>Room Type: {{ $room->room_type }}</p>
+                            <p>Price per Night: ${{ $room->price_per_night }}</p>
+                            <p>Number of Nights: {{ $numberOfNights }}</p>
+                            <p>Total Price: ${{ $totalPrice }}</p>
+                        </div>
+        
+                        <!-- User Information Form -->
+                        <div class="b" style="flex: 1;">
+                            <form action="{{ route('finalize.booking') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control" name="name" id="name" value="{{ $user->name }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" name="email" id="email" value="{{ $user->email }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone_number">Phone Number:</label>
+                                    <input type="text" class="form-control" name="phone_number" id="phone_number" value="{{ $user->phone_number }}" required>
+                                </div>
+        
+                                <!-- Payment details -->
+                                <div class="form-group">
+                                    <label for="payment_method">Payment Method:</label>
+                                    <select class="form-control" name="payment_method" id="payment_method">
+                                        <option value="credit_card">Credit Card</option>
+                                        <option value="paypal">PayPal</option>
+                                        <option value="cash">Cash</option>
+                                        <!-- Add more payment methods if needed -->
+                                    </select>
+                                </div>
+        
+                                <button type="submit" class="ab">Book</button>
+                            </form>
                         </div>
                     </div>
-                    <div class="d-flex mb-3">
-                        <small class="border-end me-3 pe-3"><i style="color: #dfa974" class="fa fa-bed me-2"></i>{{ $room->bed }} Bed</small>
-                        <small class="border-end me-3 pe-3"><i style="color: #dfa974" class="fa fa-bath me-2"></i>{{ $room->bathroom }} Bath</small>
-                        <small><i style="color: #dfa974" class="fa fa-wifi me-2"></i>Wifi</small>
-                    </div>
-                    <p class="text-body mb-3">{{ $room->description }}</p>
                 </div>
             </div>
-        </div>
-    </div>
-    
+       
+        
 
 
 
 
 
 
-    <!-- Section End -->
-
-
-
-
-
-     <!-- Footer Section Begin -->
-     <footer class="footer-section">
+    <footer class="footer-section">
         <div class="container">
             <div class="footer-text">
                 <div class="row">
@@ -215,7 +207,7 @@
 
 
     <!-- Js Plugins -->
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>

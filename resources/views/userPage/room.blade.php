@@ -195,9 +195,16 @@
                             <p class="text-body mb-3">{{ Str::limit($room->description, 100) }}</p>
                             <div class="d-flex justify-content-between">
                                 <a style="background-color:#dfa974;color:#fff" href="{{ route('room.details', ['roomId' => $room->id]) }}" class="ab">View Details</a>
-                                <form action="" method="POST">
-                                <a href="#" class="ab">Book Now</a>
-                            </form>
+                                
+                                <!-- Form for booking -->
+                                <form action="{{ route('book.now', ['roomId' => $room->id]) }}" method="GET">
+                                    @csrf
+                                    
+                                    <button type="submit" class="ab" style="background-color:#dfa974;color:#fff">Book Now</button>
+                                </form>
+                                
+                            </div>
+                           
                             </div>
                         </div>
                     </div>
@@ -206,6 +213,7 @@
             </div>
         </div>
     </section>
+    
 
 
 
