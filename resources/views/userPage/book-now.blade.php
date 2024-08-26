@@ -22,6 +22,27 @@
     <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
 
+    <style>
+        .ps-2 {
+            padding-left: .5rem !important;
+        }
+        .pe-3 {
+            padding-right: 1rem !important;
+        }
+        .me-3 {
+            margin-right: 1rem !important;
+        }
+        .me-2 {
+            margin-right: 1rem;
+        }
+        .border-end {
+            border-right: 1px solid #dee2e6 !important;
+        }
+        small, .small {
+            font-size: .875em;
+        }
+    </style>
+
 
 
 
@@ -64,7 +85,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <h2>booking </h2>
+                        <h2>Booking </h2>
                         <div class="bt-option">
                             <a href="./home.html">Room</a>
                             <span>Hotels</span>
@@ -77,39 +98,13 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Start Section -->
-<div style="display: flex">
-    <div class="booking" style="padding: 80px 200px; max-width: 100%;">
-        <form action="#" class="contact-form">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <input type="text" placeholder="Your Name">
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <input type="text" placeholder="Your Email">
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <input type="text" placeholder="Phone Number">
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <input type="text" placeholder="Name Hotel">
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <input type="text" placeholder="Type Room">
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <input type="text" placeholder="Price">
-                </div>
-                <div class="col-lg-12">
-                    <button type="submit">Book Now</button>
-                </div>
-            </div>
-        </form>
-    </div>
+<div style="display: flex;background-color: #f6f6f6; padding-bottom:20px;">
 
-    <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
-        <div class="booking-form">
+
+    <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1" style="padding-top:20px; ">
+        <div class="booking-form" style="padding-bottom: 18px;  padding-top: 18px;">
             <h3>Booking Your Hotel</h3>
-            <form action="#">
+            <form action="#" >
                 <div class="check-date">
                     <label for="date-in">Check In:</label>
                     <input type="text" class="date-input" id="date-in">
@@ -134,11 +129,47 @@
                         <option value="">aqaba</option>
                     </select>
                 </div>
-                <button type="submit">Check Availability</button>
+                <button type="submit" class="ab">Booking</button>
             </form>
         </div>
     </div>
+
+
+
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp; padding-top:20px;">
+                    <div class="room-item shadow rounded overflow-hidden">
+                        <div class="position-relative">
+
+                                {{-- <img style="height: 250px" src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}" alt="Room Image"> --}}
+
+                                <img src="{{ asset('img/hero/2.jpg') }}" alt="Default Room Image">
+
+                        </div>
+                        <div class="p-4">
+                            <p class="price-text">$123/Night</p>
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">ssssssss</h5>
+                                <div class="ps-2">
+
+                                        <small style="color: #dfa974" class="fa fa-star"></small>
+
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <small class="border-end me-3 pe-3"><i style="color: #dfa974" class="fa fa-bed me-2"></i>Bed</small>
+                                <small class="border-end me-3 pe-3"><i style="color: #dfa974" class="fa fa-bath me-2"></i>Bath</small>
+                                <small><i style="color: #dfa974" class="fa fa-wifi me-2"></i>Wifi</small>
+                            </div>
+                            <p class="text-body mb-3">ddddddddd</p>
+
+                        </div>
+                    </div>
+                </div>
+
+
 </div>
+
+
 
 
 
