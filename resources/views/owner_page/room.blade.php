@@ -96,8 +96,9 @@
         <main>
             {{-- Check if rooms are empty --}}
             @if ($rooms->isEmpty())
-                <div class="text-center my-4">
+                <div  class="text-center my-4">
                     <p>No rooms available for this hotel.</p>
+                    
                     {{-- Create button for adding a new room --}}
                     <a href="{{ route('rooms.create', ['hotelId' => $hotelId]) }}" class="ch">Add New Room</a>
                 </div>

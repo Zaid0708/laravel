@@ -123,7 +123,9 @@
                         </div>
                     </div>
                 @empty
+                <div style="margin-bottom: 10%;justifiy-self:center">
                     <p>No hotels found for this user.</p>
+                </div>
                 @endforelse
             </div>
         </div>
@@ -131,7 +133,7 @@
             <a href="{{ route('owner.create') }}" class="ch">Create a Hotel</a>
         </div>
     </div>
-
+<br>
     <footer class="footer-section">
         <div class="container">
             <div class="footer-text">

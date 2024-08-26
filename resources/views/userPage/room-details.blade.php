@@ -245,7 +245,10 @@
                             <p><strong>Capacity:</strong> Max {{ $room->capacity }} Persons</p>
                             <p><strong>Bed:</strong> {{ $room->bed }}</p>
                             <p><strong>Services:</strong> {{ $room->services }}</p>
-                            <a href="#" class="btn ab">Book Now</a>
+                            <form action="{{ route('book.now', ['roomId' => $room->id]) }}" method="GET">
+                                @csrf
+                                <button type="submit" class="ab" style="background-color:#dfa974;color:#fff">Book Now</button>
+                            </form>
                         </div>
                     </div>
                 </div>
