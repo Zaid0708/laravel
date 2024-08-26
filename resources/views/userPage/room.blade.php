@@ -161,6 +161,16 @@
     <!-- Header End -->
 
 
+    <section class="hotel-name-section" style="background-color: #f6f6f6">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mt-5">
+                    <h2>{{ $hotel->name }}</h2> <!-- Assuming $hotel contains the hotel data -->
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="hotels-section spad" style="background-color: #f6f6f6">
         <div class="container">
             <div class="row g-4">
