@@ -16,6 +16,10 @@ class Room extends Model
         'description',
         'availability_status',
         'features',
+        'bed',
+        'bathroom',
+        'services',
+        'size',
     ];
     public function availabilities()
     {
@@ -24,5 +28,13 @@ class Room extends Model
     public function images()
     {
         return $this->hasMany(Image::class);
+    }
+    public function hotels()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
+    public function reviews()
+    {
+        return $this->hasMany(review::class);
     }
 }

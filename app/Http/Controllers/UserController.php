@@ -106,7 +106,7 @@ class UserController extends Controller
                     return redirect()->route('owner.index')->with('success', 'You are logged in as an Owner!');
                 case 3:
                     // Renter role, redirect to renter dashboard or page
-                    return redirect()->route('renter.dashboard')->with('success', 'You are logged in as a Renter!');
+                    return redirect()->route('userPage.index')->with('success', 'You are logged in as a Renter!');
                 default:
                     // Default case if no specific role is found
                     return redirect()->route('home')->with('success', 'You are logged in!');
@@ -128,15 +128,8 @@ class UserController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('success', 'You have been logged out!');
+        return redirect()->route('login.form')->with('success', 'You have been logged out!');
     }
 
-    public function index()
-    {
-        // Retrieve all users with their name, email, and phone number
-        $users = User::select('name', 'email', 'phone')->get();
 
-        // Pass the data to a view
-        return view('userPage.book-now', compact('users'));
-    }
 }

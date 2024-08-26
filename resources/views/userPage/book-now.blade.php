@@ -67,24 +67,6 @@
                                     <li><a href="./index">Home</a></li>
                                     <li><a href="./about-us">About Us</a></li>
                                     <li class="active"><a href="./hotels">Hotels</a></li>
-                                    <li><a href="./rooms">Rooms</a>
-                                        <ul class="dropdown">
-                                            <li><a href="./room-details">Fairmont Amman</a></li>
-                                            <li><a href="./blog-details">Amman Rotana</a></li>
-                                            <li><a href="#">InterContinental Jordan</a></li>
-                                            <li><a href="#">The St.Regis Amman</a></li>
-                                            <li><a href="#">Four Seasons Hotel Amman</a></li>
-                                            <li><a href="#">Mövenpick Hotel Amman</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="./pages">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="./room-details">Room Details</a></li>
-                                            <li><a href="./blog-details">Blog Details</a></li>
-                                            <li><a href="#">Family Room</a></li>
-                                            <li><a href="#">Premium Room</a></li>
-                                        </ul>
-                                    </li>
                                     <li><a href="./contact">Contact</a></li>
                                 </ul>
                             </nav>

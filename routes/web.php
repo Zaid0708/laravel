@@ -6,6 +6,7 @@ use App\Http\Controllers\Room2Controller;
 use App\Http\Controllers\Hotel2Controller;
 use App\Http\Controllers\Room3Controller;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -28,7 +29,7 @@ Route::get('/ownerreg', [UserController::class, 'ownershowRegister'])->name('ore
 Route::post('/ownerreg', [UserController::class, 'ownerregister'])->name('oregister');
 Route::get('/login2', [UserController::class, 'showLogin'])->name('login.form');
 Route::post('/login2', [UserController::class, 'login'])->name('login');
-Route::post('/logout2', [UserController::class, 'logout'])->name('logout');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('hotel',function(){
     return view('hotel');
 
@@ -47,11 +48,9 @@ Route::group(['middleware' => ['auth', 'check.role:2']], function () {
 Route::get('room-details', function () {
     return view('userPage.room-details');
 });
+Route::post('/index', [Hotel2Controller::class, 'search'])->name('hotels.search');
 
 
-Route::get('index', function () {
-    return view('userPage.index');
-});
 
 Route::get('hotels', function () {
     return view('userPage.hotels');
@@ -63,7 +62,7 @@ Route::get('/hotels/{hotelId}/rooms3', [Room2Controller::class, 'index'])->name(
 
 Route::get('/hotels', [Hotel2Controller::class, 'index'])->name('hotels.index');
 
-Route::get('/index', [IndexController::class, 'index'])->name('userpage.index');
+Route::get('/index', [IndexController::class, 'index'])->name('userPage.index');
 
 
 Route::get('blog-details', function () {
@@ -76,13 +75,25 @@ Route::get('contact', function () {
 Route::get('about-us', function () {
     return view('userPage.about-us');
 });
+Route::get('payment', function () {
+    return view('userPage.payment');
+});
+
+
 
 
 
 Route::get('room-details', function () {
     return view('userPage.room-details');
 });
-Route::get('/room-details', [Room3Controller::class, 'index'])->name('room.details');
+Route::get('/room-details/{roomId}', [Room3Controller::class, 'index'])->name('room.details');
+
+
+Route::post('/rooms/{room}/reviews', [Room3Controller::class, 'storeReview'])->name('reviews.store');
+
+
+
+
 Route::get('book-now', function () {
     return view('userPage.book-now');
 });
@@ -92,3 +103,4 @@ Route::get('checkout', function () {
 });
 
 
+Route::post('/reviews/store', [ReviewController::class, 'store'])->name('reviews.store');

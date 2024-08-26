@@ -2,65 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\review;
-use App\Http\Controllers\Controller;
+use App\Models\Review;
+use App\Models\Room;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ReviewController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'comment' => 'required|string|max:1000',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(review $review)
-    {
-        //
-    }
+        // Find the room by ID
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(review $review)
-    {
-        //
-    }
+        // Create a new review
+        $review = new Review();
+        $review->user_id = Auth::id();  // Store the currently authenticated user's ID
+        $review->room_id = $request->room_id;  // Store the room ID
+        $review->rating = $request->rating;
+        $review->comment = $request->comment;
+        $review->review_date = Carbon::now();  // Set the current date and time
+        $review->save();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, review $review)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(review $review)
-    {
-        //
+        return back()->with('success', 'Review submitted successfully.');
     }
 }
