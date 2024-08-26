@@ -167,8 +167,10 @@
                             </div>
                             <p class="text-body mb-3">{{ Str::limit($room->description, 100) }}</p>
                             <div class="d-flex justify-content-between">
-                                <a href="{{ route('room.details', ['roomId' => $room->id]) }}" class="btn btn-primary">View Details</a>
-                                <a href="#" class="btn ab">Book Now</a>
+                                <a style="background-color:#dfa974;color:#fff" href="{{ route('room.details', ['roomId' => $room->id]) }}" class="ab">View Details</a>
+                                <form action="" method="POST">
+                                <a href="#" class="ab">Book Now</a>
+                            </form>
                             </div>
                         </div>
                     </div>

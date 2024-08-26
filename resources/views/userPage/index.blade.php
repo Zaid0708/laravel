@@ -81,6 +81,14 @@
                                     <li class="active"><a href="./index">Home</a></li>
                                     <li><a href="./about-us">About Us</a></li>
                                     <li><a href="./hotels">Hotels</a></li>
+                                    <li><a href="./pages">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="./room-details">Room Details</a></li>
+                                            <li><a href="./blog-details">Blog Details</a></li>
+                                            <li><a href="#">Family Room</a></li>
+                                            <li><a href="#">Premium Room</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href="./contact">Contact</a></li>
                                     <a href="#" class="btn btn-outline-primary">Login</a>
                                     <a href="#" class="btn btn-primary">Sign Up</a>
@@ -133,7 +141,7 @@
                             </div>
                             <div class="select-option">
                                 <label for="location">Location:</label>
-                                <select id="location">
+                                <select id="location" name='location'>
                                     @foreach($locations as $location)
                                         <option value="{{ $location->location }}">{{ $location->location }}</option>
                                     @endforeach
@@ -141,7 +149,7 @@
                             </div>
                             <button type="submit">Check Availability</button>
                         </form>
-
+                        
                     </div>
                 </div>
             </div>
