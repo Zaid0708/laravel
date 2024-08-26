@@ -90,3 +90,5 @@ Route::get('book-now', function () {
 Route::get('checkout', function () {
     return view('userPage.checkout');
 });
+
+
