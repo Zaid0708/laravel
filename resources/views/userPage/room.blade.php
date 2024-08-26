@@ -70,26 +70,36 @@
             margin-bottom: 15px; /* Add some spacing below the price */
         }
         .btn-outline-primary {
-            color: #f7931e;
-            border-color: #dfa974;
+            color: #df9a53 !important;
+            border-color: #df9a53 !important;
+            background-color: transparent !important;
+            padding: 10px 20px !important;
+            border-radius: 25px !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
+            margin-right: 5px !important;
+            text-decoration: none !important;
         }
 
         .btn-outline-primary:hover {
-            background-color: #dfa974;
-            color: #fff;
-            border-color: #dfa974;
-
+            background-color: #df9a53 !important;
+            color: white !important;
+            text-decoration: none !important;
         }
 
-    .btn-primary {
-            background-color: #dfa974;
-            border-color: #dfa974;
-            color: #fff;
+        .btn-primary {
+            background-color: #df9a53 !important;
+            border-color: #df9a53 !important;
+            color: white !important;
+            padding: 10px 20px !important;
+            border-radius: 25px !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
         }
 
-  .btn-primary:hover {
-            background-color: #d7934f;
-            border-color: #dfa974;
+        .btn-primary:hover {
+            background-color: #c97b41 !important;
+            border-color: #c97b41 !important;
         }
         .aa:hover
         {
@@ -117,12 +127,29 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li><a href="{{asset('./index')}}">Home</a></li>
-                                    <li ><a href="{{asset('./about-us')}}">About Us</a></li>
-                                    <li><a href="{{asset('./hotels')}}">Hotels</a></li>
-                                    <li><a href="{{asset('./contact')}}">Contact</a></li>
-                                    <a href="#" class="btn btn-outline-primary">Login</a>
-                                    <a href="#" class="btn btn-primary">Sign Up</a>
+                                    <li><a href="{{ url('./index') }}">Home</a></li>
+                                    <li><a href="{{ url('/about-us') }}">About Us</a></li>
+                                    <li><a href="{{ url('/hotels') }}">Hotels</a></li>
+                                    <li><a href="{{ url('/contact') }}">Contact</a></li>
+                                    @guest
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('login.form') }}" class="btn btn-outline-primary">Login</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('register.form') }}" class="btn btn-primary">Sign Up</a>
+                                        </div>
+                                    </li>
+                                    @else
+                                        <li>
+                                            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary">Logout</button>
+                                            </form>
+                                        </li>
+                                    @endguest
                                 </ul>
                             </nav>
                         </div>
@@ -167,7 +194,7 @@
                             </div>
                             <p class="text-body mb-3">{{ Str::limit($room->description, 100) }}</p>
                             <div class="d-flex justify-content-between">
-                                <a href="{{ route('room.details', ['roomId' => $room->id]) }}" class="btn btn-primary">View Details</a>
+                                <a href="{{ route('room.details', ['roomId' => $room->id]) }}" class="btn ab">View Details</a>
                                 <a href="#" class="btn ab">Book Now</a>
                             </div>
                         </div>

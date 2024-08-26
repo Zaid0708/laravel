@@ -72,25 +72,36 @@
         }
 
         .btn-outline-primary {
-            color: #f7931e;
-            border-color: #dfa974;
+            color: #df9a53 !important;
+            border-color: #df9a53 !important;
+            background-color: transparent !important;
+            padding: 10px 20px !important;
+            border-radius: 25px !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
+            margin-right: 5px !important;
+            text-decoration: none !important;
         }
 
         .btn-outline-primary:hover {
-            background-color: #dfa974;
-            color: #fff;
-            border-color: #dfa974;
+            background-color: #df9a53 !important;
+            color: white !important;
+            text-decoration: none !important;
         }
 
         .btn-primary {
-            background-color: #dfa974;
-            border-color: #dfa974;
-            color: #fff;
+            background-color: #df9a53 !important;
+            border-color: #df9a53 !important;
+            color: white !important;
+            padding: 10px 20px !important;
+            border-radius: 25px !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
         }
 
         .btn-primary:hover {
-            background-color: #d7934f;
-            border-color: #dfa974;
+            background-color: #c97b41 !important;
+            border-color: #c97b41 !important;
         }
 
         .aa:hover {
@@ -145,12 +156,29 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li><a href="{{asset('./index')}}">Home</a></li>
-                                    <li><a href="{{asset('./about-us')}}">About Us</a></li>
-                                    <li><a href="{{asset('./hotels')}}">Hotels</a></li>
-                                    <li><a href="{{asset('./contact')}}">Contact</a></li>
-                                    <a href="#" class="btn btn-outline-primary">Login</a>
-                                    <a href="#" class="btn btn-primary">Sign Up</a>
+                                    <li><a href="{{ url('./index') }}">Home</a></li>
+                                    <li><a href="{{ url('/about-us') }}">About Us</a></li>
+                                    <li><a href="{{ url('/hotels') }}">Hotels</a></li>
+                                    <li><a href="{{ url('/contact') }}">Contact</a></li>
+                                    @guest
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('login.form') }}" class="btn btn-outline-primary">Login</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('register.form') }}" class="btn btn-primary">Sign Up</a>
+                                        </div>
+                                    </li>
+                                    @else
+                                        <li>
+                                            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary">Logout</button>
+                                            </form>
+                                        </li>
+                                    @endguest
                                 </ul>
                             </nav>
                         </div>
@@ -181,10 +209,8 @@
 
     <section class="room-details-section spad">
         <div class="container">
-            <!-- Add some top margin -->
-            <br><br>
             <div class="row">
-                <!-- Left Column: Room Details -->
+                <!-- Room Details -->
                 <div class="col-lg-8">
                     <div class="room-details-item">
                         <img style="height: 350px; width: 100%;" src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}" alt="Room Image">
@@ -203,7 +229,7 @@
                                             @endif
                                         @endfor
                                     </div>
-                                    <a href="#" class="btn btn-primary">Book Now</a>
+                                    <a href="#" class="btn ab">Book Now</a>
                                 </div>
                             </div>
                             <h2>${{ $room->price_per_night }}<span>/Per Night</span></h2>
@@ -215,67 +241,12 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Reviews Section -->
-                    <div class="rd-reviews mt-5">
-                        <h4>Reviews</h4>
-                        @foreach($reviews as $review)
-                            <div class="review-item">
-                                <div class="ri-pic">
-                                    <img src="{{ asset('img/room/avatar/avatar-1.jpg') }}" alt="">
-                                </div>
-                                <div class="ri-text">
-                                    <span>{{ $review->created_at->format('d M Y') }}</span>
-                                    <div class="rating">
-                                        @for ($i = 0; $i < 5; $i++)
-                                            @if ($i < $review->rating)
-                                                <i class="icon_star"></i>
-                                            @else
-                                                <i class="icon_star-o"></i>
-                                            @endif
-                                        @endfor
-                                    </div>
-                                    <h5>{{ $review->user->name }}</h5>
-                                    <p>{{ $review->comment }}</p>
-                                </div>
-                            </div>
-                        @endforeach
-<hr>
-                        <!-- Add Review Section -->
-                        <div class="review-add mt-5">
-                            <h4>Add Review</h4>
-                            @auth
-                                <form action="{{ route('reviews.store', ['room' => $room->id]) }}" method="POST" class="ra-form">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <input type="text" name="name" placeholder="Name*" required>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <input type="email" name="email" placeholder="Email*" required>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div>
-                                                <input type="number" name="rating" min="1" max="5" placeholder="Your rating out of 5" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <textarea name="comment" placeholder="Your Review" required></textarea>
-                                            <button type="submit" class="btn btn-primary">Submit Now</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            @else
-                                <p>You must be <a href="{{ route('login') }}">logged in</a> to submit a review.</p>
-                            @endauth
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Right Column: Booking Form -->
+                <!-- Your Reservation Section -->
                 <div class="col-lg-4">
                     <div class="room-booking">
-                        <h3>Your Reservation</h3> <!-- Update the header text -->
+                        <h3>Your Reservation</h3>
                         <form action="#">
                             <div class="check-date">
                                 <label for="date-in">Check In:</label>
@@ -296,6 +267,50 @@
                             </div>
                             <button type="submit" style="background-color: #dfa974; border-color: #dfa974; color: white;">Check Availability</button>
                         </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews Section -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="reviews-section">
+                        <h4>Reviews</h4>
+                        <br>
+                        @forelse ($room->reviews as $review)
+                            <div class="review">
+                                <strong>{{ $review->user->name }}</strong> ({{ $review->rating }}/5)
+                                <p>{{ $review->comment }}</p>
+                                <small>{{ date('d M Y', strtotime($review->review_date)) }}</small>
+                                <hr>
+                            </div>
+                        @empty
+                            <p>No reviews yet. Be the first to review!</p>
+                        @endforelse
+                    </div>
+
+                    <!-- Add Review Section -->
+                    <div class="review-add mt-5">
+                        <h4>Add Review</h4>
+                        @auth
+                            <form action="{{ route('reviews.store', ['room' => $room->id]) }}" method="POST" class="ra-form">
+                                @csrf
+                                <input type="hidden" name="room_id" value="{{ $room->id }}">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div>
+                                            <input type="number" name="rating" min="1" max="5" placeholder="Your rating out of 5" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <textarea name="comment" placeholder="Your Review" required></textarea>
+                                        <button type="submit" class="btn btn-primary" style="width: 20%" >Submit Now</button>
+                                    </div>
+                                </div>
+                            </form>
+                        @else
+                            <p>You must be logged in to submit a review.</p>
+                        @endauth
                     </div>
                 </div>
             </div>
