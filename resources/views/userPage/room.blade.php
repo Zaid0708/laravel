@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
     <style>
-
         .table {
             border-collapse: collapse;
             width: 100%;
