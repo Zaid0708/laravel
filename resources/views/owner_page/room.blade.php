@@ -12,8 +12,11 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
 
     <!-- Css Styles -->
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/elegant-icons.css') }}" type="text/css">
@@ -39,34 +42,40 @@
                         </div>
                     </div>
                     <div class="col-lg-10">
-                        <div class="nav-menu">
+                        <div style="width: 100%" class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
                                     <li class="active"><a href="./index">Home</a></li>
                                     <li><a href="./rooms">Hotels</a></li>
-                                    <li><a href="./about-us">About Us</a></li>
-                                    <li><a href="./pages">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="./room-details">Room Details</a></li>
-                                            <li><a href="./blog-details">Blog Details</a></li>
-                                            <li><a href="#">Family Room</a></li>
-                                            <li><a href="#">Premium Room</a></li>
+                                    <li><a href="./contact">Rooms</a></li>
+                                    <!-- Dropdown Menu for User Icon -->
+                                    <i class="fa-solid fa-bell"></i>
+                                    <li class="dropdown">
+                                        <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa-solid fa-user"></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">profile</a></li>
+                                            <li><a class="dropdown-item" href="#">logout</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="./blog">News</a></li>
-                                    <li><a href="./contact">Contact</a></li>
+                                    <li><i class="icon_search"></i></li>
                                 </ul>
                             </nav>
-                            <div class="nav-right search-switch">
-                                <i class="icon_search"></i>
-                            </div>
+
+                            <!-- Search Icon Outside of Nav -->
+
+
+
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    
+
     <div class="breadcrumb-section">
         <div class="container">
             <div class="row">
@@ -86,7 +95,7 @@
     <div class="container">
         <main>
             {{-- Check if rooms are empty --}}
-            @if($rooms->isEmpty())
+            @if ($rooms->isEmpty())
                 <div class="text-center my-4">
                     <p>No rooms available for this hotel.</p>
                     {{-- Create button for adding a new room --}}
@@ -103,13 +112,16 @@
                             <div class="room-item">
                                 <!-- Display the first hotel image if available -->
                                 <div class="ri-text">
-                                @if($room->images->isNotEmpty())
-                                    <img src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}" alt="Room Image">
-                                @else
-                                    <!-- Optional: Display a default image if no images are available -->
-                                    <img src="{{ asset('storage/default-room-image.jpg') }}" alt="Default Room Image">
-                                @endif
-                              
+                                    @if ($room->images->isNotEmpty())
+                                        <img style="height: 250px"
+                                            src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}"
+                                            alt="Room Image">
+                                    @else
+                                        <!-- Optional: Display a default image if no images are available -->
+                                        <img src="{{ asset('storage/default-room-image.jpg') }}"
+                                            alt="Default Room Image">
+                                    @endif
+
                                     <h4>{{ $room->room_type }}</h4>
                                     <table class="table">
                                         <tbody>
@@ -127,13 +139,15 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <a style="margin-right: 10%"  class="primary-btn"
-                                    href="">Edit Room</a>
+                                    <a style="margin-right: 10%" class="primary-btn" href="">Edit Room</a>
                                     <!-- In your hotel details view -->
-                                    <a class="btn btn-danger" href="#" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this room?')) document.getElementById('delete-form-{{ $room->id }}').submit();">Delete Room</a>
+                                    <a class="btn btn-danger" href="#"
+                                        onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this room?')) document.getElementById('delete-form-{{ $room->id }}').submit();">Delete
+                                        Room</a>
 
                                     <!-- Include this form for the delete request -->
-                                    <form id="delete-form-{{ $room->id }}" action="" method="POST" style="display: none;">
+                                    <form id="delete-form-{{ $room->id }}" action="" method="POST"
+                                        style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -147,7 +161,7 @@
             @endif
         </main>
     </div>
-    
+
     <footer class="footer-section">
         <div class="container">
             <div class="footer-text">
@@ -204,7 +218,11 @@
                         </ul>
                     </div>
                     <div class="col-lg-5 text-lg-right">
-                        <p>Copyright © <script>document.write(new Date().getFullYear());</script> Sona. All rights reserved.</p>
+                        <p>Copyright ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script> Sona. All rights reserved.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -212,6 +230,9 @@
     </footer>
 
     <!-- Js Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
