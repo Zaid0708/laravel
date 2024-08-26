@@ -274,6 +274,8 @@
                     <div class="col-lg-4">
                         <input type="text" name="search" class="form-control" placeholder="Search by hotel name" value="{{ request('search') }}" style="font-size: 14px;">
                     </div>
+                    
+
                     <div class="col-lg-3">
                         <input type="number" name="rating" class="form-control" placeholder="Rating (max 5)" min="1" max="5" value="{{ request('rating') }}" style="font-size: 14px;">
                     </div>

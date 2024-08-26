@@ -64,11 +64,6 @@
                             </nav>
 
                             <!-- Search Icon Outside of Nav -->
-
-
-
-
-
                         </div>
                     </div>
                 </div>

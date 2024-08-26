@@ -56,6 +56,7 @@ Route::get('hotels', function () {
 });
 
 Route::get('hotels', [Hotel2Controller::class, 'index'])->name('hotels.index');
+
 Route::get('/hotels/{hotelId}/rooms3', [Room2Controller::class, 'index'])->name('rooms3.index');
 Route::post('/index', [Hotel2Controller::class, 'search'])->name('hotels.search');
 Route::get('/index', [IndexController::class, 'index'])->name('userPage.index');
@@ -75,6 +76,7 @@ Route::post('/process-booking', [BookingController::class, 'processBooking'])->n
 Route::get('/user-info-payment', [BookingController::class, 'showUserInfoPayment'])->name('user.info.payment');
 
 // Review Routes
+
 Route::post('/rooms/{room}/reviews', [Room3Controller::class, 'storeReview'])->name('reviews.store');
 
 Route::post('/reviews/store', [ReviewController::class, 'store'])->name('reviews.store');

@@ -116,7 +116,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2">
-                        <div class="logo">
+               
+
+
+                                 <div class="logo">
                             <a href="{{asset('./index')}}">
                                 <img src="{{asset('img/logo.png')}}" alt="">
                             </a>
