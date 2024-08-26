@@ -208,44 +208,51 @@
     <!-- Breadcrumb Section End -->
 
     <section class="room-details-section spad">
+        <br>
+        <br>
         <div class="container">
             <div class="row">
-                <!-- Room Details -->
-                <div class="col-lg-8">
+                <!-- Room Image -->
+                <div class="col-lg-6">
                     <div class="room-details-item">
                         <img style="height: 350px; width: 100%;" src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}" alt="Room Image">
-                        <div class="rd-text">
-                            <div class="rd-title d-flex justify-content-between align-items-center">
-                                <h3>{{ $room->room_type }}</h3>
-                                <div class="rdt-right">
-                                    <div class="rating">
-                                        @for ($i = 0; $i < 5; $i++)
-                                            @if ($i < floor($room->rating))
-                                                <i class="icon_star"></i>
-                                            @elseif ($i < ceil($room->rating))
-                                                <i class="icon_star-half_alt"></i>
-                                            @else
-                                                <i class="icon_star-o"></i>
-                                            @endif
-                                        @endfor
-                                    </div>
-                                    <a href="#" class="btn ab">Book Now</a>
-                                </div>
-                            </div>
-                            <h2>${{ $room->price_per_night }}<span>/Per Night</span></h2>
-                            <div>
-                                <p><strong>Size:</strong> {{ $room->size }}</p>
-                                <p><strong>Capacity:</strong> Max {{ $room->capacity }} Persons</p>
-                                <p><strong>Bed:</strong> {{ $room->bed }}</p>
-                                <p><strong>Services:</strong> {{ $room->services }}</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-       
+                <!-- Room Details -->
+                <div class="col-lg-6">
+                    <div class="rd-text" style="margin-left : 35px">
+                        <br>
+                        <div class="rd-title d-flex justify-content-between align-items-center" >
+                            <p style="font-size : 30px"> room type : {{ $room->room_type }}</p>
+                            <div class="rdt-right">
+                                <div class="rating">
+                                    @for ($i = 0; $i < 5; $i++)
+                                        @if ($i < floor($room->rating))
+                                            <i class="icon_star"></i>
+                                        @elseif ($i < ceil($room->rating))
+                                            <i class="icon_star-half_alt"></i>
+                                        @else
+                                            <i class="icon_star-o"></i>
+                                        @endif
+                                    @endfor
+                                </div>
+                            </div>
+                        </div>
+                        <p style="color: #f7931e ; font-size : 30px">${{ $room->price_per_night }}/<span style="color: #6b6b6b"> Per Night</span></p>
+                        <div>
+                            <p><strong>Size:</strong> {{ $room->size }}</p>
+                            <p><strong>Capacity:</strong> Max {{ $room->capacity }} Persons</p>
+                            <p><strong>Bed:</strong> {{ $room->bed }}</p>
+                            <p><strong>Services:</strong> {{ $room->services }}</p>
+                            <a href="#" class="btn ab">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Reviews Section -->
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-lg-12">
                     <div class="reviews-section">
                         <h4>Reviews</h4>
@@ -274,30 +281,28 @@
                 </div>
             </div>
 
-                    <!-- Add Review Section -->
-                    <div class="review-add mt-5">
-                        <h4>Add Review</h4>
-                        @auth
-                            <form action="{{ route('reviews.store', ['room' => $room->id]) }}" method="POST" class="ra-form">
-                                @csrf
-                                <input type="hidden" name="room_id" value="{{ $room->id }}">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div>
-                                            <input type="number" name="rating" min="1" max="5" placeholder="Your rating out of 5" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <textarea name="comment" placeholder="Your Review" required></textarea>
-                                        <button type="submit" class="btn btn-primary" style="width: 20%" >Submit Now</button>
-                                    </div>
+            <!-- Add Review Section -->
+            <div class="review-add mt-5">
+                <h4>Add Review</h4>
+                @auth
+                    <form action="{{ route('reviews.store', ['room' => $room->id]) }}" method="POST" class="ra-form">
+                        @csrf
+                        <input type="hidden" name="room_id" value="{{ $room->id }}">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div>
+                                    <input type="number" name="rating" min="1" max="5" placeholder="Your rating out of 5" required>
                                 </div>
-                            </form>
-                        @else
-                            <p>You must be logged in to submit a review.</p>
-                        @endauth
-                    </div>
-                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <textarea name="comment" placeholder="Your Review" required></textarea>
+                                <button type="submit" class="btn btn-primary" style="width: 20%">Submit Now</button>
+                            </div>
+                        </div>
+                    </form>
+                @else
+                    <p>You must be logged in to submit a review.</p>
+                @endauth
             </div>
         </div>
     </section>
