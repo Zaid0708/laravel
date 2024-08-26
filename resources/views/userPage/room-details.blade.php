@@ -243,34 +243,7 @@
                     </div>
                 </div>
 
-                <!-- Your Reservation Section -->
-                <div class="col-lg-4">
-                    <div class="room-booking">
-                        <h3>Your Reservation</h3>
-                        <form action="#">
-                            <div class="check-date">
-                                <label for="date-in">Check In:</label>
-                                <input type="text" class="date-input" id="date-in">
-                                <i class="icon_calendar"></i>
-                            </div>
-                            <div class="check-date">
-                                <label for="date-out">Check Out:</label>
-                                <input type="text" class="date-input" id="date-out">
-                                <i class="icon_calendar"></i>
-                            </div>
-                            <div class="select-option">
-                                <label for="guest">Guests:</label>
-                                <select id="guest" style="text-transform: uppercase;">
-                                    <option value="">2 Adults</option>
-                                    <option value="">3 Adults</option>
-                                </select>
-                            </div>
-                            <button type="submit" style="background-color: #dfa974; border-color: #dfa974; color: white;">Check Availability</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
+       
             <!-- Reviews Section -->
             <div class="row">
                 <div class="col-lg-12">
@@ -279,15 +252,27 @@
                         <br>
                         @forelse ($room->reviews as $review)
                             <div class="review">
-                                <strong>{{ $review->user->name }}</strong> ({{ $review->rating }}/5)
-                                <p>{{ $review->comment }}</p>
-                                <small>{{ date('d M Y', strtotime($review->review_date)) }}</small>
+                                <p>name : {{ $review->user->name }}</p>
+                                <p>
+                                    rating :
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= $review->rating)
+                                            <span style="color: #df9a53;" class="fa fa-star"></span>
+                                        @else
+                                            <span style="color: #df9a53;" class="fa fa-star-o"></span>
+                                        @endif
+                                    @endfor
+                                </p>
+                                <p> comment : {{ $review->comment }}</p>
+                                <p> data : {{ date('d M Y', strtotime($review->review_date)) }}</p>
                                 <hr>
                             </div>
                         @empty
                             <p>No reviews yet. Be the first to review!</p>
                         @endforelse
                     </div>
+                </div>
+            </div>
 
                     <!-- Add Review Section -->
                     <div class="review-add mt-5">

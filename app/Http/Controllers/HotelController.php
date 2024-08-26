@@ -89,17 +89,17 @@ class HotelController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Hotel $hotel)
+
+    public function showRooms($hotelId)
     {
-        //
+        $hotel = Hotel::findOrFail($hotelId);
+        $rooms = Room::where('hotel_id', $hotelId)->get();
+
+        return view('hotel.rooms', compact('hotel', 'rooms'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
+
     public function destroy($id)
     {
         // Find the hotel by ID
@@ -141,4 +141,8 @@ class HotelController extends Controller
 
         return redirect()->route('owner.index')->with('success', 'Hotel, associated rooms, images, and reviews deleted successfully.');
     }
+
+
+
+
 }

@@ -51,6 +51,10 @@ Route::get('room-details', function () {
 Route::post('/index', [Hotel2Controller::class, 'search'])->name('hotels.search');
 
 
+Route::get('/hotel/{hotelId}/rooms', [HotelController::class, 'showRooms'])->name('hotel.rooms');
+Route::get('/hotel/{hotelId}/rooms', [HotelController::class, 'showRooms'])->name('rooms3.index');
+
+
 
 Route::get('hotels', function () {
     return view('userPage.hotels');

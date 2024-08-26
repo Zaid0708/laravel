@@ -178,7 +178,8 @@
                         </div>
                         <div class="p-4 mt-2">
                             <!-- Move the price element here, just below the image -->
-                            <p class="price-text">${{ $room->price_per_night }}/Night</p>
+                            <p class="price-text">${{ $room->price_per_night }}    <span style="color:#212529;">/Night</span>
+                            </p>
                             <div class="d-flex justify-content-between mb-3">
                                 <h5 class="mb-0">{{ $room->room_type }}</h5>
                                 <div class="ps-2">

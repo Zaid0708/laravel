@@ -42,7 +42,12 @@ class RoomController extends Controller
             'description' => 'required|string',
             'availability_status' => 'required|string',
             'features' => 'nullable|string',
+            'bed' => 'required|integer|min:1',
+            'bathroom' => 'required|integer|min:1',
+            'services' => 'nullable|string',
+            'size' => 'required|string|max:255',
             'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validation rule for image
+
         ]);
 
         // Create the room
@@ -54,6 +59,10 @@ class RoomController extends Controller
             'description' => $request->description,
             'availability_status' => $request->availability_status,
             'features' => $request->features,
+            'bed' => $request->bed,
+            'bathroom' => $request->bathroom,
+            'services' => $request->services,
+            'size' => $request->size,
         ]);
 
         // Handle the file upload and save to the images table
