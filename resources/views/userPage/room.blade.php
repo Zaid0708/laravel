@@ -161,6 +161,16 @@
     <!-- Header End -->
 
 
+    <section class="hotel-name-section" style="background-color: #f6f6f6">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mt-5">
+                    <h2>{{ $hotel->name }}</h2> <!-- Assuming $hotel contains the hotel data -->
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="hotels-section spad" style="background-color: #f6f6f6">
         <div class="container">
             <div class="row g-4">
@@ -178,7 +188,8 @@
                         </div>
                         <div class="p-4 mt-2">
                             <!-- Move the price element here, just below the image -->
-                            <p class="price-text">${{ $room->price_per_night }}/Night</p>
+                            <p class="price-text">${{ $room->price_per_night }}    <span style="color:#212529;">/Night</span>
+                            </p>
                             <div class="d-flex justify-content-between mb-3">
                                 <h5 class="mb-0">{{ $room->room_type }}</h5>
                                 <div class="ps-2">
@@ -195,16 +206,9 @@
                             <p class="text-body mb-3">{{ Str::limit($room->description, 100) }}</p>
                             <div class="d-flex justify-content-between">
                                 <a style="background-color:#dfa974;color:#fff" href="{{ route('room.details', ['roomId' => $room->id]) }}" class="ab">View Details</a>
-                                
-                                <!-- Form for booking -->
-                                <form action="{{ route('book.now', ['roomId' => $room->id]) }}" method="GET">
-                                    @csrf
-                                    
-                                    <button type="submit" class="ab" style="background-color:#dfa974;color:#fff">Book Now</button>
-                                </form>
-                                
-                            </div>
-                           
+                                <form action="" method="POST">
+                                <a href="#" class="ab">Book Now</a>
+                            </form>
                             </div>
                         </div>
                     </div>
@@ -213,7 +217,6 @@
             </div>
         </div>
     </section>
-    
 
 
 
@@ -278,7 +281,6 @@
 </body>
 
 </html>
-
 
 
 
