@@ -61,6 +61,8 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <button class="subb" type="submit">Submit Now</button>
+                                    <p>Already have an account? <a href="{{ route('login') }}" style="text-decoration: none; color: blue;">Login here</a></p>
+
                                 </div>
                             </div>
                         </form>

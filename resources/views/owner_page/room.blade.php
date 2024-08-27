@@ -45,11 +45,13 @@
                         <div style="width: 100%" class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li class="active"><a href="./index">Home</a></li>
-                                    <li><a href="./rooms">Hotels</a></li>
+                                    <li ><a href="{{route('owner.index')}}">Home</a></li>
+                                    <li class="active"><a href="">Hotels</a></li>
                                     <li><a href="./contact">Rooms</a></li>
-                                    <!-- Dropdown Menu for User Icon -->
-                                    <i class="fa-solid fa-bell"></i>
+                                  
+                                    <li><i class="fa-solid fa-bell"></i></li>
+                                   
+                                    <li><i class="icon_search"></i></li>
                                     <li class="dropdown">
                                         <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="fa-solid fa-user"></i>
@@ -59,7 +61,6 @@
                                             <li><a class="dropdown-item" href="#">logout</a></li>
                                         </ul>
                                     </li>
-                                    <li><i class="icon_search"></i></li>
                                 </ul>
                             </nav>
 
@@ -109,10 +110,10 @@
 
                 <div class="row">
                     @forelse($rooms as $room)
-                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div  class="col-lg-4 col-md-6 mb-4">
                             <div class="room-item">
                                 <!-- Display the first hotel image if available -->
-                                <div class="ri-text">
+                                <div  class="ri-text">
                                     @if ($room->images->isNotEmpty())
                                         <img style="height: 250px"
                                             src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}"
@@ -140,15 +141,14 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <a style="margin-right: 10%" class="primary-btn" href="">Edit Room</a>
+                                    <a style="margin-right: 10%" class="primary-btn" href="{{ route('rooms.edit', $room->id) }}">Edit Room</a>
                                     <!-- In your hotel details view -->
                                     <a class="btn btn-danger" href="#"
-                                        onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this room?')) document.getElementById('delete-form-{{ $room->id }}').submit();">Delete
-                                        Room</a>
+                                    onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this room?')) document.getElementById('delete-form-{{ $room->id }}').submit();">Delete Room</a>
+                                
 
                                     <!-- Include this form for the delete request -->
-                                    <form id="delete-form-{{ $room->id }}" action="" method="POST"
-                                        style="display: none;">
+                                    <form id="delete-form-{{ $room->id }}" action="{{ route('rooms.destroy', $room->id) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>

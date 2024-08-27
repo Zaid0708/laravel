@@ -14,6 +14,11 @@
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/elegant-icons.css') }}" type="text/css">
@@ -34,32 +39,39 @@
                     <div class="col-lg-2">
                         <div class="logo">
                             <a href="./index">
-                                <img src="img/logo.png" alt="">
+                                <img src="{{ asset('img/logo.png') }}" alt="Logo">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-10">
-                        <div class="nav-menu">
+                        <div style="width: 100%" class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li class="active"><a href="./index">Home</a></li>
+                                    <li class="active"><a href="{{route('owner.index')}}">Home</a></li>
                                     <li><a href="./rooms">Hotels</a></li>
-                                    <li><a href="./about-us">About Us</a></li>
-                                    <li><a href="./pages">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="./room-details">Room Details</a></li>
-                                            <li><a href="./blog-details.">Blog Details</a></li>
-                                            <li><a href="#">Family Room</a></li>
-                                            <li><a href="#">Premium Room</a></li>
+                                    <li><a href="./contact">Rooms</a></li>
+                                    <!-- Dropdown Menu for User Icon -->
+                                    <i class="fa-solid fa-bell"></i>
+                                    
+                                    {{-- <li><i class="icon_search"></i></li> --}}
+                                    <li style="margin-left: 15px" class="dropdown">
+                                        <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa-solid fa-user"></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">profile</a></li>
+                                            <li><a class="dropdown-item" href="#">logout</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="./blog">News</a></li>
-                                    <li><a href="./contact">Contact</a></li>
                                 </ul>
                             </nav>
-                            <div class="nav-right search-switch">
-                                <i class="icon_search"></i>
-                            </div>
+
+                            <!-- Search Icon Outside of Nav -->
+
+
+
+
+
                         </div>
                     </div>
                 </div>
@@ -79,7 +91,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="room-item">
                             <!-- Display the hotel image -->
-                            <img src="{{ asset('storage/hotel_images/' . $hotel->hotel_image) }}"
+                            <img style="height: 250px" src="{{ asset('storage/hotel_images/' . $hotel->hotel_image) }}"
                                 alt="{{ $hotel->name }}">
                             <div class="ri-text">
                                 <h4>{{ $hotel->name }}</h4>
@@ -106,8 +118,10 @@
                                 </table>
                                 <a  class="primary-btn"
                                     href="{{ route('rooms.index', ['hotelId' => $hotel->id]) }}">View Rooms</a>
+                                <a style="margin-left: 3%" class="btn btn-warning"
+                                    href="{{ route('hotels.edit', ['hotelId' => $hotel->id]) }}">Edit</a>
                                 <!-- In your hotel details view -->
-                                <a style="margin-left:8%" class="btn btn-danger" href="{{ route('owner.destroy', ['owner' => $hotel->id]) }}"
+                                <a style="margin-left:3%" class="btn btn-danger" href="{{ route('owner.destroy', ['owner' => $hotel->id]) }}"
                                     onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this hotel?')) document.getElementById('delete-form').submit();">
                                     Delete Hotel
                                 </a>

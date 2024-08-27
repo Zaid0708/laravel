@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+    <style>
+      
+    </style>
 
 </head>
 <body>
@@ -52,6 +55,8 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <button class="subb" type="submit">Login Now</button>
+                                    <p>Don't have an account? <a href="{{ route('register') }}" style="text-decoration: none; color: blue;">Register here</a></p>
+
                                 </div>
                                
                             </div>

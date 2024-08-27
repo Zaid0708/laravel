@@ -84,9 +84,13 @@ class HotelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Hotel $hotel)
+    public function edit($hotelId)
     {
-        //
+        // Find the hotel by ID
+        $hotel = Hotel::findOrFail($hotelId);
+    
+        // Pass the hotel details to the edit view
+        return view('owner_page.edithotel', compact('hotel'));
     }
 
 
@@ -97,6 +101,51 @@ class HotelController extends Controller
 
         return view('hotel.rooms', compact('hotel', 'rooms'));
     }
+
+
+
+    public function update(Request $request, $id)
+{
+    // Validate the request data
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'location' => 'required|string|max:255',
+        'description' => 'required|string',
+        'rating' => 'required|integer|min:1|max:5',
+        'contact_info' => 'required|string|max:255',
+        'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // 'nullable' allows for no new picture
+    ]);
+
+    // Find the hotel by ID
+    $hotel = Hotel::findOrFail($id);
+
+    // Update hotel details
+    $hotel->name = $request->name;
+    $hotel->location = $request->location;
+    $hotel->description = $request->description;
+    $hotel->rating = $request->rating;
+    $hotel->contact_info = $request->contact_info;
+
+    // Handle the file upload if a new picture is uploaded
+    if ($request->hasFile('picture')) {
+        // Delete the old picture if it exists
+        if ($hotel->hotel_image) {
+            Storage::delete('public/hotel_images/' . $hotel->hotel_image);
+        }
+
+        // Upload the new picture
+        $file = $request->file('picture');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $file->storeAs('public/hotel_images', $filename);
+        $hotel->hotel_image = $filename; // Update the filename in the database
+    }
+
+    // Save the updated hotel information
+    $hotel->save();
+
+    // Redirect back to the owner's hotel list with a success message
+    return redirect()->route('owner.index')->with('success', 'Hotel updated successfully.');
+}
 
 
 
