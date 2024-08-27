@@ -29,6 +29,7 @@ class Room extends Model
     {
         return $this->hasMany(Image::class);
     }
+<<<<<<< Updated upstream
     public function hotels()
     {
         return $this->belongsTo(Hotel::class);
@@ -37,4 +38,10 @@ class Room extends Model
     {
         return $this->hasMany(review::class);
     }
+=======
+      public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
+>>>>>>> Stashed changes
 }

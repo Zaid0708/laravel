@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Hotel extends Model
 {
     use HasFactory;
@@ -24,4 +25,21 @@ class Hotel extends Model
     {
         return $this->hasMany(Room::class);
     }
+<<<<<<< Updated upstream
+=======
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner_id', 'id');
+    }
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+>>>>>>> Stashed changes
 }

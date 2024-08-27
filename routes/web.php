@@ -1,5 +1,14 @@
 <?php
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\TenantController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HotelAdminController;
 
+<<<<<<< Updated upstream
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\RoomController;
@@ -92,5 +101,90 @@ Route::get('book-now', function () {
 
 Route::get('checkout', function () {
     return view('userPage.checkout');
+=======
+
+
+
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')->middleware('auth');
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+
+// Route::get('/admin/dashboard',function(){
+//     return view('admin.dashboard');
+// });
+Route::get('/dashboard/counts', [DashboardController::class, 'getCounts'])->name('dashboard.counts');
+
+
+
+Route::prefix('owners')->name('owners.')->middleware('auth')->group(function () {
+    Route::get('/', [OwnerController::class, 'index'])->name('index');
+    Route::get('/create', [OwnerController::class, 'create'])->name('create');
+    Route::post('/', [OwnerController::class, 'store'])->name('store');
+    Route::get('/{id}', [OwnerController::class, 'show'])->name('show');
+    Route::get('/{id}/edit', [OwnerController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [OwnerController::class, 'update'])->name('update');
+    Route::delete('/{id}', [OwnerController::class, 'destroy'])->name('destroy');
+    Route::get('/owners/create', [OwnerController::class, 'create'])->name('owners.create');
+    Route::post('/owners', [OwnerController::class, 'store'])->name('owners.store');
+
+});
+
+Route::prefix('tenants')->name('tenants.')->middleware('auth')->group(function () {
+    Route::get('/', [TenantController::class, 'index'])->name('index');
+    Route::get('/create', [TenantController::class, 'create'])->name('create');
+    Route::post('/', [TenantController::class, 'store'])->name('store');
+    Route::get('/{id}', [TenantController::class, 'show'])->name('show');
+    Route::get('/{id}/edit', [TenantController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [TenantController::class, 'update'])->name('update');
+    Route::delete('/{id}', [TenantController::class, 'destroy'])->name('destroy');
+    Route::get('/admin/tenants', [TenantController::class, 'index'])->name('admin.tenants.index');
+    Route::resource('tenants', TenantController::class);
+    Route::get('/tenants/create', [TenantController::class, 'create'])->name('tenants.create');
+    Route::post('/tenants', [TenantController::class, 'store'])->name('tenants.store');
+    Route::get('/tenants', [TenantController::class, 'index'])->name('tenants.index');
+
+
+
+});
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->middleware('auth');
+Route::put('/profile', [AuthController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
+
+
+
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+
+
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+
+
+
+// Route to display all hotels owned by the user
+Route::get('/hotels', [HotelAdminController::class, 'index'])->name('hotels.index');
+
+// Route to display details of a specific hotel
+Route::get('/hotels/{id}', [HotelAdminController::class, 'show'])->name('hotels.show');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/hotels', [HotelAdminController::class, 'index'])->name('hotels.index');
+    
+    Route::post('/admin/update-profile', [AdminController::class, 'updateProfile'])->name('admin.updateProfile');
+
+    Route::get('/owners/create', [OwnerController::class, 'create'])->name('owners.create');
+    Route::post('/owners', [OwnerController::class, 'store'])->name('owners.store');
+
+>>>>>>> Stashed changes
 });
 

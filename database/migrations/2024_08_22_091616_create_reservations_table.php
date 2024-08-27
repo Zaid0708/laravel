@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('room_id')->constrained();
+            $table->foreignId('hotel_id')->constrained()->after('room_id'); // Adjust 'after' as needed
             $table->date('check_in_date');
             $table->date('check_out_date');
             $table->decimal('total_price',8,2);

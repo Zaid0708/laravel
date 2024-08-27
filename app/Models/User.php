@@ -24,12 +24,17 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+<<<<<<< Updated upstream
         'name',
         'email',
         'password',
         'phone_number',
         'role_id',
+=======
+        'name', 'email', 'phone_number', 'password', 'role_id',
+>>>>>>> Stashed changes
     ];
+    
 
     /**
      * The attributes that should be hidden for serialization.
@@ -57,7 +62,31 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+<<<<<<< Updated upstream
     protected $appends = [
         'profile_photo_url',
     ];
+=======
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    /**
+     * Get the hotels managed by the user (if the user is a hotel owner or admin).
+     */
+       // Assuming the role_id of 2 represents an owner
+    public function hotel()
+    {
+        return $this->hasOne(Hotel::class, 'owner_id', 'id');
+    }
+
+    /**
+     * Get the role of the user.
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+>>>>>>> Stashed changes
 }
