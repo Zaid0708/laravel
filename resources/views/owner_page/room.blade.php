@@ -37,36 +37,43 @@
                     <div class="col-lg-2">
                         <div class="logo">
                             <a href="./index">
-                                <img src="{{ asset('img/logo.png') }}" alt="Logo">
+                                <img style="margin-left: 10%" src="{{ asset('img/logo.png') }}" alt="Logo">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-10">
-                        <div style="width: 100%" class="nav-menu">
-                            <nav class="mainmenu">
-                                <ul>
-                                    <li ><a href="{{route('owner.index')}}">Home</a></li>
-                                    <li class="active"><a href="">Hotels</a></li>
+                        <div class="nav-menu"
+                            style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <!-- Centered Navigation Menu -->
+                            <nav class="mainmenu" style="flex: 1; display: flex; justify-content: center;">
+                                <ul style="display: flex; align-items: center; margin: 0;">
+                                    <li class="active"><a href="{{ route('owner.index') }}">Home</a></li>
+                                    <li><a href="./rooms">Hotels</a></li>
                                     <li><a href="./contact">Rooms</a></li>
-                                  
-                                    <li><i class="fa-solid fa-bell"></i></li>
-                                   
-                                    <li><i class="icon_search"></i></li>
-                                    <li class="dropdown">
-                                        <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="fa-solid fa-user"></i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">profile</a></li>
-                                            <li><a class="dropdown-item" href="#">logout</a></li>
-                                        </ul>
-                                    </li>
                                 </ul>
                             </nav>
 
-                            <!-- Search Icon Outside of Nav -->
-
-
+                            <!-- Icons aligned to the right -->
+                            <div class="header-icons" style="display: flex; align-items: center;">
+                                <i class="fa-solid fa-bell" style="margin-right: 15px;"></i>
+                                <div class="dropdown" style="position: relative;">
+                                    <i class="fa-solid fa-user" style="cursor: pointer;" data-bs-toggle="dropdown"
+                                        aria-expanded="false"></i>
+                                    <ul class="dropdown-menu"
+                                        style="position: absolute; top: 100%; right: 0; z-index: 1000;">
+                                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                                        <li>
+                                            <!-- Changed <a> to <button> to ensure form submission -->
+                                            <form action="{{ route('logout') }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item"
+                                                    style="background: none; border: none; cursor: pointer;">Logout</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
 
 
 
@@ -171,16 +178,17 @@
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="img/footer-logo.png" alt="Footer Logo">
+                                    <img src="{{asset('img/footer-logo.png')}}" alt="Sona Logo"> <!-- Ensure logo is relevant -->
                                 </a>
                             </div>
-                            <p>We inspire and reach millions of travelers<br /> across 90 local websites</p>
+                            <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries, we bring the world to your doorstep.</p>
                             <div class="fa-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-tripadvisor"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                                 <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                <!-- Update links to actual social media pages -->
                             </div>
                         </div>
                     </div>
@@ -188,18 +196,18 @@
                         <div class="ft-contact">
                             <h6>Contact Us</h6>
                             <ul>
-                                <li>(12) 345 67890</li>
-                                <li>info.colorlib@gmail.com</li>
-                                <li>856 Cordia Extension Apt. 356, Lake, United State</li>
+                                <li>(+962) 780000000</li>
+                                <li>info@sonahotel.com</li> <!-- Updated email -->
+                                <li>123 Luxury St, Suite 789, Amman, Jordan</li> <!-- Updated address -->
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 offset-lg-1">
                         <div class="ft-newslatter">
-                            <h6>New latest</h6>
-                            <p>Get the latest updates and offers.</p>
+                            <h6>Stay Updated</h6> <!-- Updated title -->
+                            <p>Sign up to receive exclusive offers and the latest news on our properties.</p> <!-- Updated description -->
                             <form action="#" class="fn-form">
-                                <input type="text" placeholder="Email">
+                                <input type="email" placeholder="Your Email"> <!-- Updated placeholder and input type -->
                                 <button type="submit"><i class="fa fa-send"></i></button>
                             </form>
                         </div>
@@ -207,28 +215,8 @@
                 </div>
             </div>
         </div>
-
-        <div class="copyright-option">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <ul>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-5 text-lg-right">
-                        <p>Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script> Sona. All rights reserved.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </footer>
+    <!-- Foote
 
     <!-- Js Plugins -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

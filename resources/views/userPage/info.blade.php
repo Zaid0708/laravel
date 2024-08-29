@@ -9,6 +9,11 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+<!-- Include SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<!-- Include SweetAlert2 JS -->
+
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
@@ -55,7 +60,7 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="./index.html">
+                            <a href="./index">
                                 <img src="img/logo.png" alt="">
                             </a>
                         </div>
@@ -64,12 +69,32 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li><a href="./index">Home</a></li>
-                                    <li><a href="./about-us">About Us</a></li>
-                                    <li class="active"><a href="./hotels">Hotels</a></li>
-                                    <li><a href="./contact">Contact</a></li>
+                                    <li><a href="{{ url('./index') }}">Home</a></li>
+                                    <li><a href="{{ url('/about-us') }}">About Us</a></li>
+                                    <li><a href="{{ url('/hotels') }}">Hotels</a></li>
+                                    <li><a href="{{ url('/contact') }}">Contact</a></li>
+                                    @guest
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('login.form') }}" class="btn btn-outline-primary">Login</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('register.form') }}" class="btn btn-primary">Sign Up</a>
+                                        </div>
+                                    </li>
+                                    @else
+                                        <li>
+                                            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary">Logout</button>
+                                            </form>
+                                        </li>
+                                    @endguest
                                 </ul>
                             </nav>
+
                         </div>
                     </div>
                 </div>
@@ -96,7 +121,24 @@
 
 
         <!-- Display check-in and check-out dates -->
-       
+      
+    @if(session('booking_success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                title: "Good job!",
+                text: "Your booking was successful!",
+                icon: "success",
+                confirmButtonText: "OK"
+            }).then((result) => {
+                // Redirect after the user clicks "OK"
+                if (result.isConfirmed) {
+                    window.location.href = "{{ route('userPage.index') }}"; // Change this route to your desired route
+                }
+            });
+        });
+    </script>
+@endif
        
         <div class="container">
            
@@ -157,52 +199,52 @@
 
 
 
-    <footer class="footer-section">
-        <div class="container">
-            <div class="footer-text">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="ft-about">
-                            <div class="logo">
-                                <a href="#">
-                                    <img src="img/footer-logo.png" alt="Sona Logo"> <!-- Ensure logo is relevant -->
-                                </a>
+            <footer class="footer-section">
+                <div class="container">
+                    <div class="footer-text">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="ft-about">
+                                    <div class="logo">
+                                        <a href="#">
+                                            <img src="{{asset('img/footer-logo.png')}}" alt="Sona Logo"> <!-- Ensure logo is relevant -->
+                                        </a>
+                                    </div>
+                                    <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries, we bring the world to your doorstep.</p>
+                                    <div class="fa-social">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-tripadvisor"></i></a>
+                                        <a href="#"><i class="fa fa-instagram"></i></a>
+                                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                        <!-- Update links to actual social media pages -->
+                                    </div>
+                                </div>
                             </div>
-                            <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries, we bring the world to your doorstep.</p>
-                            <div class="fa-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-tripadvisor"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                                <!-- Update links to actual social media pages -->
+                            <div class="col-lg-3 offset-lg-1">
+                                <div class="ft-contact">
+                                    <h6>Contact Us</h6>
+                                    <ul>
+                                        <li>(+962) 780000000</li>
+                                        <li>info@sonahotel.com</li> <!-- Updated email -->
+                                        <li>123 Luxury St, Suite 789, Amman, Jordan</li> <!-- Updated address -->
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 offset-lg-1">
-                        <div class="ft-contact">
-                            <h6>Contact Us</h6>
-                            <ul>
-                                <li>(+962) 780000000</li>
-                                <li>info@sonahotel.com</li> <!-- Updated email -->
-                                <li>123 Luxury St, Suite 789, Amman, Jordan</li> <!-- Updated address -->
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 offset-lg-1">
-                        <div class="ft-newslatter">
-                            <h6>Stay Updated</h6> <!-- Updated title -->
-                            <p>Sign up to receive exclusive offers and the latest news on our properties.</p> <!-- Updated description -->
-                            <form action="#" class="fn-form">
-                                <input type="email" placeholder="Your Email"> <!-- Updated placeholder and input type -->
-                                <button type="submit"><i class="fa fa-send"></i></button>
-                            </form>
+                            <div class="col-lg-3 offset-lg-1">
+                                <div class="ft-newslatter">
+                                    <h6>Stay Updated</h6> <!-- Updated title -->
+                                    <p>Sign up to receive exclusive offers and the latest news on our properties.</p> <!-- Updated description -->
+                                    <form action="#" class="fn-form">
+                                        <input type="email" placeholder="Your Email"> <!-- Updated placeholder and input type -->
+                                        <button type="submit"><i class="fa fa-send"></i></button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </footer>
+            </footer>
     <!-- Footer Section End -->
 
 
@@ -215,7 +257,7 @@
 <script src="{{ asset('js/jquery.slicknav.js') }}"></script>
 <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 </html>

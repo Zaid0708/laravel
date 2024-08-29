@@ -29,7 +29,10 @@
         <div class="container">
             <div class="row">
                 <!-- Column for the form -->
-                <div class="col-xl-6 col-lg-6 offset-xl-3 offset-lg-3">
+
+             
+
+                   <div class="col-xl-6 col-lg-6 offset-xl-3 offset-lg-3">
                     <div class="booking-form">
                         <h3>Login to Your Account</h3>
                         <form method="POST" action="{{ route('login') }}" class="contact-form">

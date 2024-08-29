@@ -43,9 +43,6 @@
         }
     </style>
 
-
-
-
 </head>
 <body>
 
@@ -55,8 +52,8 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="./index.html">
-                                <img src="img/logo.png" alt="">
+                            <a href="./index">
+                                <img src="{{asset('img/logo.png')}}" alt="">
                             </a>
                         </div>
                     </div>
@@ -64,12 +61,32 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li><a href="./index">Home</a></li>
-                                    <li><a href="./about-us">About Us</a></li>
-                                    <li class="active"><a href="./hotels">Hotels</a></li>
-                                    <li><a href="./contact">Contact</a></li>
+                                    <li><a href="{{ url('./index') }}">Home</a></li>
+                                    <li><a href="{{ url('/about-us') }}">About Us</a></li>
+                                    <li><a href="{{ url('/hotels') }}">Hotels</a></li>
+                                    <li><a href="{{ url('/contact') }}">Contact</a></li>
+                                    @guest
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('login.form') }}" class="btn btn-outline-primary">Login</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('register.form') }}" class="btn btn-primary">Sign Up</a>
+                                        </div>
+                                    </li>
+                                    @else
+                                        <li>
+                                            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary">Logout</button>
+                                            </form>
+                                        </li>
+                                    @endguest
                                 </ul>
                             </nav>
+
                         </div>
                     </div>
                 </div>
@@ -77,7 +94,6 @@
         </div>
     </header>
     <!-- Header End -->
-
 
     <!-- Breadcrumb Section Begin -->
     <div class="breadcrumb-section" style="background-color :#f6f6f6">
@@ -95,29 +111,36 @@
             </div>
         </div>
     </div>
+   
     <!-- Breadcrumb Section End -->
 
     <!-- Start Section -->
     <div style="display: flex; background-color: #f6f6f6; padding-bottom: 20px;">
         <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1" style="padding-top: 20px;">
             <div class="booking-form" style="padding-bottom: 18px; padding-top: 18px;">
-                <h3>Pick your stay duration</h3>
+                @if ($errors->has('dates'))
+                <div class="alert alert-danger">
+                    {{ $errors->first('dates') }}
+                </div>
+            @endif
+            
+                <h3>Pick your stay Date</h3>
                 <form action="{{ route('process.booking') }}" method="POST">
                     @csrf <!-- Laravel CSRF token for form security -->
-                    <input type="hidden" name="room_id" value="{{ $room->id }}"> 
+                    <input type="hidden" name="room_id" value="{{ $room->id }}">
                     <div class="check-date">
-                        <label for="date-in">Check In:</label>
-                        <input type="text" class="date-input" name="check_in" id="date-in" required>
-                        <i class="icon_calendar"></i>
+                        <label for="check-in-date">Check In:</label>
+                        <input type="text" class="date-picker-input" name="check_in" id="check-in-date" required>
+                       <i class="icon_calendar"></i>
                     </div>
                     <div class="check-date">
-                        <label for="date-out">Check Out:</label>
-                        <input type="text" class="date-input" name="check_out" id="date-out" required>
+                        <label for="check-out-date">Check Out:</label>
+                        <input type="text" class="date-picker-input" name="check_out" id="check-out-date" required>
                         <i class="icon_calendar"></i>
                     </div>
-                    
                     <button type="submit" class="ab">Booking</button>
                 </form>
+                
             </div>
         </div>
     
@@ -151,21 +174,10 @@
             </div>
         </div>
     </div>
-    
-
-
-
-
-
-
     <!-- Section End -->
 
-
-
-
-
-     <!-- Footer Section Begin -->
-     <footer class="footer-section">
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
         <div class="container">
             <div class="footer-text">
                 <div class="row">
@@ -173,7 +185,7 @@
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="img/footer-logo.png" alt="Sona Logo"> <!-- Ensure logo is relevant -->
+                                    <img src="{{asset('img/footer-logo.png')}}" alt="Sona Logo"> <!-- Ensure logo is relevant -->
                                 </a>
                             </div>
                             <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries, we bring the world to your doorstep.</p>
@@ -211,19 +223,54 @@
             </div>
         </div>
     </footer>
+    
     <!-- Footer Section End -->
-
 
     <!-- Js Plugins -->
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
-<script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
-<script src="{{ asset('js/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('js/jquery.slicknav.js') }}"></script>
-<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 
+    <!-- Custom Script to Initialize Datepicker -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var bookedDates = @json($bookedDates); // Pass the booked dates array from PHP to JavaScript
+    
+            // Initialize the datepicker for check-in
+            $("#check-in-date").datepicker({
+                minDate: 0,
+                dateFormat: 'yy-mm-dd',
+                beforeShowDay: function(date) {
+                    var formattedDate = $.datepicker.formatDate('yy-mm-dd', date);
+                    return [bookedDates.indexOf(formattedDate) === -1]; // Return true if date is not booked
+                },
+                onSelect: function(selectedDate) {
+                    var checkInDate = new Date(selectedDate);
+                    checkInDate.setDate(checkInDate.getDate() + 1); // Ensure check-out date is at least one day after check-in
+                    $("#check-out-date").datepicker("option", "minDate", checkInDate);
+                }
+            });
+    
+            // Initialize the datepicker for check-out
+            $("#check-out-date").datepicker({
+                minDate: 1,
+                dateFormat: 'yy-mm-dd',
+                beforeShowDay: function(date) {
+                    var formattedDate = $.datepicker.formatDate('yy-mm-dd', date);
+                    return [bookedDates.indexOf(formattedDate) === -1]; // Return true if date is not booked
+                }
+            });
+        });
+    </script>
+    
+    
+    
+    
 
 </body>
 </html>

@@ -135,9 +135,9 @@
                 </div>
                 <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
                     <div class="booking-form">
-                        <h3>Booking Your Hotel</h3>
-                        <form action="{{ route('hotels.search') }}" method="POST">
-                            @csrf <!-- This is important for Laravel forms -->
+                        <h3>Book a Hotel:</h3>
+                        <form action="{{ route('hotels.searchByLocationAndGuests') }}" method="POST">
+                            @csrf
                             <div class="check-date">
                                 <label for="date-in">Check In:</label>
                                 <input type="text" name="check_in" class="date-input" id="date-in">
@@ -168,8 +168,8 @@
                             </div>
                             <button type="submit">Check Availability</button>
                         </form>
-
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -355,7 +355,8 @@
         </div>
         <div class="row">
             @foreach ($hotels->slice(0, 6) as $hotel)
-            <a href="{{ route('rooms3.index', $hotel->id) }}" class="col-lg-4">
+            <!-- Update href to point to the rooms page of the selected hotel -->
+            <a href="{{ route('rooms2.index', ['hotelId' => $hotel->id]) }}" class="col-lg-4">
                 <div class="blog-item">
                     <img src="{{ asset('img/blog/' . $hotel->hotel_image) }}" alt="{{ $hotel->name }}" style="width: 100%; height: 100%;">
                     <div class="bi-text">
@@ -365,6 +366,7 @@
             </a>
             @endforeach
         </div>
+        
     </div>
 </section>
     <!-- Footer Section Begin -->
@@ -376,7 +378,7 @@
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="img/footer-logo.png" alt="Sona Logo"> <!-- Ensure logo is relevant -->
+                                    <img src="{{asset('img/footer-logo.png')}}" alt="Sona Logo"> <!-- Ensure logo is relevant -->
                                 </a>
                             </div>
                             <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries, we bring the world to your doorstep.</p>

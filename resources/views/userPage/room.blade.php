@@ -116,7 +116,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2">
-                        <div class="logo">
+               
+
+
+                                 <div class="logo">
                             <a href="{{asset('./index')}}">
                                 <img src="{{asset('img/logo.png')}}" alt="">
                             </a>
@@ -172,51 +175,60 @@
 
     <section class="hotels-section spad" style="background-color: #f6f6f6">
         <div class="container">
-            <div class="row g-4">
-                @foreach ($rooms as $room)
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                    <div class="room-item shadow rounded overflow-hidden">
-                        <div class="position-relative">
-                            @if($room->images->isNotEmpty())
-                            <img style="height: 250px"
-                            src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}"
-                            alt="Room Image">
-                            @else
-                                <img src="{{ asset('images/default-room.jpg') }}" alt="Default Room Image">
-                            @endif
-                        </div>
-                        <div class="p-4 mt-2">
-                            <!-- Move the price element here, just below the image -->
-                            <p class="price-text">${{ $room->price_per_night }}    <span style="color:#212529;">/Night</span>
-                            </p>
-                            <div class="d-flex justify-content-between mb-3">
-                                <h5 class="mb-0">{{ $room->room_type }}</h5>
-                                <div class="ps-2">
-                                    @for ($i = 0; $i < 5; $i++)
-                                        <small style="color: #dfa974" class="fa fa-star"></small>
-                                    @endfor
+            @if($rooms->isEmpty())
+                <div class="text-center my-4">
+                    <p>No available rooms for the selected dates.</p>
+                </div>
+            @else
+                <div class="row g-4">
+                    @foreach ($rooms as $room)
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                            <div class="room-item shadow rounded overflow-hidden">
+                                <div class="position-relative">
+                                    @if($room->images->isNotEmpty())
+                                        <img style="height: 250px"
+                                             src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}"
+                                             alt="Room Image">
+                                    @else
+                                        <img src="{{ asset('images/default-room.jpg') }}" alt="Default Room Image">
+                                    @endif
+                                </div>
+                                <div class="p-4 mt-2">
+                                    <!-- Room details -->
+                                    <p class="price-text">${{ number_format($room->price_per_night, 2) }} <span style="color:#212529;">/Night</span></p>
+                                    
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h5 class="mb-0">{{ $room->room_type }}</h5>
+                                        <div class="ps-2">
+                                            @for ($i = 0; $i < 5; $i++)
+                                                <small style="color: #dfa974" class="fa fa-star"></small>
+                                            @endfor
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mb-3">
+                                        <small class="border-end me-3 pe-3"><i style="color: #dfa974" class="fa fa-bed me-2"></i>{{ $room->bed }} Bed</small>
+                                        <small class="border-end me-3 pe-3"><i style="color: #dfa974" class="fa fa-bath me-2"></i>{{ $room->bathroom }} Bath</small>
+                                        <small><i style="color: #dfa974" class="fa fa-wifi me-2"></i>Wifi</small>
+                                    </div>
+                                    <p class="text-body mb-3">{{ Str::limit($room->description, 100) }}</p>
+                                    
+                                    <!-- Action buttons -->
+                                    <div class="d-flex justify-content-between">
+                                        <a style="background-color:#dfa974;color:#fff" href="{{ route('room.details', ['roomId' => $room->id]) }}" class="ab">View Details</a>
+                                        <form action="{{ route('book.now', ['roomId' => $room->id]) }}" method="GET">
+                                            @csrf
+                                            <button type="submit" class="ab" style="background-color:#dfa974;color:#fff">Book Now</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="d-flex mb-3">
-                                <small class="border-end me-3 pe-3"><i style="color: #dfa974" class="fa fa-bed me-2"></i>{{ $room->bed }} Bed</small>
-                                <small class="border-end me-3 pe-3"><i style="color: #dfa974" class="fa fa-bath me-2"></i>{{ $room->bathroom }} Bath</small>
-                                <small><i style="color: #dfa974" class="fa fa-wifi me-2"></i>Wifi</small>
-                            </div>
-                            <p class="text-body mb-3">{{ Str::limit($room->description, 100) }}</p>
-                            <div class="d-flex justify-content-between">
-                                <a style="background-color:#dfa974;color:#fff" href="{{ route('room.details', ['roomId' => $room->id]) }}" class="ab">View Details</a>
-                                <form action="{{ route('book.now', ['roomId' => $room->id]) }}" method="GET">
-                                    @csrf
-                                    <button type="submit" class="ab" style="background-color:#dfa974;color:#fff">Book Now</button>
-                                </form>
-                            </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-                @endforeach
-            </div>
+            @endif
         </div>
     </section>
+    
 
 
 
@@ -258,7 +270,7 @@
                             <p>Sign up to receive exclusive offers and the latest news on our properties.</p> <!-- Updated description -->
                             <form action="#" class="fn-form">
                                 <input type="email" placeholder="Your Email"> <!-- Updated placeholder and input type -->
-                                <button type="submit" style="width: 20%"><i class="fa fa-send"></i></button>
+                                <button type="submit"><i class="fa fa-send"></i></button>
                             </form>
                         </div>
                     </div>

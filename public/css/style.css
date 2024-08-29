@@ -31,6 +31,66 @@
 
 /* Template default CSS
 /*----------------------------------------*/
+.notification-badge {
+    position: absolute;
+    top: -5px; /* Adjust this value based on the margin and icon size */
+    right: -10px; /* Adjust this value based on the margin and icon size */
+    background-color: white;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px; /* Reduced padding for a smaller badge */
+    font-size: 10px; /* Reduced font size */
+    font-weight: bold;
+    display: inline-flex; /* Ensure the badge displays correctly */
+    align-items: center; /* Center the text inside the badge */
+    justify-content: center; /* Center the text inside the badge */
+    min-width: 10px; /* Ensure the badge has a minimum width */
+    height: 14px; /* Ensure the badge has a minimum height */
+    text-align: center; /* Center text inside the badge */
+}
+
+
+
+.service-item i {
+	color: #D5A373;
+	transition: color 0.3s ease;
+}
+
+.service-item:hover i {
+	color: #ffffff;
+}
+.btn-outline-primary {
+	color: #df9a53 !important;
+	border-color: #df9a53 !important;
+	background-color: transparent !important;
+	padding: 10px 20px !important;
+	border-radius: 25px !important;
+	font-size: 14px !important;
+	font-weight: bold !important;
+	margin-right: 5px !important;
+	text-decoration: none !important;
+}
+
+.btn-outline-primary:hover {
+	background-color: #df9a53 !important;
+	color: white !important;
+	text-decoration: none !important;
+}
+
+.btn-primary {
+	background-color: #df9a53 !important;
+	border-color: #df9a53 !important;
+	color: white !important;
+	padding: 10px 20px !important;
+	border-radius: 25px !important;
+	font-size: 14px !important;
+	font-weight: bold !important;
+}
+
+.btn-primary:hover {
+	background-color: #c97b41 !important;
+	border-color: #c97b41 !important;
+}
 .ch{
 	display: inline-block;
 	font-size: 13px;

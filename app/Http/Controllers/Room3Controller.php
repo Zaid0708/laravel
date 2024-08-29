@@ -21,37 +21,4 @@ class Room3Controller extends Controller
 }
 
 
-
-
-public function storeReview(Request $request, $roomId)
-{
-    if (!auth()->check()) {
-        return redirect()->route('login')->with('error', 'You must be logged in to submit a review.');
-    }
-
-    $validatedData = $request->validate([
-        'rating' => 'required|integer|min:1|max:5',
-        'comment' => 'required|string',
-    ]);
-
-    // Check if validation passed and data is correct
-    logger($validatedData);
-
-    $room = Room::findOrFail($roomId);
-
-    // Store the review in the database
-    $review = Review::create([
-        'room_id' => $room,
-        'user_id' => auth()->id(),
-        'rating' => $validatedData['rating'],
-        'comment' => $validatedData['comment'],
-    ]);
-
-    // Check if the review was successfully stored
-    if ($review) {
-        return redirect()->back()->with('success', 'Review added successfully.');
-    } else {
-        return redirect()->back()->with('error', 'Failed to add the review.');
-    }
-}
 }

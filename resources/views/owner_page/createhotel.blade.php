@@ -45,7 +45,11 @@
                         </div>
 
                         <!-- New File Input for Hotel Picture -->
-                        <div class="form-group">
+                     
+
+
+
+                           <div class="form-group">
                             <label for="picture">Hotel Picture:</label>
                             <input type="file" class="form-control-file" id="picture" name="picture" accept="image/*" required>
                         </div>

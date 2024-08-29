@@ -12,8 +12,6 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
 
     <!-- Css Styles -->
@@ -39,37 +37,69 @@
                     <div class="col-lg-2">
                         <div class="logo">
                             <a href="./index">
-                                <img src="{{ asset('img/logo.png') }}" alt="Logo">
+                                <img style="margin-left: 10%" src="{{ asset('img/logo.png') }}" alt="Logo">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-10">
-                        <div style="width: 100%" class="nav-menu">
-                            <nav class="mainmenu">
-                                <ul>
-                                    <li class="active"><a href="{{route('owner.index')}}">Home</a></li>
+                        <div class="nav-menu"
+                            style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <!-- Centered Navigation Menu -->
+                            <nav class="mainmenu" style="flex: 1; display: flex; justify-content: center;">
+                                <ul style="display: flex; align-items: center; margin: 0;">
+                                    <li class="active"><a href="{{ route('owner.index') }}">Home</a></li>
                                     <li><a href="./rooms">Hotels</a></li>
                                     <li><a href="./contact">Rooms</a></li>
-                                    <!-- Dropdown Menu for User Icon -->
-                                    <i class="fa-solid fa-bell"></i>
-                                    
-                                    {{-- <li><i class="icon_search"></i></li> --}}
-                                    <li style="margin-left: 15px" class="dropdown">
-                                        <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="fa-solid fa-user"></i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">profile</a></li>
-                                            <li><a class="dropdown-item" href="#">logout</a></li>
-                                        </ul>
-                                    </li>
                                 </ul>
                             </nav>
 
-                            <!-- Search Icon Outside of Nav -->
+                            <!-- Icons aligned to the right -->
+                            <!-- Icons aligned to the right -->
+<!-- Icons aligned to the right -->
+<div class="header-icons" style="display: flex; align-items: center;">
+    <div class="dropdown" style="position: relative;">
+        <i class="fa-solid fa-bell" style="cursor: pointer; margin-right: 0px;" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- Badge for notifications -->
+            <span class="notification-badge" style="position: absolute; top: -5px; right: -5px; background-color: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; font-weight: bold;">{{ $notificationCount }}</span>
+        </i>
+        <ul class="dropdown-menu" style="position: absolute; top: 100%; right: 0; z-index: 1000;">
+            <!-- Check if there are any reservations -->
+            @forelse ($reservations as $reservation)
+                @php
+                    $room = $reservation->room;
+                    $hotel = $room->hotel;
+                @endphp
+                <li>
+                    <a class="dropdown-item" href="#">
+                        Room: {{ $room->room_type }}<br>
+                        Hotel: {{ $hotel->name }}<br>
+                        Total Price: ${{ number_format($reservation->total_price, 2) }}
+                        <hr>
+                    </a>
+                </li>
+            @empty
+                <li><a class="dropdown-item" href="#">No Reservations</a></li>
+            @endforelse
+        </ul>
+    </div>
+    <div class="dropdown" style="position: relative;">
+        <i class="fa-solid fa-user" style="cursor: pointer;margin-left:20px" data-bs-toggle="dropdown" aria-expanded="false"></i>
+        <ul class="dropdown-menu" style="position: absolute; top: 100%; right: 0; z-index: 1000;">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li>
+                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="dropdown-item" style="background: none; border: none; cursor: pointer;">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>
 
 
 
+
+                            
 
 
                         </div>
@@ -78,6 +108,7 @@
             </div>
         </div>
     </header>
+
     <hr>
     <div class="ri">
 
@@ -85,9 +116,6 @@
 
             <div class="row">
                 @forelse($hotels as $hotel)
-               
-                    
-               
                     <div class="col-lg-4 col-md-6">
                         <div class="room-item">
                             <!-- Display the hotel image -->
@@ -116,12 +144,13 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <a  class="primary-btn"
+                                <a class="primary-btn"
                                     href="{{ route('rooms.index', ['hotelId' => $hotel->id]) }}">View Rooms</a>
                                 <a style="margin-left: 3%" class="btn btn-warning"
                                     href="{{ route('hotels.edit', ['hotelId' => $hotel->id]) }}">Edit</a>
                                 <!-- In your hotel details view -->
-                                <a style="margin-left:3%" class="btn btn-danger" href="{{ route('owner.destroy', ['owner' => $hotel->id]) }}"
+                                <a style="margin-left:3%" class="btn btn-danger"
+                                    href="{{ route('owner.destroy', ['owner' => $hotel->id]) }}"
                                     onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this hotel?')) document.getElementById('delete-form').submit();">
                                     Delete Hotel
                                 </a>
@@ -137,9 +166,9 @@
                         </div>
                     </div>
                 @empty
-                <div style="margin-bottom: 10%;justifiy-self:center">
-                    <p>No hotels found for this user.</p>
-                </div>
+                    <div style="margin-bottom: 10%;justifiy-self:center">
+                        <p>No hotels found for this user.</p>
+                    </div>
                 @endforelse
             </div>
         </div>
@@ -147,7 +176,7 @@
             <a href="{{ route('owner.create') }}" class="ch">Create a Hotel</a>
         </div>
     </div>
-<br>
+    <br>
     <footer class="footer-section">
         <div class="container">
             <div class="footer-text">
@@ -156,16 +185,17 @@
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="img/footer-logo.png" alt="">
+                                    <img src="{{asset('img/footer-logo.png')}}" alt="Sona Logo"> <!-- Ensure logo is relevant -->
                                 </a>
                             </div>
-                            <p>We inspire and reach millions of travelers<br /> across 90 local websites</p>
+                            <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries, we bring the world to your doorstep.</p>
                             <div class="fa-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-tripadvisor"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                                 <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                <!-- Update links to actual social media pages -->
                             </div>
                         </div>
                     </div>
@@ -173,18 +203,18 @@
                         <div class="ft-contact">
                             <h6>Contact Us</h6>
                             <ul>
-                                <li>(12) 345 67890</li>
-                                <li>info.colorlib@gmail.com</li>
-                                <li>856 Cordia Extension Apt. 356, Lake, United State</li>
+                                <li>(+962) 780000000</li>
+                                <li>info@sonahotel.com</li> <!-- Updated email -->
+                                <li>123 Luxury St, Suite 789, Amman, Jordan</li> <!-- Updated address -->
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 offset-lg-1">
                         <div class="ft-newslatter">
-                            <h6>New latest</h6>
-                            <p>Get the latest updates and offers.</p>
+                            <h6>Stay Updated</h6> <!-- Updated title -->
+                            <p>Sign up to receive exclusive offers and the latest news on our properties.</p> <!-- Updated description -->
                             <form action="#" class="fn-form">
-                                <input type="text" placeholder="Email">
+                                <input type="email" placeholder="Your Email"> <!-- Updated placeholder and input type -->
                                 <button type="submit"><i class="fa fa-send"></i></button>
                             </form>
                         </div>
@@ -192,44 +222,20 @@
                 </div>
             </div>
         </div>
-
-        <div class="copyright-option">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <ul>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Terms of use</a></li>
-                            <li><a href="#">Privacy</a></li>
-                            <li><a href="#">Environmental Policy</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="co-text">
-                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;
-                                <script>
-                                    document.write(new Date().getFullYear());
-                                </script> All rights reserved | This template is made with <i
-                                    class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                    target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
     </footer>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Foote-->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>

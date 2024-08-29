@@ -30,6 +30,6 @@ class CheckUserRole
         }
 
         // Redirect or abort if the user does not have the correct role
-        return redirect('/')->with('error', 'You do not have access to this page.');
+        return redirect('/login2')->with('error', 'You do not have access to this page.');
     }
 }

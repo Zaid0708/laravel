@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hotel;
 use App\Models\Room;
+use App\Models\Reservation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,23 +12,45 @@ use Illuminate\Support\Facades\Storage;
 class HotelController extends Controller
 {
 
+
+    public function fetchReservations()
+    {
+        $userId = Auth::id();
+        $reservations = Reservation::whereHas('room', function ($query) use ($userId) {
+            $query->whereHas('hotel', function ($query) use ($userId) {
+                $query->where('owner_id', $userId);
+            });
+        })->get();
+    
+        return $reservations;
+    }
+    
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $userId = Auth::id();
-
+    
         // Fetch hotels associated with the authenticated user ID
         $hotels = Hotel::where('owner_id', $userId)->get();
-
+    
         foreach($hotels as $hotel){
-            $hotel->min_price_per_night=Room::where('hotel_id',$hotel->id)->min('price_per_night');
+            $hotel->min_price_per_night = Room::where('hotel_id', $hotel->id)->min('price_per_night');
         }
-
-        return view('owner_page.index', compact('hotels'));
+    
+        // Fetch reservations for the authenticated user
+        $reservations = Reservation::whereHas('room.hotel', function ($query) use ($userId) {
+            $query->where('owner_id', $userId);
+        })->get();
+    
+        // Calculate the notification count
+        $notificationCount = $reservations->count();
+    
+        return view('owner_page.index', compact('hotels', 'reservations', 'notificationCount'));
     }
-
+    
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -101,6 +124,7 @@ class HotelController extends Controller
 
         return view('hotel.rooms', compact('hotel', 'rooms'));
     }
+
 
 
 

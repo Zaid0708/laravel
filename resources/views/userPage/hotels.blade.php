@@ -14,16 +14,17 @@
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/elegant-icons.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+    
     <style>
         .card {
             border: none;
@@ -218,16 +219,17 @@
                                     <li><a href="{{ url('/hotels') }}">Hotels</a></li>
                                     <li><a href="{{ url('/contact') }}">Contact</a></li>
                                     @guest
-                                    <li>
-                                        <div class="d-inline-block">
-                                            <a href="{{ route('login.form') }}" class="btn btn-outline-primary">Login</a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-inline-block">
-                                            <a href="{{ route('register.form') }}" class="btn btn-primary">Sign Up</a>
-                                        </div>
-                                    </li>
+                                        <li>
+                                            <div class="d-inline-block">
+                                                <a href="{{ route('login.form') }}"
+                                                    class="btn btn-outline-primary">Login</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-inline-block">
+                                                <a href="{{ route('register.form') }}" class="btn btn-primary">Sign Up</a>
+                                            </div>
+                                        </li>
                                     @else
                                         <li>
                                             <form action="{{ route('logout') }}" method="POST" style="display:inline;">
@@ -272,73 +274,83 @@
             <form action="{{ route('hotels.index') }}" method="GET" class="mb-4">
                 <div class="row align-items-center">
                     <div class="col-lg-4">
-                        <input type="text" name="search" class="form-control" placeholder="Search by hotel name" value="{{ request('search') }}" style="font-size: 14px;">
+                        <input type="text" name="search" class="form-control" placeholder="Search by hotel name"
+                            value="{{ request('search') }}" style="font-size: 14px;">
                     </div>
                     <div class="col-lg-3">
-                        <input type="number" name="rating" class="form-control" placeholder="Rating (max 5)" min="1" max="5" value="{{ request('rating') }}" style="font-size: 14px;">
+                        <input type="number" name="rating" class="form-control" placeholder="Rating (max 5)"
+                            min="1" max="5" value="{{ request('rating') }}" style="font-size: 14px;">
                     </div>
                     <div class="col-lg-2">
                         <button type="submit" class="btn btn-primary btn-block" style="font-size: 14px;">Search</button>
                     </div>
                     <div class="col-lg-2">
-                        <button type="reset" class="btn btn-primary btn-block" onclick="window.location.href='{{ route('hotels.index') }}'" style="font-size: 14px;">Reset</button>
+                        <button type="reset" class="btn btn-primary btn-block" onclick="window.location.href='{{ route('hotels.index') }}'"
+                            style="font-size: 14px;">Reset</button>
                     </div>
                 </div>
             </form>
-
+            
+    
             <div class="row">
                 @forelse($hotels as $hotel)
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <img class="card-img-top" src="{{ asset('storage/hotel_images/' . $hotel->hotel_image) }}" alt="{{ $hotel->name }}">
-                        <div class="card-body">
-                            <div class="hotel-info">
-                                <div class="info-item">
-                                    <span class="label">Name:</span>
-                                    <span class="value">{{ $hotel->name }}</span>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img class="card-img-top"
+                                src="{{ asset('storage/hotel_images/' . $hotel->hotel_image) }}"
+                                alt="{{ $hotel->name }}">
+                            <div class="card-body">
+                                <div class="hotel-info">
+                                    <div class="info-item">
+                                        <span class="label">Name:</span>
+                                        <span class="value">{{ $hotel->name }}</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="label">Location:</span>
+                                        <span class="value">{{ $hotel->location }}</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="label">Min-Price:</span>
+                                        <span class="value price">
+                                            {{ '$' . number_format($hotel->min_price, 2) }}
+                                            <span style="color:#212529;">/Night</span>
+                                        </span>
+                                    </div>
                                 </div>
-                                <div class="info-item">
-                                    <span class="label">Location:</span>
-                                    <span class="value">{{ $hotel->location }}</span>
+                                <div class="rating mt-3">
+                                    <span class="label">Rate:</span>
+                                    <div class="value">
+                                        @for ($i = 0; $i < 5; $i++)
+                                            @if ($i < floor($hotel->rating))
+                                                <i class="fa fa-star"></i>
+                                            @elseif ($i < ceil($hotel->rating))
+                                                <i class="fa fa-star-half-alt"></i>
+                                            @else
+                                                <i class="fa fa-star-o"></i>
+                                            @endif
+                                        @endfor
+                                    </div>
                                 </div>
-                                <div class="info-item">
-                                    <span class="label">Min-Price:</span>
-<span class="value price">
-    {{ '$' . number_format($hotel->min_price, 2) }}
-    <span style="color:#212529;">/Night</span>
-</span>                                </div>
                             </div>
-                            <div class="rating mt-3">
-                                <span class="label">Rate:</span>
-                                <div class="value">
-                                    @for ($i = 0; $i < 5; $i++)
-                                        @if ($i < floor($hotel->rating))
-                                            <i class="fa fa-star"></i>
-                                        @elseif ($i < ceil($hotel->rating))
-                                            <i class="fa fa-star-half-alt"></i>
-                                        @else
-                                            <i class="fa fa-star-o"></i>
-                                        @endif
-                                    @endfor
-                                </div>
+                            <div class="card-footer">
+                                <a href="{{ route('rooms2.index', $hotel->id) }}" class="btn btn-primary">View Details</a>
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            <a href="{{ route('rooms3.index', $hotel->id) }}" class="btn btn-primary">View Details</a>
                         </div>
                     </div>
-                </div>
                 @empty
-                    <p>No hotels available.</p>
+                    <div class="col-12">
+                        <p class="text-center">No hotels found.</p>
+                    </div>
                 @endforelse
             </div>
         </div>
     </section>
+    
 
 
 
 
-   <!-- Footer Section Begin -->
+    <!-- Footer Section Begin -->
     <footer class="footer-section">
         <div class="container">
             <div class="footer-text">
@@ -347,7 +359,7 @@
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="img/footer-logo.png" alt="Sona Logo"> <!-- Ensure logo is relevant -->
+                                    <img src="{{asset('img/footer-logo.png')}}" alt="Sona Logo"> <!-- Ensure logo is relevant -->
                                 </a>
                             </div>
                             <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries, we bring the world to your doorstep.</p>
