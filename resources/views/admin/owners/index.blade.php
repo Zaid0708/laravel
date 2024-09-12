@@ -35,9 +35,9 @@
     <div class="container mt-4">
         <!-- Page Header -->
         <div class="page-header">
-            <h1 class="mb-4">
+            <h3 class="mb-4">
                 <i class="fas fa-user"></i> Owner Management
-            </h1>
+            </h3>
         </div>
 
         <!-- Add owner Button -->

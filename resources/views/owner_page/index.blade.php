@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="./index">
+                            <a href="/owner">
                                 <img style="margin-left: 10%" src="{{ asset('img/logo.png') }}" alt="Logo">
                             </a>
                         </div>
@@ -47,59 +47,66 @@
                             <!-- Centered Navigation Menu -->
                             <nav class="mainmenu" style="flex: 1; display: flex; justify-content: center;">
                                 <ul style="display: flex; align-items: center; margin: 0;">
-                                    <li class="active"><a href="{{ route('owner.index') }}">Home</a></li>
-                                    <li><a href="./rooms">Hotels</a></li>
-                                    <li><a href="./contact">Rooms</a></li>
+                                    <li class="active"><a href="{{ route('owner.index') }}"></a></li>
+                                    <li><a href="./rooms"></a></li>
+                                    <li><a href="./contact"></a></li>
                                 </ul>
                             </nav>
 
                             <!-- Icons aligned to the right -->
                             <!-- Icons aligned to the right -->
-<!-- Icons aligned to the right -->
-<div class="header-icons" style="display: flex; align-items: center;">
-    <div class="dropdown" style="position: relative;">
-        <i class="fa-solid fa-bell" style="cursor: pointer; margin-right: 0px;" data-bs-toggle="dropdown" aria-expanded="false">
-            <!-- Badge for notifications -->
-            <span class="notification-badge" style="position: absolute; top: -5px; right: -5px; background-color: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; font-weight: bold;">{{ $notificationCount }}</span>
-        </i>
-        <ul class="dropdown-menu" style="position: absolute; top: 100%; right: 0; z-index: 1000;">
-            <!-- Check if there are any reservations -->
-            @forelse ($reservations as $reservation)
-                @php
-                    $room = $reservation->room;
-                    $hotel = $room->hotel;
-                @endphp
-                <li>
-                    <a class="dropdown-item" href="#">
-                        Room: {{ $room->room_type }}<br>
-                        Hotel: {{ $hotel->name }}<br>
-                        Total Price: ${{ number_format($reservation->total_price, 2) }}
-                        <hr>
-                    </a>
-                </li>
-            @empty
-                <li><a class="dropdown-item" href="#">No Reservations</a></li>
-            @endforelse
-        </ul>
-    </div>
-    <div class="dropdown" style="position: relative;">
-        <i class="fa-solid fa-user" style="cursor: pointer;margin-left:20px" data-bs-toggle="dropdown" aria-expanded="false"></i>
-        <ul class="dropdown-menu" style="position: absolute; top: 100%; right: 0; z-index: 1000;">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li>
-                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                    @csrf
-                    <button type="submit" class="dropdown-item" style="background: none; border: none; cursor: pointer;">Logout</button>
-                </form>
-            </li>
-        </ul>
-    </div>
-</div>
+                            <!-- Icons aligned to the right -->
+                            <div class="header-icons" style="display: flex; align-items: center;">
+                                <div class="dropdown" style="position: relative;">
+                                    <i class="fa-solid fa-bell" style="cursor: pointer; margin-right: 0px;"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <!-- Badge for notifications -->
+                                        <span class="notification-badge"
+                                            style="position: absolute; top: -5px; right: -5px; background-color: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; font-weight: bold;">{{ $notificationCount }}</span>
+                                    </i>
+                                    <ul class="dropdown-menu"
+                                        style="position: absolute; top: 100%; right: 0; z-index: 1000;">
+                                        <!-- Check if there are any reservations -->
+                                        @forelse ($reservations as $reservation)
+                                            @php
+                                                $room = $reservation->room;
+                                                $hotel = $room->hotel;
+                                            @endphp
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+                                                    Room: {{ $room->room_type }}<br>
+                                                    Hotel: {{ $hotel->name }}<br>
+                                                    Total Price: ${{ number_format($reservation->total_price, 2) }}
+                                                    <hr>
+                                                </a>
+                                            </li>
+                                        @empty
+                                            <li><a class="dropdown-item" href="#">No Reservations</a></li>
+                                        @endforelse
+                                    </ul>
+                                </div>
+                                <div class="dropdown" style="position: relative;">
+                                    <i class="fa-solid fa-user" style="cursor: pointer;margin-left:20px"
+                                        data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                    <ul class="dropdown-menu"
+                                        style="position: absolute; top: 100%; right: 0; z-index: 1000;">
+                                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                                        <li>
+                                            <form action="{{ route('logout') }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item"
+                                                    style="background: none; border: none; cursor: pointer;">Logout</button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
 
 
 
 
-                            
+
 
 
                         </div>
@@ -110,16 +117,17 @@
     </header>
 
     <hr>
-    <div class="ri">
+    <div class="ri mt-5">
 
-        <div class="container">
+        <div class="container mt-5">
 
             <div class="row">
                 @forelse($hotels as $hotel)
                     <div class="col-lg-4 col-md-6">
                         <div class="room-item">
                             <!-- Display the hotel image -->
-                            <img style="height: 250px" src="{{ asset('storage/hotel_images/' . $hotel->hotel_image) }}"
+                            <img style="height: 250px"
+                                src="{{ asset('storage/hotel_images/' . $hotel->hotel_image) }}"
                                 alt="{{ $hotel->name }}">
                             <div class="ri-text">
                                 <h4>{{ $hotel->name }}</h4>
@@ -172,7 +180,7 @@
                 @endforelse
             </div>
         </div>
-        <div style="margin-right: 4%">
+        <div class="mt-5" style="margin-right: 4%">
             <a href="{{ route('owner.create') }}" class="ch">Create a Hotel</a>
         </div>
     </div>
@@ -185,10 +193,12 @@
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="{{asset('img/footer-logo.png')}}" alt="Sona Logo"> <!-- Ensure logo is relevant -->
+                                    <img src="{{ asset('img/footer-logo.png') }}" alt="Sona Logo">
+                                    <!-- Ensure logo is relevant -->
                                 </a>
                             </div>
-                            <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries, we bring the world to your doorstep.</p>
+                            <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries,
+                                we bring the world to your doorstep.</p>
                             <div class="fa-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
@@ -212,9 +222,11 @@
                     <div class="col-lg-3 offset-lg-1">
                         <div class="ft-newslatter">
                             <h6>Stay Updated</h6> <!-- Updated title -->
-                            <p>Sign up to receive exclusive offers and the latest news on our properties.</p> <!-- Updated description -->
+                            <p>Sign up to receive exclusive offers and the latest news on our properties.</p>
+                            <!-- Updated description -->
                             <form action="#" class="fn-form">
-                                <input type="email" placeholder="Your Email"> <!-- Updated placeholder and input type -->
+                                <input type="email" placeholder="Your Email">
+                                <!-- Updated placeholder and input type -->
                                 <button type="submit"><i class="fa fa-send"></i></button>
                             </form>
                         </div>
@@ -224,7 +236,7 @@
         </div>
     </footer>
     <!-- Foote-->
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>

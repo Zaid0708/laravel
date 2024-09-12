@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="path/to/flaticon.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
@@ -56,11 +58,14 @@
             border-right: 1px solid #dee2e6 !important;
         }
 
-        small, .small {
+        small,
+        .small {
             font-size: .875em;
         }
 
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
         }
 
@@ -68,7 +73,8 @@
             font-size: 20px;
             font-weight: bold;
             color: #dfa974;
-            margin-bottom: 15px; /* Add some spacing below the price */
+            margin-bottom: 15px;
+            /* Add some spacing below the price */
         }
 
         .btn-outline-primary {
@@ -115,7 +121,8 @@
             padding: 10px;
             margin-bottom: 20px;
             border: 1px solid #ddd;
-            text-transform: uppercase; /* Capitalize the text */
+            text-transform: uppercase;
+            /* Capitalize the text */
         }
 
         /* Style the submit button */
@@ -137,6 +144,64 @@
             transform: translateY(-50%);
             color: #dfa974;
         }
+        /* Slider Container */
+.slider-container {
+    width: 100%; /* Changed from 120% to 100% */
+    position: relative;
+    overflow: hidden;
+    max-width: 600px; /* Optional: Set a max-width for better control */
+    margin: auto; /* Center the slider */
+}
+
+/* Slider Wrapper */
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+/* Slider Items */
+.slider-item {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.slider-item img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+}
+
+/* Slider Buttons */
+.slider-prev,
+.slider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+    z-index: 1000; /* Ensures buttons are above other elements */
+    transition: background 0.3s;
+}
+
+.slider-prev:hover,
+.slider-next:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.slider-prev {
+    left: 10px; /* Adjusted from `left: 0` to add padding */
+}
+
+.slider-next {
+    right: 10px; /* Adjusted from `right: 0` to add padding */
+}
+
     </style>
 </head>
 
@@ -147,8 +212,9 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="{{asset('./index')}}">
-                                <img src="{{asset('img/logo.png')}}" alt="">
+                            <a href="./index">
+                                <img src="{{ asset('img/logo.png') }}" alt="Logo">
+
                             </a>
                         </div>
                     </div>
@@ -171,9 +237,14 @@
                                             <a href="{{ route('register.form') }}" class="btn btn-primary">Sign Up</a>
                                         </div>
                                     </li>
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('oregister') }}" class="btn btn-primary">Hotel owner?</a>
+                                        </div>
+                                    </li>
                                     @else
                                         <li>
-                                            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                                            <form action="{{ route('userlogout') }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary">Logout</button>
                                             </form>
@@ -181,6 +252,7 @@
                                     @endguest
                                 </ul>
                             </nav>
+
                         </div>
                     </div>
                 </div>
@@ -190,7 +262,7 @@
     <!-- Header End -->
 
     <!-- Breadcrumb Section Begin -->
-    <div class="breadcrumb-section">
+    <div class="breadcrumb-section mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -214,16 +286,26 @@
             <div class="row">
                 <!-- Room Image -->
                 <div class="col-lg-6">
-                    <div class="room-details-item" style="width: 120%">
-                        <img style="height: 350px; width: 100%;" src="{{ asset('storage/room_images/' . $room->images->first()->image_path) }}" alt="Room Image">
+                    <!-- Custom Image Slider -->
+                    <div id="customRoomImageSlider" class="slider-container" style="width: 120%; position: relative; overflow: hidden;">
+                        <div class="slider-wrapper" style="display: flex; transition: transform 0.5s ease-in-out;">
+                            @foreach ($room->images as $image)
+                                <div class="slider-item" style="min-width: 100%;">
+                                    <img src="{{ asset('storage/room_images/' . $image->image_path) }}" style="width: 100%; height: 350px;" alt="Room Image">
+                                </div>
+                            @endforeach
+                        </div>
+                        <button class="slider-prev">&#10094;</button>
+                        <button class="slider-next">&#10095;</button>
                     </div>
                 </div>
+                
 
                 <!-- Room Details -->
                 <div class="col-lg-6">
                     <div class="rd-text" style="margin-left : 140px">
                         <br>
-                        <div class="rd-title d-flex justify-content-between align-items-center" >
+                        <div class="rd-title d-flex justify-content-between align-items-center">
                             <p style="font-size : 30px"> room type : {{ $room->room_type }}</p>
                             <div class="rdt-right">
                                 <div class="rating">
@@ -239,7 +321,8 @@
                                 </div>
                             </div>
                         </div>
-                        <p style="color: #f7931e ; font-size : 30px">${{ $room->price_per_night }}/<span style="color: #6b6b6b"> Per Night</span></p>
+                        <p style="color: #f7931e ; font-size : 30px">${{ $room->price_per_night }}/<span
+                                style="color: #6b6b6b"> Per Night</span></p>
                         <div>
                             <p><strong>Size:</strong> {{ $room->size }}</p>
                             <p><strong>Capacity:</strong> Max {{ $room->capacity }} Persons</p>
@@ -247,7 +330,8 @@
                             <p><strong>Services:</strong> {{ $room->services }}</p>
                             <form action="{{ route('book.now', ['roomId' => $room->id]) }}" method="GET">
                                 @csrf
-                                <button type="submit" class="ab" style="background-color:#dfa974;color:#fff">Book Now</button>
+                                <button type="submit" class="ab"
+                                    style="background-color:#dfa974;color:#fff">Book Now</button>
                             </form>
                         </div>
                     </div>
@@ -294,7 +378,8 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div>
-                                    <input type="number" name="rating" min="1" max="5" placeholder="Your rating out of 5" required>
+                                    <input type="number" name="rating" min="1" max="5"
+                                        placeholder="Your rating out of 5" required>
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -320,10 +405,12 @@
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="{{asset('img/footer-logo.png')}}" alt="Sona Logo"> <!-- Ensure logo is relevant -->
+                                    <img src="{{ asset('img/footer-logo.png') }}" alt="Sona Logo">
+                                    <!-- Ensure logo is relevant -->
                                 </a>
                             </div>
-                            <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries, we bring the world to your doorstep.</p>
+                            <p>Your gateway to luxurious stays around the globe. With our presence in over 90 countries,
+                                we bring the world to your doorstep.</p>
                             <div class="fa-social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
@@ -347,9 +434,11 @@
                     <div class="col-lg-3 offset-lg-1">
                         <div class="ft-newslatter">
                             <h6>Stay Updated</h6> <!-- Updated title -->
-                            <p>Sign up to receive exclusive offers and the latest news on our properties.</p> <!-- Updated description -->
+                            <p>Sign up to receive exclusive offers and the latest news on our properties.</p>
+                            <!-- Updated description -->
                             <form action="#" class="fn-form">
-                                <input type="email" placeholder="Your Email"> <!-- Updated placeholder and input type -->
+                                <input type="email" placeholder="Your Email">
+                                <!-- Updated placeholder and input type -->
                                 <button type="submit" style="width: 20%"><i class="fa fa-send"></i></button>
                             </form>
                         </div>
@@ -359,7 +448,30 @@
         </div>
     </footer>
     <!-- Footer Section End -->
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sliderWrapper = document.querySelector('.slider-wrapper');
+            const sliderItems = document.querySelectorAll('.slider-item');
+            const prevButton = document.querySelector('.slider-prev');
+            const nextButton = document.querySelector('.slider-next');
+            let currentIndex = 0;
+    
+            function updateSliderPosition() {
+                const offset = -currentIndex * 100;
+                sliderWrapper.style.transform = `translateX(${offset}%)`;
+            }
+    
+            nextButton.addEventListener('click', function () {
+                currentIndex = (currentIndex + 1) % sliderItems.length;
+                updateSliderPosition();
+            });
+    
+            prevButton.addEventListener('click', function () {
+                currentIndex = (currentIndex - 1 + sliderItems.length) % sliderItems.length;
+                updateSliderPosition();
+            });
+        });
+    </script>
     <!-- Js Plugins -->
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>

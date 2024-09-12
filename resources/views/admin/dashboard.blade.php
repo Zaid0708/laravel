@@ -12,6 +12,9 @@
     <!-- Chart.js for Charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        .h5{
+            color: white
+        }
         .card-icon {
             font-size: 3rem;
             opacity: 0.6;
@@ -110,7 +113,7 @@
         <!-- Row for Dashboard Title and Admin Name -->
         <div class="row mb-4">
             <div class="col-md-6">
-                <h1 class="mb-4"><i class="fa-solid fa-gauge"></i> Dashboard</h1>
+                <h3 class="mb-4"><i class="fa-solid fa-gauge"></i> Dashboard</h3>
             </div>
             <div class="col-md-6 text-md-end text-right">
                 <div class="d-inline-block position-relative dropdown">
@@ -148,7 +151,7 @@
                 <div class="card text-white bg-dark mb-3 shadow">
                     <div class="card-body">
                         <div>
-                            <h5 class="card-title">Number of Tenants</h5>
+                            <h5 style="color: white"  class="card-title">Number of Tenants</h5>
                             <p class="card-text" id="tenantsCount">{{ $tenantsCount }}</p>
                         </div>
                         <i class="fas fa-users card-icon"></i>
@@ -159,7 +162,7 @@
                 <div class="card text-white bg-dark mb-3 shadow">
                     <div class="card-body">
                         <div>
-                            <h5 class="card-title">Number of Reservations</h5>
+                            <h5 style="color: white"  class="card-title">Number of Reservations</h5>
                             <p class="card-text" id="reservationsCount">{{ $reservationsCount }}</p>
                         </div>
                         <i class="fas fa-calendar-alt card-icon"></i>
@@ -173,7 +176,7 @@
             <!-- Chart Column -->
             <div class="col-md-6">
                 <div class="card mb-4 shadow bg-dark text-white text-center">
-                    <h5 class="card-title mt-3"><i class="fas fa-hotel"></i> Rooms Available per Hotel</h5>
+                    <h5 style="color: white"  class="card-title mt-3"><i class="fas fa-hotel"></i> Rooms Available per Hotel</h5>
                     <div class="card-body bg-dark text-white">
                         <div class="chart-container">
                             <canvas id="roomsChart"></canvas>
@@ -185,7 +188,7 @@
             <!-- Table Column -->
             <div class="col-md-6">
                 <div class="card mb-4 shadow bg-dark text-white">
-                    <h5 class="card-title mt-6 text-center"><i class="fas fa-calendar-week"></i> Tenant Reservations</h5>
+                    <h5  style="color: white"  class="card-title mt-6 text-center"><i class="fas fa-calendar-week"></i> Tenant Reservations</h5>
                     <div class="card-body bg-dark text-white table-scroll">
                         <table class="table table-dark table-striped">
                             <thead>
@@ -212,30 +215,31 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-4 shadow bg-dark text-white">
-                    <h3 class="card-title mt-3 text-center"><i class="fa-solid fa-comments"></i> Hotel Reviews</h3>
+                    <h3 style="color: white"  class="card-title mt-3 text-center"><i class="fa-solid fa-comments"></i> Hotel Reviews</h3>
                     <div class="card-body">
                         <table class="table table-dark table-striped">
                             <thead>
                                 <tr>
                                     <th>Hotel Name</th>
+                                    <th>Room Type</th>
                                     <th>Rating</th>
                                     <th>Comment</th>
-                                    <th>Availability Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($reviews as $review)
                                     <tr>
-                                        <td>{{ $review->hotel ? $review->hotel->name : 'No hotel found' }}</td>
+                                        <td>{{ $review->room && $review->room->hotel ? $review->room->hotel->name : 'No hotel found' }}</td>
+                                        
+                                        <td>{{ $review->room ? $review->room->room_type : 'No room found' }}</td> <!-- Add Room Type here -->
+                                        
                                         <td>{{ $review->rating }}</td>
                                         <td>{{ $review->comment }}</td>
-                                        <td>
-                                            {{ $review->hotel && $review->hotel->rooms->isNotEmpty() ? $review->hotel->rooms->first()->availability_status : 'N/A' }}
-                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        
                     </div>
                 </div>
             </div>

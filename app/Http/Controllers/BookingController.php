@@ -84,8 +84,8 @@ class BookingController extends Controller
     {
         // Check if the user is authenticated
         if (!Auth::check()) {
-            // Redirect to login if no user is authenticated
-            return redirect()->route('login.form')->with('message', 'Please log in to continue.');
+            // Redirect to login if no user is authenticated, preserving the intended URL
+            return redirect()->guest(route('login.form'))->with('message', 'Please log in to continue.');
         }
     
         $checkIn = session('check_in');
@@ -105,7 +105,6 @@ class BookingController extends Controller
         return view('userPage.info', compact('checkIn', 'checkOut', 'room', 'totalPrice', 'numberOfNights', 'user'));
     }
     
-
     // Finalize the booking and store in the database
     public function finalizeBooking(Request $request)
     {
@@ -143,6 +142,7 @@ class BookingController extends Controller
         // session()->forget(['check_in', 'check_out', 'room_id']);
     
         // Set a session variable to indicate success
+        
         session()->flash('booking_success', true);
     
         // Redirect to a confirmation page or another appropriate page

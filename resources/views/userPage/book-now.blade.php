@@ -41,6 +41,16 @@
         small, .small {
             font-size: .875em;
         }
+        .available-date a {
+        background-color: green !important;
+        color: white !important;
+    }
+
+    /* Style for booked dates (red background) */
+    .booked-date a {
+        background-color: red !important;
+        color: white !important;
+    }
     </style>
 
 </head>
@@ -96,7 +106,7 @@
     <!-- Header End -->
 
     <!-- Breadcrumb Section Begin -->
-    <div class="breadcrumb-section" style="background-color :#f6f6f6">
+    <div class="breadcrumb-section mt-5" style="background-color :#f6f6f6">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -247,7 +257,13 @@
                 dateFormat: 'yy-mm-dd',
                 beforeShowDay: function(date) {
                     var formattedDate = $.datepicker.formatDate('yy-mm-dd', date);
-                    return [bookedDates.indexOf(formattedDate) === -1]; // Return true if date is not booked
+                    if (bookedDates.indexOf(formattedDate) !== -1) {
+                        // Date is booked
+                        return [false, 'booked-date', 'This date is already booked']; // Adds a tooltip
+                    } else {
+                        // Date is available
+                        return [true, 'available-date', 'This date is available']; // Adds a tooltip
+                    }
                 },
                 onSelect: function(selectedDate) {
                     var checkInDate = new Date(selectedDate);
@@ -262,11 +278,18 @@
                 dateFormat: 'yy-mm-dd',
                 beforeShowDay: function(date) {
                     var formattedDate = $.datepicker.formatDate('yy-mm-dd', date);
-                    return [bookedDates.indexOf(formattedDate) === -1]; // Return true if date is not booked
+                    if (bookedDates.indexOf(formattedDate) !== -1) {
+                        // Date is booked
+                        return [false, 'booked-date', 'This date is already booked']; // Adds a tooltip
+                    } else {
+                        // Date is available
+                        return [true, 'available-date', 'This date is available']; // Adds a tooltip
+                    }
                 }
             });
         });
     </script>
+    
     
     
     

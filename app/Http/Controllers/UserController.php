@@ -90,46 +90,55 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required|string|min:8',
         ]);
-
+    
         // Attempt to log the user in
         if (Auth::attempt($credentials)) {
             // Authentication passed, check the user's role
             $user = Auth::user();
-
-            // Redirect based on role
-            switch ($user->role_id) {
-                case 1:
-                    // Admin role, redirect to admin dashboard
-                    return redirect()->route('admin.dashboard')->with('success', 'You are logged in as an Admin!');
-                case 2:
-                    // Owner role, redirect to owner dashboard or page
-                    return redirect()->route('owner.index')->with('success', 'You are logged in as an Owner!');
-                case 3:
-                    // Renter role, redirect to renter dashboard or page
-                    return redirect()->route('userPage.index')->with('success', 'You are logged in as a Renter!');
-                default:
-                    // Default case if no specific role is found
-                    return redirect()->route('home')->with('success', 'You are logged in!');
-            }
+    
+            // Redirect to the intended URL or based on the user's role
+            // `redirect()->intended()` will redirect to the intended URL if it exists, 
+            // otherwise, it will fallback to the route defined in the switch statement
+            return redirect()->intended($this->getRoleRedirectPath($user))->with('success', 'You are logged in!');
         }
-
+    
         // Authentication failed, redirect back with input and error message
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->withInput($request->only('email'));
     }
-
+    
+    // Helper method to get the redirect path based on user role
+    protected function getRoleRedirectPath($user)
+    {
+        switch ($user->role_id) {
+            case 1:
+                // Admin role, redirect to admin dashboard
+                return route('admin.dashboard');
+            case 2:
+                // Owner role, redirect to owner dashboard or page
+                return route('owner.index');
+            case 3:
+                // Renter role, redirect to renter dashboard or page
+                return route('userPage.index');
+            default:
+                // Default case if no specific role is found
+                return route('home');
+        }
+    }
+    
     // Log the user out
     public function logout(Request $request)
     {
-        Auth::logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
+        Auth::logout(); // Logs out the user
+        
+        $request->session()->invalidate(); // Invalidates the session
+    
+        $request->session()->regenerateToken(); // Generates a new CSRF token
+    
         return redirect()->route('login.form')->with('success', 'You have been logged out!');
     }
+    
 
 
 }

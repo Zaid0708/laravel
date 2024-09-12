@@ -22,7 +22,7 @@
 
 @section('content')
 <div class="container mt-4">
-    <h1 class="mb-5"><i class="fas fa-hotel"></i> Hotels</h1>
+    <h3 class="mb-5"><i class="fas fa-hotel"></i> Hotels</h3>
     <div class="row">
         @foreach($hotels as $hotel)
         <div class="col-md-4 mb-4">

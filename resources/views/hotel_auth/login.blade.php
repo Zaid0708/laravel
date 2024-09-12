@@ -25,7 +25,41 @@
 
 </head>
 <body>
-    <section style="height: 100%" class="hero-section">
+    <header class="header-section header-normal">
+        <div class="menu-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="logo">
+                            <a href="./index">
+                                <img src="{{asset('img/logo.png')}}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="nav-menu">
+                            <nav class="mainmenu">
+                                <ul>
+                                    <li><a href="{{ url('./index') }}">Home</a></li>
+                                    <li><a href="{{ url('/about-us') }}">About Us</a></li>
+                                    <li><a href="{{ url('/hotels') }}">Hotels</a></li>
+                                    <li><a href="{{ url('/contact') }}">Contact</a></li>
+                                    @guest
+                                  
+                                 
+                                    @else
+                                     
+                                    @endguest
+                                </ul>
+                            </nav>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section style="height: 100%" class="hero-section mt-5">
         <div class="container">
             <div class="row">
                 <!-- Column for the form -->

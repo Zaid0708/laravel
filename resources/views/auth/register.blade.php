@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
@@ -68,59 +67,3 @@
         </form>
     </x-authentication-card>
 </x-guest-layout>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إنشاء حساب</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">إنشاء حساب</h1>
-
-        <!-- Registration Form -->
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <div class="mb-3">
-                <label for="name" class="form-label">الاسم</label>
-                <input type="text" name="name" id="name" class="form-control" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="email" class="form-label">البريد الإلكتروني</label>
-                <input type="email" name="email" id="email" class="form-control" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="phone_number" class="form-label">رقم الهاتف</label>
-                <input type="number" name="phone_number" id="phone_number" class="form-control" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="password" class="form-label">كلمة المرور</label>
-                <input type="password" name="password" id="password" class="form-control" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="password_confirmation" class="form-label">تأكيد كلمة المرور</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
-            </div>
-
-            <button type="submit" class="btn btn-primary">تسجيل</button>
-        </form>
-
-        <div class="mt-3 text-center">
-            <a href="{{ route('login') }}">تسجيل الدخول</a>
-        </div>
-    </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
->>>>>>> Stashed changes

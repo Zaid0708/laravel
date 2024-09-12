@@ -49,7 +49,26 @@
     text-align: center; /* Center text inside the badge */
 }
 
+.header-section {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    background-color: #fff; /* Set background color to white */
+    box-shadow: 0px 4px 2px -2px gray; /* Optional shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
 
+/* Sticky class to modify styling while scrolling (optional) */
+.header-section.sticky {
+    background-color: #fff;
+    box-shadow: 0px 4px 2px -2px gray; /* You can adjust this shadow */
+}
+
+/* Adjust padding or spacing if necessary */
+.header-section .nav-menu {
+    padding: 10px 0;
+}
 
 .service-item i {
 	color: #D5A373;
@@ -2048,6 +2067,15 @@ ul, ol {
 	padding: 14px 34px 13px;
 	display: inline-block;
 }
+.burger-menu {
+    display: none;
+}
+
+/* Hide the mobile menu by default */
+.mobile-menu {
+    display: none;
+	
+}
 .map {
 	height: 470px;
 	-webkit-box-shadow: 0px 14px 35px rgba(0, 0, 0, 0.15);
@@ -2094,9 +2122,45 @@ ul, ol {
 	.top-nav {
 		display: none;
 	}
-	.menu-item .nav-menu {
-		display: none;
-	}
+	 .menu-item .nav-menu {
+        display: none;
+    }
+    .burger-menu {
+        display: block;
+        cursor: pointer;
+		padding-bottom: 5%;
+    }
+    .burger-icon {
+        width: 30px;
+        height: 3px;
+        background: black;
+        position: absolute;
+		margin-left: 90%;
+		
+    }
+    .burger-icon::before,
+    .burger-icon::after {
+        content: '';
+        width: 30px;
+        height: 3px;
+        background: black;
+        position: absolute;
+        left: 0;
+		
+    }
+    .burger-icon::before {
+        top: -8px;
+    }
+    .burger-icon::after {
+        top: 8px;
+		
+    }
+    .mobile-menu {
+        display: none;
+    }
+    .mobile-menu.show {
+        display: block;
+    }
 	.offcanvas-menu-overlay {
 		position: fixed;
 		left: 0;

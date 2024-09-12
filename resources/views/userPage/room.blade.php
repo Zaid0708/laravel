@@ -116,12 +116,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2">
-               
+                        <div class="logo">
+                            <a href="./index">
+                                <img src="{{ asset('img/logo.png') }}" alt="Logo">
 
-
-                                 <div class="logo">
-                            <a href="{{asset('./index')}}">
-                                <img src="{{asset('img/logo.png')}}" alt="">
                             </a>
                         </div>
                     </div>
@@ -144,9 +142,14 @@
                                             <a href="{{ route('register.form') }}" class="btn btn-primary">Sign Up</a>
                                         </div>
                                     </li>
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('oregister') }}" class="btn btn-primary">Hotel owner?</a>
+                                        </div>
+                                    </li>
                                     @else
                                         <li>
-                                            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                                            <form action="{{ route('userlogout') }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary">Logout</button>
                                             </form>
@@ -154,6 +157,7 @@
                                     @endguest
                                 </ul>
                             </nav>
+
                         </div>
                     </div>
                 </div>

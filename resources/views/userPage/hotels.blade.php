@@ -205,8 +205,9 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="./index.html">
-                                <img src="img/logo.png" alt="">
+                            <a href="./index">
+                                <img src="{{ asset('img/logo.png') }}" alt="Logo">
+
                             </a>
                         </div>
                     </div>
@@ -219,20 +220,24 @@
                                     <li><a href="{{ url('/hotels') }}">Hotels</a></li>
                                     <li><a href="{{ url('/contact') }}">Contact</a></li>
                                     @guest
-                                        <li>
-                                            <div class="d-inline-block">
-                                                <a href="{{ route('login.form') }}"
-                                                    class="btn btn-outline-primary">Login</a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="d-inline-block">
-                                                <a href="{{ route('register.form') }}" class="btn btn-primary">Sign Up</a>
-                                            </div>
-                                        </li>
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('login.form') }}" class="btn btn-outline-primary">Login</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('register.form') }}" class="btn btn-primary">Sign Up</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('oregister') }}" class="btn btn-primary">Hotel owner?</a>
+                                        </div>
+                                    </li>
                                     @else
                                         <li>
-                                            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                                            <form action="{{ route('userlogout') }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary">Logout</button>
                                             </form>
@@ -240,6 +245,7 @@
                                     @endguest
                                 </ul>
                             </nav>
+
                         </div>
                     </div>
                 </div>
@@ -251,7 +257,7 @@
 
 
     <!-- Breadcrumb Section Begin -->
-    <div class="breadcrumb-section" style="background-color :#f6f6f6">
+    <div class="breadcrumb-section mt-5" style="background-color :#f6f6f6">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

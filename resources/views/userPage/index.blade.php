@@ -8,6 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sona | Template</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Book your stay at luxurious hotels with the best deals. Enjoy a seamless hotel booking experience for your travel and accommodation needs.">
+    <meta name="keywords" content="hotel booking, luxury hotels, travel, accommodation, book a room, hotel deals, vacation, resort">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Your Hotel Booking Website">
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Book Luxurious Hotels at the Best Prices">
+    <meta property="og:description" content="Find and book the best hotels for your travel needs. Experience luxury, comfort, and affordable rates at your fingertips.">
+    <meta property="og:type" content="website">
+  
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
@@ -16,7 +28,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
                   rel="stylesheet">
-
+                  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+                </head>
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" type="text/css">
@@ -69,6 +82,29 @@
             background-color: #c97b41 !important;
             border-color: #c97b41 !important;
         }
+     /* Make the header fixed and always visible at the top */
+.header-section {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    background-color: #fff; /* Set background color to white */
+    box-shadow: 0px 4px 2px -2px gray; /* Optional shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Sticky class to modify styling while scrolling (optional) */
+.header-section.sticky {
+    background-color: #fff;
+    box-shadow: 0px 4px 2px -2px gray; /* You can adjust this shadow */
+}
+
+/* Adjust padding or spacing if necessary */
+.header-section .nav-menu {
+    padding: 10px 0;
+}
+
+
     </style>
 </head>
 
@@ -87,8 +123,8 @@
                     <div class="col-lg-10">
                         <div class="nav-menu">
                             <nav class="mainmenu">
-                                <ul>
-                                    <li><a href="{{ url('./index') }}">Home</a></li>
+                                <ul class="menu-list">
+                                    <li><a active href="{{ url('./index') }}">Home</a></li>
                                     <li><a href="{{ url('/about-us') }}">About Us</a></li>
                                     <li><a href="{{ url('/hotels') }}">Hotels</a></li>
                                     <li><a href="{{ url('/contact') }}">Contact</a></li>
@@ -103,9 +139,14 @@
                                             <a href="{{ route('register.form') }}" class="btn btn-primary">Sign Up</a>
                                         </div>
                                     </li>
+                                    <li>
+                                        <div class="d-inline-block">
+                                            <a href="{{ route('oregister') }}" class="btn btn-primary">Hotel owner?</a>
+                                        </div>
+                                    </li>
                                     @else
                                         <li>
-                                            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                                            <form action="{{ route('userlogout') }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary">Logout</button>
                                             </form>
@@ -113,17 +154,54 @@
                                     @endguest
                                 </ul>
                             </nav>
-
+                        </div>
+                        <div class="burger-menu">
+                            <span class="burger-icon"></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="mobile-menu">
+            <nav class="mainmenu">
+                <ul class="menu-list">
+                    <li><a  href="{{ url('./index') }}">Home</a></li>
+                    <li><a href="{{ url('/about-us') }}">About Us</a></li>
+                    <li><a href="{{ url('/hotels') }}">Hotels</a></li>
+                    <li><a href="{{ url('/contact') }}">Contact</a></li>
+                    @guest
+                    <li>
+                        <div class="d-inline-block">
+                            <a href="{{ route('login.form') }}" class="btn btn-outline-primary">Login</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-inline-block">
+                            <a href="{{ route('register.form') }}" class="btn btn-primary">Sign Up</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-inline-block">
+                            <a href="{{ route('oregister') }}" class="btn btn-primary">Hotel owner?</a>
+                        </div>
+                    </li>
+                    @else
+                        <li>
+                            <form action="{{ route('userlogout') }}" method="POST" style="display:inline;">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Logout</button>
+                            </form>
+                        </li>
+                    @endguest
+                </ul>
+            </nav>
+        </div>
     </header>
+    
     <!-- Header End -->
 
     <!-- Hero Section Begin -->
-    <section class="hero-section">
+    <section class="hero-section mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -306,7 +384,7 @@
                             </div>
                             <h5>-Zaid banifadl</h5> <!-- Updated author name -->
                         </div>
-                        <img src="img/Testimonials/zaid banifadl.png" alt="" style="width: 40%">
+                        
                     </div>
                     <div class="ts-item">
                     <p>"The hotel truly exceeded our expectations. The location was perfect, and the rooms were incredibly comfortable. The concierge was very helpful in planning our city tours. We will definitely be back!"</p>                        <div class="ti-author">
@@ -319,7 +397,7 @@
                             </div>
                             <h5>-Yousef Abu Khalil</h5> <!-- Updated author name -->
                         </div>
-                        <img src="img/Testimonials/yousef abu khalil.png" alt="" style="width: 40%">
+                        
                     </div>
                     <div class="ts-item">
 <p>"The ambiance at the hotel is second to none. Whether we were dining in the restaurant or relaxing in our room, everything was perfect. We felt pampered and at ease after our stay."</p>                        <div class="ti-author">
@@ -332,7 +410,7 @@
                             </div>
                             <h5>- Dania Amro</h5> <!-- Updated author name -->
                         </div>
-                        <img src="img/Testimonials/Dania Amro.png" alt="" style="width: 50% ; height: 40vh;">
+                       
                     </div>
                 </div>
             </div>
@@ -417,6 +495,19 @@
         </div>
     </footer>
     <!-- Footer Section End -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const burgerIcon = document.querySelector('.burger-icon');
+            const mobileMenu = document.querySelector('.mobile-menu');
+        
+            burgerIcon.addEventListener('click', function () {
+                mobileMenu.classList.toggle('show');
+            });
+        });
+        </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
     <!-- Js Plugins -->

@@ -36,7 +36,7 @@ Route::get('/ownerreg', [UserController::class, 'ownershowRegister'])->name('ore
 Route::post('/ownerreg', [UserController::class, 'ownerregister'])->name('oregister');
 Route::get('/login2', [UserController::class, 'showLogin'])->name('login.form');
 Route::post('/login2', [UserController::class, 'login'])->name('login');
-Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+Route::post('/logout', [UserController::class, 'logout'])->name('userlogout');
 
 // Owner-Specific Routes
 Route::group(['middleware' => ['auth', 'check.role:2']], function () {
@@ -49,7 +49,7 @@ Route::group(['middleware' => ['auth', 'check.role:2']], function () {
     Route::put('/hotels/{id}', [HotelController::class, 'update'])->name('hotels.update');
     Route::get('/rooms/{room}/edit', [RoomController::class, 'edit'])->name('rooms.edit');
     Route::put('/rooms/{room}', [RoomController::class, 'update'])->name('rooms.update');
-    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+    Route::post('/userlogout', [UserController::class, 'logout'])->name('logout');
 });
 // Route to fetch booked dates
 
@@ -145,7 +145,7 @@ Route::group(['middleware' => ['auth', 'check.role:1']], function () {
 Route::get('/dashboard/counts', [DashboardController::class, 'getCounts'])->name('dashboard.counts');
 Route::get('/hoteladmin', [HotelAdminController::class, 'index'])->name('adminhotel.index');
 Route::get('/hoteladmin/{hotelid}', [HotelAdminController::class, 'show'])->name('adminhotel.show');
-Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
 
 });
 // web.php
